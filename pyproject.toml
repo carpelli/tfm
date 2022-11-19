@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "tfm"
+version = "0.1.0"
+description = ""
+authors = ["carpelli <92866289+carpelli@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.11"
+tensorflow = "^2.10.0"
+giotto-tda = "^0.6.0"
+ripser = "^0.6.4"
+cython = "^0.29.32"
+tensorflow-datasets = "^4.7.0"
+
+[tool.poetry.dev-dependencies]
+jupyter = "^1.0.0"
+
+[tool.poetry.group.dev.dependencies]
+autopep8 = "^2.0.0"
+pyinstrument = "^4.4.0"
+
+
+[tool.poetry.group.onzin.dependencies]
+seaborn = "^0.12.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
