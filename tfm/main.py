@@ -1,3 +1,4 @@
+from itertools import dropwhile
 from pathlib import Path
 
 import numpy as np
@@ -13,8 +14,7 @@ DATA_SAMPLE_SIZE = 2000
 UPPER_DIM = 1
 DATA_PATH = Path(
     "/Users/otis/Documents/rubens_speelhoekje/google/google_data/public_data/input_data/task1_v4")
-OUTDIR = Path('').parent / 'out'
-
+OUTDIR = Path(__file__).parent / '../out'
 
 def compute_distance_matrix(activations):
     with np.errstate(invalid='ignore'):
@@ -56,9 +56,13 @@ if __name__ == "__main__":
     x_train = utils.import_and_sample_data(
         DATA_PATH / "dataset_1", DATA_SAMPLE_SIZE)
 
-    with timer('20'):
-        model = utils.import_model(DATA_PATH / "model_20")
-        pd = pd_from_model(model, x_train, samplers.random(3000))
+    for model_path in dropwhile(
+        lambda p: p.stem != 'model_20',
+        sorted(DATA_PATH.glob('model*'), key=lambda p: (len(p.name), p.name))):
+        with timer(model_path.name):
+            model = utils.import_model(model_path)
+            pd = pd_from_model(model, x_train, samplers.importance(3000))
 
-    utils.save_data(pd, OUTDIR / 'task1/pds/model20.bin')
-    timer.save(OUTDIR / 'task1/timer')
+        utils.save_data(pd, OUTDIR / f'task1/pds/importance2/{model_path.name}.bin')
+    
+    timer.save(OUTDIR / 'task1/importance/timer')
