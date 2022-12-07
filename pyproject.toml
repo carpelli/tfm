@@ -5,13 +5,15 @@ description = ""
 authors = ["carpelli <92866289+carpelli@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.8,<3.11"
+python = "3.9.*"
 tensorflow = "^2.10.0"
 giotto-tda = "^0.6.0"
 ripser = "^0.6.4"
 cython = "^0.29.32"
 tensorflow-datasets = "^4.7.0"
 tqdm = "^4.64.1"
+hdbscan = "^0.8.29"
+scikit-learn-intelex = "2021.6.3"
 
 [tool.poetry.dev-dependencies]
 jupyter = "^1.0.0"

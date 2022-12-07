@@ -1,4 +1,4 @@
-from itertools import dropwhile
+import argparse
 from pathlib import Path
 
 import numpy as np
@@ -8,13 +8,15 @@ from gph import ripser_parallel as ripser
 from ruben import PersistenceDiagram, PersistenceDiagramPoint
 import samplers
 import utils
-from utils.timertree import timer
+from utils.timertree import timer, save_timer
 
 DATA_SAMPLE_SIZE = 2000
 UPPER_DIM = 1
-DATA_PATH = Path(
-    "/Users/otis/Documents/rubens_speelhoekje/google/google_data/public_data/input_data/task1_v4")
 OUTDIR = Path(__file__).parent / '../out'
+OVERWRITE = False
+SAMPLER = samplers.StratifiedKMeans(3000, 20000)
+TIMEOUT = 1000
+
 
 def compute_distance_matrix(activations):
     with np.errstate(invalid='ignore'):
@@ -34,10 +36,12 @@ def pd_from_distances(distance_matrix):
     return diagram
 
 
-def pd_from_model(model, x, sampler):
+def pd_from_model(model, x):
+    included_layers = model.layers[1:]
 
     with timer('activations'):
-        activation_samples = sampler(model, x)
+        activation_samples = samplers.apply(SAMPLER, model, included_layers, x)
+        assert activation_samples.shape == (SAMPLER.n, DATA_SAMPLE_SIZE)
 
     with timer('distances'):
         distance_matrix = compute_distance_matrix(activation_samples)
@@ -47,22 +51,41 @@ def pd_from_model(model, x, sampler):
 
     return pd
 
-
 if __name__ == "__main__":
-    tf.random.set_seed(1234)
-    np.random.seed(1234)
-    tf.config.experimental.enable_op_determinism()
+    # tf.random.set_seed(1234)
+    # np.random.seed(1234)
+    # tf.config.experimental.enable_op_determinism()
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('data_path', default=DATA_PATH, type=Path)
+    parser.add_argument('-o', '--output', default=OUTDIR, type=Path)
+    parser.add_argument('--overwrite', action='store_true')
+    parser.add_argument('--timeout', default=TIMEOUT, type=int)
+    parser.add_argument('--threads', defulat=1, type=int)
+    args = parser.parse_args()
 
     x_train = utils.import_and_sample_data(
-        DATA_PATH / "dataset_1", DATA_SAMPLE_SIZE)
+        args.data_path / "dataset_1", DATA_SAMPLE_SIZE)
+    outdir = OUTDIR / 'task1' / SAMPLER.name
 
-    for model_path in dropwhile(
-        lambda p: p.stem != 'model_20',
-        sorted(DATA_PATH.glob('model*'), key=lambda p: (len(p.name), p.name))):
-        with timer(model_path.name):
-            model = utils.import_model(model_path)
-            pd = pd_from_model(model, x_train, samplers.importance(3000))
+    model_paths = sorted(args.data_path.glob('model*'), key=lambda p: (len(p.name), p.name))
 
-        utils.save_data(pd, OUTDIR / f'task1/pds/importance2/{model_path.name}.bin')
-    
-    timer.save(OUTDIR / 'task1/importance/timer')
+    try:
+        for model_path in model_paths:
+            pd_path = outdir / f'{model_path.name}.bin'
+            if model_path.name in ["model_156", "model_157", "model_158", "model_220", "model_221"]:
+                print(f'Asked to skip {model_path.name}')
+                continue
+
+            if not OVERWRITE and pd_path.exists():
+                # logging?
+                print(f'{pd_path.name} already exists, skipping...')
+                continue
+
+            with timer(model_path.name):
+                model = utils.import_model(model_path)
+                pd = pd_from_model(model, x_train)
+
+            utils.save_data(pd, pd_path)
+    finally:
+        save_timer(outdir / 'timer')

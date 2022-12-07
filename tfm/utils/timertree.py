@@ -32,12 +32,8 @@ def timer(name):
         path.pop()
 
 
-def save_timer_data(dir: Path):
+def save_timer(dir: Path):
     if not dir.exists():
         dir.mkdir(parents=True)
     filepath = dir / (datetime.today().isoformat() + '.json')
-    with open(filepath, "w") as f:
-        json.dump(data, f, indent=4)
-
-
-timer.save = save_timer_data
+    filepath.write_text(json.dumps(data, indent=4))

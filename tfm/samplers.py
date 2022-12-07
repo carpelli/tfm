@@ -1,81 +1,128 @@
-from functools import partial
-from itertools import islice, compress
+from abc import ABC, abstractmethod
 import math
-from types import NoneType
-from collections.abc import Generator
 
 import numpy as np
-import numpy.typing as npt
 import tensorflow as tf
 
-
-def outputs(model, x, skip_n=1, exclude=NoneType) -> Generator[tf.Tensor, None, None]:
-    outputs = (x := l(x) for l in model.layers)
-    mask = (not isinstance(l, exclude) for l in model.layers)
-    exclude_layers = compress(outputs, mask)
-    skip_first = islice(exclude_layers, skip_n, None)
-    return (tf.reshape(x, (x.shape[0], -1)) for x in skip_first)
+from sklearn.cluster import kmeans_plusplus
 
 
-def random(n):
-    def sampler(model, x):
-        sizes = [np.prod(l.output.shape[1:]) for l in model.layers[1:]]
-        sample_idx = np.sort(np.random.choice(sum(sizes), n, replace=False))  # type: ignore
-        bin_sizes = np.histogram(sample_idx, np.r_[0, sizes].cumsum())[0]
-        sample_idx_bins = np.split(
-            sample_idx % np.repeat(sizes, bin_sizes),
-            bin_sizes[:-1].cumsum())
-        return np.vstack(
-            [y.T[idx] for y, idx in zip(outputs(model, x), sample_idx_bins)])
-    return sampler
+class Sampler(ABC):
+    def __init__(self, n: int):
+        self.n = n
 
-def importance(max_samples_from_hidden_layers=3000, num_skipped_layers_from_start=1):
-    def _examples_x_activations_for_input_importance_sampling(model, x):
-        '''
-        We take for each non-skipped hidden layer the max(number_of_neurons_layer, number_of_samples) neurons with highest
-        mean activation value in absolute value across all the dataset x where number_of_samples is equal to
-        math.floor(max_samples_from_hidden_layers/raw_total_layers) for all the non-first hidden layers and
-        math.floor(max_samples_from_hidden_layers/raw_total_layers) + max_samples_from_hidden_layers%raw_total_layers
-        for the first hidden layer. For the output layer, we add all its neurons.
-        :param x: dataset
-        :param model: neural network in tensorflow keras.
-        :param num_skipped_layers_from_start: Number of layers to skip from the start to do the analysis
-        :param max_samples_from_hidden_layers: max number of elements in the sample from the hidden layers.
-        :return:
-        '''
-        # We add always the last layer completely
-        raw_total_layers = sum([not isinstance(layer, tf.keras.layers.Dropout) for layer in model.layers])
-        # We remove the last layer (the -1) because we add it completely. The first one is not counted.
-        number_of_hidden_layers = raw_total_layers - num_skipped_layers_from_start - 1
-        sampled_activations_bd = None  # final shape=(total_sampled_neurons, number_of_examples)
-        samples_per_ordinary_layer = math.floor(max_samples_from_hidden_layers / number_of_hidden_layers)
-        excess_of_neurons = max_samples_from_hidden_layers % number_of_hidden_layers
-        skipped_iterations = 0
-        layer_idx = -1
-        for layer in model.layers:
-            if skipped_iterations < num_skipped_layers_from_start:
-                x = layer(x)
-                if not isinstance(layer, tf.keras.layers.Dropout): # We only count non-dropout layers
-                    skipped_iterations += 1
-            else:
-                x = layer(x)
-                if not isinstance(layer, tf.keras.layers.Dropout):
-                    layer_idx += 1  # We start with the layer 0 when we have the first layer that is not dropout
-                    examples_x_neurons = tf.reshape(x, (x.shape[0], -1))
-                    if layer_idx < number_of_hidden_layers:
-                        averages_x_neurons = tf.reduce_mean(tf.math.abs(examples_x_neurons), axis=0)
-                        averages_x_neurons_args_sorted = tf.argsort(averages_x_neurons, axis=0, direction='DESCENDING')
-                        number_of_samples = samples_per_ordinary_layer + excess_of_neurons if layer_idx == 0 \
-                            else samples_per_ordinary_layer
-                        selected_examples_x_neurons = tf.gather(examples_x_neurons,
-                                                                indices=averages_x_neurons_args_sorted[:number_of_samples],
-                                                                axis=1)
+    @property
+    def name(self) -> str:
+        return type(self).__name__.lower()
 
-                        sampled_activations_bd = selected_examples_x_neurons if sampled_activations_bd is None else \
-                            tf.concat((sampled_activations_bd, selected_examples_x_neurons), axis=1)
-                    else:
-                        # We are in the last layer (output layer). We add all the neurons
-                        sampled_activations_bd = examples_x_neurons if sampled_activations_bd is None else \
-                            tf.concat((sampled_activations_bd, examples_x_neurons), axis=1)
-        return sampled_activations_bd
-    return _examples_x_activations_for_input_importance_sampling
+    def build(self, layers: list[tf.keras.layers.Layer]):
+        self.activations = []
+
+    @abstractmethod
+    def layer(self, x: tf.Tensor, i: int):
+        pass
+
+    def accumulate(self) -> np.ndarray:
+        return np.hstack(self.activations)
+
+
+class Random(Sampler):
+    def build(self, layers):
+        self.sizes = [np.prod(l.output.shape[1:])
+                      for l in layers]  # type: ignore
+        self.layer_ix = np.r_[0, self.sizes].cumsum()[:-1]
+        self.sample_ix = np.sort(np.random.choice(
+            sum(self.sizes), self.n, replace=False))
+        # bin_sizes = np.histogram(sample_ix, layer_ix)[0]
+        # # make simpler
+        # self.sample_ix_layered = np.split(
+        #     sample_ix % np.repeat(sizes, bin_sizes),
+        #     bin_sizes[:-1].cumsum())
+        super().build(layers)
+
+    def layer(self, x, i):
+        ix = self.sample_ix - self.layer_ix[i]
+        ix = ix[(ix >= 0) & (ix < self.sizes[i])]
+        self.activations += [tf.gather(x, ix, axis=1)]
+
+
+class Importance(Random):
+    def build(self, layers):
+        self.top = tf.zeros(0)
+        super().build(layers)
+
+    def layer(self, x, i):
+        augmented = tf.concat([self.top, x], axis=1) if len(self.top) else x
+        top_ix, _ = tf.unique(tf.math.argmax(augmented, axis=1))
+        self.top = tf.gather(augmented, top_ix, axis=1)
+        super().layer(x, i)
+
+    def accumulate(self):
+        assert len(self.top) > 0
+        print(f"Part importance vectors: {self.top.shape[1]}")
+        random_ix = np.random.choice(
+            self.n, self.n - self.top.shape[1], replace=False)
+        return np.hstack([self.top, super().accumulate()[:, random_ix]])
+
+
+class StratifiedSampler(Sampler):
+    def build(self, layers):
+        sizes = [np.prod(l.output.shape[1:]) for l in layers]  # type: ignore
+        self.n_layered = np.zeros_like(layers)
+        n_left = self.n
+        for i in range(len(layers)):
+            self.n_layered[-i] = min(n_left/(len(layers)-i), sizes[-i])
+            n_left -= self.n_layered[-i]
+        super().build(layers)
+
+
+class StratifiedKMeans(StratifiedSampler):
+    def __init__(self, n: int, max_n_to_cluster: int):
+        self.max_size = max_n_to_cluster
+        super().__init__(n)
+
+    @property
+    def name(self):
+        return super().name + str(self.max_size)
+
+    def layer(self, x: tf.Tensor, i: int):
+        size = x.shape[1]
+        passes = math.ceil(size / self.max_size)
+        for j in range(passes):
+            print(f"Layer {i+1} pass {j+1}/{passes}")
+            round = math.floor if j < passes - 1 else math.ceil # fix fix fix
+            part = round(self.max_size / passes)
+            n_clusters = int(self.n_layered[i] / passes)
+            centers, _ = kmeans_plusplus(
+                x[:,j*part:(j+1)*part].numpy().T,
+                n_clusters + int(self.n_layered[i] % n_clusters if j == passes - 1 else 0)
+            )
+            self.activations += [centers.T]
+
+
+def apply(sampler: Sampler, model: tf.keras.Sequential, included_layers, x: tf.Tensor) -> np.ndarray:
+    sampler.build(included_layers)
+    i = 0
+    for layer in model.layers:
+        x = layer(x)  # type: ignore
+        if layer in included_layers:
+            sampler.layer(tf.reshape(x, (x.shape[0], -1)), i)
+            i += 1
+    return sampler.accumulate().T
+
+
+def stratify(sampler: Sampler) -> Sampler:
+    def build(self, layers: list[tf.keras.layers.Layer]):
+        sizes = [np.prod(l.output.shape[1:]) for l in layers]  # type: ignore
+        self.n_layered = np.zeros_like(layers)
+        n_left = self.n
+        for i in range(len(layers)):
+            self.n_layered[-i] = min(n_left/i, sizes[-i])
+            n_left -= self.n_layered[-1]
+        self._model_layers = layers
+        self._activations = []
+    
+    def layer(x: tf.Tensor, i: int):
+        self.n = self.n_layered[i]
+        sampler.build(self, [self._model_layers[i]])
+        sampler.layer(self, x, i)

@@ -234,6 +234,29 @@ optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
+name = "daal"
+version = "2021.6.0"
+description = "Intel® oneAPI Data Analytics Library"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+tbb = ">=2021.0.0,<2022.0.0"
+
+[[package]]
+name = "daal4py"
+version = "2021.6.3"
+description = "daal4py is a Convenient Python API to the Intel® oneAPI Data Analytics Library (oneDAL)"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+daal = "2021.6.0"
+numpy = ">=1.15"
+
+[[package]]
 name = "debugpy"
 version = "1.6.3"
 description = "An implementation of the Debug Adapter Protocol for Python"
@@ -510,6 +533,21 @@ python-versions = ">=3.7"
 numpy = ">=1.14.5"
 
 [[package]]
+name = "hdbscan"
+version = "0.8.29"
+description = "Clustering based on density with variable density clusters"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+cython = ">=0.27"
+joblib = ">=1.0"
+numpy = ">=1.20"
+scikit-learn = ">=0.20"
+scipy = ">=1.0"
+
+[[package]]
 name = "hopcroftkarp"
 version = "1.2.5"
 description = "Implementation of HopcroftKarp's algorithm"
@@ -709,8 +747,6 @@ python-versions = ">=3.7"
 
 [package.dependencies]
 attrs = ">=17.4.0"
-importlib-resources = {version = ">=1.4.0", markers = "python_version < \"3.9\""}
-pkgutil-resolve-name = {version = ">=1.3.10", markers = "python_version < \"3.9\""}
 pyrsistent = ">=0.14.0,<0.17.0 || >0.17.0,<0.17.1 || >0.17.1,<0.17.2 || >0.17.2"
 
 [package.extras]
@@ -1129,10 +1165,7 @@ optional = false
 python-versions = ">=3.8"
 
 [package.dependencies]
-numpy = [
-    {version = ">=1.20.3", markers = "python_version < \"3.10\""},
-    {version = ">=1.21.0", markers = "python_version >= \"3.10\""},
-]
+numpy = {version = ">=1.20.3", markers = "python_version < \"3.10\""}
 python-dateutil = ">=2.8.1"
 pytz = ">=2020.1"
 
@@ -1210,14 +1243,6 @@ python-versions = ">=3.7"
 [package.extras]
 docs = ["furo", "olefile", "sphinx (>=2.4)", "sphinx-copybutton", "sphinx-issues (>=3.0.1)", "sphinx-removed-in", "sphinxext-opengraph"]
 tests = ["check-manifest", "coverage", "defusedxml", "markdown2", "olefile", "packaging", "pyroma", "pytest", "pytest-cov", "pytest-timeout"]
-
-[[package]]
-name = "pkgutil-resolve-name"
-version = "1.3.10"
-description = "Resolve a name to an object."
-category = "dev"
-optional = false
-python-versions = ">=3.6"
 
 [[package]]
 name = "platformdirs"
@@ -1584,6 +1609,18 @@ examples = ["matplotlib (>=3.1.2)", "pandas (>=1.0.5)", "scikit-image (>=0.16.2)
 tests = ["black (>=22.3.0)", "flake8 (>=3.8.2)", "matplotlib (>=3.1.2)", "mypy (>=0.961)", "numpydoc (>=1.2.0)", "pandas (>=1.0.5)", "pyamg (>=4.0.0)", "pytest (>=5.0.1)", "pytest-cov (>=2.9.0)", "scikit-image (>=0.16.2)"]
 
 [[package]]
+name = "scikit-learn-intelex"
+version = "2021.6.3"
+description = "Intel(R) Extension for Scikit-learn is a seamless way to speed up your Scikit-learn application."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+daal4py = "2021.6.3"
+scikit-learn = ">=0.22"
+
+[[package]]
 name = "scipy"
 version = "1.9.3"
 description = "Fundamental algorithms for scientific computing in Python"
@@ -1702,6 +1739,14 @@ pure-eval = "*"
 tests = ["cython", "littleutils", "pygments", "pytest", "typeguard"]
 
 [[package]]
+name = "tbb"
+version = "2021.7.1"
+description = "Intel® oneAPI Threading Building Blocks"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "tenacity"
 version = "8.1.0"
 description = "Retry code until it succeeds"
@@ -1794,7 +1839,6 @@ python-versions = ">=3.7"
 absl-py = "*"
 dill = "*"
 etils = {version = "*", extras = ["epath"]}
-importlib-resources = {version = "*", markers = "python_version < \"3.9\""}
 numpy = "*"
 promise = "*"
 protobuf = ">=3.12.2"
@@ -2092,8 +2136,8 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 
 [metadata]
 lock-version = "1.1"
-python-versions = ">=3.8,<3.11"
-content-hash = "21a0de0c1492eea68060e27df3b9401594c0f8f82ec19a593151181a189b5432"
+python-versions = "3.9.*"
+content-hash = "b1a5a5f9d6510a6208e7f007c0556ee92fe2cd5ad436dd0b350f5c108d1a14f3"
 
 [metadata.files]
 absl-py = [
@@ -2362,6 +2406,25 @@ cython = [
     {file = "Cython-0.29.32-py2.py3-none-any.whl", hash = "sha256:eeb475eb6f0ccf6c039035eb4f0f928eb53ead88777e0a760eccb140ad90930b"},
     {file = "Cython-0.29.32.tar.gz", hash = "sha256:8733cf4758b79304f2a4e39ebfac5e92341bce47bcceb26c1254398b2f8c1af7"},
 ]
+daal = [
+    {file = "daal-2021.6.0-py2.py3-none-macosx_10_15_x86_64.macosx_11_0_x86_64.whl", hash = "sha256:8a445298f46675a1ff3042d55426f2a15aa58e93594f848dba017b3312ba149a"},
+    {file = "daal-2021.6.0-py2.py3-none-manylinux1_x86_64.whl", hash = "sha256:d8f1338eea2e37b446dbfbf8730b2e0b3b4cb4c8e8460b8963c1e259a47bda85"},
+    {file = "daal-2021.6.0-py2.py3-none-win_amd64.whl", hash = "sha256:721c045f0d16d7d70ba487ac8b808adc5c1490ee452a1aec006f9bc0422f7f24"},
+]
+daal4py = [
+    {file = "daal4py-2021.6.3-py310-none-macosx_10_15_x86_64.macosx_11_0_x86_64.whl", hash = "sha256:69312ce2b34bb7340b784c07fb777209c413eba807246333c3782286aad1f84a"},
+    {file = "daal4py-2021.6.3-py310-none-manylinux1_x86_64.whl", hash = "sha256:91548b49ad9bef13379b7fc4b02ac37a243d416973ea847637fee8cb3a08a5ac"},
+    {file = "daal4py-2021.6.3-py310-none-win_amd64.whl", hash = "sha256:d6d83ebbab19f315b065e8502dff8ca0f1def520e2e5c6a4aa108e8c7daf05ea"},
+    {file = "daal4py-2021.6.3-py37-none-macosx_10_15_x86_64.macosx_11_0_x86_64.whl", hash = "sha256:70fd169917dfd5b05dde929133ec67bb74ba227eddda7931d5d601fdd1e205b8"},
+    {file = "daal4py-2021.6.3-py37-none-manylinux1_x86_64.whl", hash = "sha256:266149c35dbebc1f517ae88c3f48e81e9e2c4c081c40feb9d1702658fcc9bbf6"},
+    {file = "daal4py-2021.6.3-py37-none-win_amd64.whl", hash = "sha256:7d296a935f24616502b2c0c53546fafa636674cf44fc515e71dcb7d1d8647a21"},
+    {file = "daal4py-2021.6.3-py38-none-macosx_10_15_x86_64.macosx_11_0_x86_64.whl", hash = "sha256:0b2f7d1ed9f98cd488ecd2a249b536b2fc52e11037d8abeddc2474b7c331c6ea"},
+    {file = "daal4py-2021.6.3-py38-none-manylinux1_x86_64.whl", hash = "sha256:e15e19b0bebd9209b2bd6e02ed8fe7444f5fb1f3e6f76b3569426da01f32d6bf"},
+    {file = "daal4py-2021.6.3-py38-none-win_amd64.whl", hash = "sha256:65625c1d61af30263e38aeb3c879536105d67989a9f7d4d3b957d5b79023bcc6"},
+    {file = "daal4py-2021.6.3-py39-none-macosx_10_15_x86_64.macosx_11_0_x86_64.whl", hash = "sha256:9d6b8ea44634f5de2d0d477526d3819b452b34597da0e07a7343177aa917935b"},
+    {file = "daal4py-2021.6.3-py39-none-manylinux1_x86_64.whl", hash = "sha256:41d4ee5ece936f716b29fda2d8a9d4e027b2209993c492d39f62543c45dfddaf"},
+    {file = "daal4py-2021.6.3-py39-none-win_amd64.whl", hash = "sha256:828f56ac352abdc4c9edb085b6c5a8c9c2d394080dc93fe6d69ca23d2bb64a63"},
+]
 debugpy = [
     {file = "debugpy-1.6.3-cp310-cp310-macosx_10_15_x86_64.whl", hash = "sha256:c4b2bd5c245eeb49824bf7e539f95fb17f9a756186e51c3e513e32999d8846f3"},
     {file = "debugpy-1.6.3-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:b8deaeb779699350deeed835322730a3efec170b88927debc9ba07a1a38e2585"},
@@ -2539,6 +2602,10 @@ h5py = [
     {file = "h5py-3.7.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:9e7535df5ee3dc3e5d1f408fdfc0b33b46bc9b34db82743c82cd674d8239b9ad"},
     {file = "h5py-3.7.0-cp39-cp39-win_amd64.whl", hash = "sha256:9e2ad2aa000f5b1e73b5dfe22f358ca46bf1a2b6ca394d9659874d7fc251731a"},
     {file = "h5py-3.7.0.tar.gz", hash = "sha256:3fcf37884383c5da64846ab510190720027dca0768def34dd8dcb659dbe5cbf3"},
+]
+hdbscan = [
+    {file = "hdbscan-0.8.29-cp310-cp310-win_amd64.whl", hash = "sha256:500eb279670af93ac57c3eaa52eaafe75b24d9d56ae7fc5586c1b9562ff64a28"},
+    {file = "hdbscan-0.8.29.tar.gz", hash = "sha256:7e9d7351610eaadddb281e3149a74e22e329bc0b5325f631031d4b63a6a770ae"},
 ]
 hopcroftkarp = [
     {file = "hopcroftkarp-1.2.5.tar.gz", hash = "sha256:28a7887db81ad995ccd36a1b5164a4c542b16d2781e8c49334dc9d141968c0e7"},
@@ -3027,10 +3094,6 @@ pillow = [
     {file = "Pillow-9.3.0-pp38-pypy38_pp73-win_amd64.whl", hash = "sha256:073adb2ae23431d3b9bcbcff3fe698b62ed47211d0716b067385538a1b0f28b8"},
     {file = "Pillow-9.3.0.tar.gz", hash = "sha256:c935a22a557a560108d780f9a0fc426dd7459940dc54faa49d83249c8d3e760f"},
 ]
-pkgutil-resolve-name = [
-    {file = "pkgutil_resolve_name-1.3.10-py3-none-any.whl", hash = "sha256:ca27cc078d25c5ad71a9de0a7a330146c4e014c2462d9af19c6b828280649c5e"},
-    {file = "pkgutil_resolve_name-1.3.10.tar.gz", hash = "sha256:357d6c9e6a755653cfd78893817c0853af365dd51ec97f3d358a819373bbd174"},
-]
 platformdirs = [
     {file = "platformdirs-2.5.4-py3-none-any.whl", hash = "sha256:af0276409f9a02373d540bf8480021a048711d572745aef4b7842dad245eba10"},
     {file = "platformdirs-2.5.4.tar.gz", hash = "sha256:1006647646d80f16130f052404c6b901e80ee4ed6bef6792e1f238a8969106f7"},
@@ -3377,6 +3440,20 @@ scikit-learn = [
     {file = "scikit_learn-1.1.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:f5d4231af7199531e77da1b78a4cc6b3d960a00b1ec672578ac818aae2b9c35d"},
     {file = "scikit_learn-1.1.3-cp39-cp39-win_amd64.whl", hash = "sha256:4d3a19166d4e1cdfcab975c68f471e046ce01e74c42a9a33fa89a14c2fcedf60"},
 ]
+scikit-learn-intelex = [
+    {file = "scikit_learn_intelex-2021.6.3-py310-none-macosx_10_15_x86_64.macosx_11_0_x86_64.whl", hash = "sha256:c084f8c4b24560bccdc26f6ffa3e1cb640fbe86201c77b289d40df7e02f44921"},
+    {file = "scikit_learn_intelex-2021.6.3-py310-none-manylinux1_x86_64.whl", hash = "sha256:f70c4625c0a976afbd5e5fc4b058559d7c88b9aed316e2aa2a522e9d19e86f40"},
+    {file = "scikit_learn_intelex-2021.6.3-py310-none-win_amd64.whl", hash = "sha256:1f210ed0ca7e65d89e312cef2b69525a594a6d9a0de199a36deff6447a8b1353"},
+    {file = "scikit_learn_intelex-2021.6.3-py37-none-macosx_10_15_x86_64.macosx_11_0_x86_64.whl", hash = "sha256:4820d8953c55573239bb5569e10826bb4f4db3650cbe3608ca1b1d03944532e8"},
+    {file = "scikit_learn_intelex-2021.6.3-py37-none-manylinux1_x86_64.whl", hash = "sha256:7fe13bd792f2b5e9056e3816acb74efb85a2de53d2215d9982d3590d2172a252"},
+    {file = "scikit_learn_intelex-2021.6.3-py37-none-win_amd64.whl", hash = "sha256:bb782872264891860f90f33264c407a5dfc16585277f538c526be5f91ae99b4d"},
+    {file = "scikit_learn_intelex-2021.6.3-py38-none-macosx_10_15_x86_64.macosx_11_0_x86_64.whl", hash = "sha256:93eab22bb09d7f33b48855ec89ed23ec0a1cb8674602d8e5259e5b7afe2adce4"},
+    {file = "scikit_learn_intelex-2021.6.3-py38-none-manylinux1_x86_64.whl", hash = "sha256:e7316b725f5c9912dae0cbc0314439d08e3c86e4084a8789ea8376c4682a9e2c"},
+    {file = "scikit_learn_intelex-2021.6.3-py38-none-win_amd64.whl", hash = "sha256:0ab8895140c7919beb77c2940adc04fdf190231861a7a861e7d27b9a1fb0a897"},
+    {file = "scikit_learn_intelex-2021.6.3-py39-none-macosx_10_15_x86_64.macosx_11_0_x86_64.whl", hash = "sha256:3f8018beaaa278645822f77d112edd1d99f99bff1815b561a16595b5ba34398d"},
+    {file = "scikit_learn_intelex-2021.6.3-py39-none-manylinux1_x86_64.whl", hash = "sha256:ac37e4b802c95aa0f71b5d1072517161a42c1211408a3e380d5a7efb307ac51c"},
+    {file = "scikit_learn_intelex-2021.6.3-py39-none-win_amd64.whl", hash = "sha256:30e4b357938b958ea9798d0c93ec1fabe32261d4137a9b166d1e46d858c307b7"},
+]
 scipy = [
     {file = "scipy-1.9.3-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:1884b66a54887e21addf9c16fb588720a8309a57b2e258ae1c7986d4444d3bc0"},
     {file = "scipy-1.9.3-cp310-cp310-macosx_12_0_arm64.whl", hash = "sha256:83b89e9586c62e787f5012e8475fbb12185bafb996a03257e9675cd73d3736dd"},
@@ -3431,6 +3508,13 @@ soupsieve = [
 stack-data = [
     {file = "stack_data-0.6.1-py3-none-any.whl", hash = "sha256:960cb054d6a1b2fdd9cbd529e365b3c163e8dabf1272e02cfe36b58403cff5c6"},
     {file = "stack_data-0.6.1.tar.gz", hash = "sha256:6c9a10eb5f342415fe085db551d673955611afb821551f554d91772415464315"},
+]
+tbb = [
+    {file = "tbb-2021.7.1-py2.py3-none-macosx_10_15_x86_64.macosx_11_0_x86_64.whl", hash = "sha256:38db98913b5d8279321d6a5f53bd2d518344b1ba31bbca534aa2aa3dd5d9257e"},
+    {file = "tbb-2021.7.1-py2.py3-none-manylinux1_i686.whl", hash = "sha256:a5f6f5e22d7546e9b5013062c1922374a691a8c462d963de0070a9a6983cfbe7"},
+    {file = "tbb-2021.7.1-py2.py3-none-manylinux1_x86_64.whl", hash = "sha256:7bc07cd9198ab4041bf3f898ba8fc899395d267f1e2d82a44cd3f7b8ff6e79d5"},
+    {file = "tbb-2021.7.1-py3-none-win32.whl", hash = "sha256:19d0c6ef9fe0d788bf1b38ef6cae4ecc9a716f2537c2a1e86855383dcf451cd1"},
+    {file = "tbb-2021.7.1-py3-none-win_amd64.whl", hash = "sha256:ff30051e957461c1bdfb168e3ee6312d21fc9c7843eed397f3e5ea24f9d67426"},
 ]
 tenacity = [
     {file = "tenacity-8.1.0-py3-none-any.whl", hash = "sha256:35525cd47f82830069f0d6b73f7eb83bc5b73ee2fff0437952cedf98b27653ac"},
