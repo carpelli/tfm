@@ -57,11 +57,11 @@ if __name__ == "__main__":
     # tf.config.experimental.enable_op_determinism()
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('data_path', default=DATA_PATH, type=Path)
+    parser.add_argument('data_path', type=Path)
     parser.add_argument('-o', '--output', default=OUTDIR, type=Path)
     parser.add_argument('--overwrite', action='store_true')
     parser.add_argument('--timeout', default=TIMEOUT, type=int)
-    parser.add_argument('--threads', defulat=1, type=int)
+    parser.add_argument('--threads', default=1, type=int)
     args = parser.parse_args()
 
     x_train = utils.import_and_sample_data(
