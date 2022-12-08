@@ -22,7 +22,6 @@ jupyter = "^1.0.0"
 autopep8 = "^2.0.0"
 pyinstrument = "^4.4.0"
 
-
 [tool.poetry.group.onzin.dependencies]
 seaborn = "^0.12.1"
 
