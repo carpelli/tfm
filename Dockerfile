@@ -18,7 +18,7 @@ WORKDIR /app
 
 # Install dependencies
 COPY poetry.lock pyproject.toml ./
-RUN poetry install --without dev
+RUN poetry install --only main
 
 # Run your app
 COPY tfm/ /app

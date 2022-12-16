@@ -14,6 +14,7 @@ tensorflow-datasets = "^4.7.0"
 tqdm = "^4.64.1"
 hdbscan = "^0.8.29"
 scikit-learn-intelex = "2021.6.3"
+ray = "^2.2.0"
 
 [tool.poetry.dev-dependencies]
 jupyter = "^1.0.0"
@@ -24,6 +25,12 @@ pyinstrument = "^4.4.0"
 
 [tool.poetry.group.onzin.dependencies]
 seaborn = "^0.12.1"
+
+
+
+[tool.poetry.group.azure.dependencies]
+azureml-core = "^1.48.0"
+azureml-dataset-runtime = "^1.48.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
