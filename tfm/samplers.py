@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 import math
+from typing import Union # fix when back to 3.10
 
 import numpy as np
 import tensorflow as tf
@@ -15,8 +16,9 @@ class Sampler(ABC):
     def name(self) -> str:
         return type(self).__name__.lower()
 
+    @abstractmethod
     def build(self, layers: list[tf.keras.layers.Layer]):
-        self.activations = []
+        self.activations: list[Union[tf.Tensor, np.ndarray]] = []
 
     @abstractmethod
     def layer(self, x: tf.Tensor, i: int):
@@ -28,11 +30,10 @@ class Sampler(ABC):
 
 class Random(Sampler):
     def build(self, layers):
-        self.sizes = [np.prod(l.output.shape[1:])
-                      for l in layers]  # type: ignore
+        self.sizes = [np.prod(l.output.shape[1:]) for l in layers]  # type: ignore
         self.layer_ix = np.r_[0, self.sizes].cumsum()[:-1]
         self.sample_ix = np.sort(np.random.choice(
-            sum(self.sizes), self.n, replace=False))
+            sum(self.sizes), self.n, replace=False))  # type: ignore
         # bin_sizes = np.histogram(sample_ix, layer_ix)[0]
         # # make simpler
         # self.sample_ix_layered = np.split(
@@ -87,7 +88,7 @@ class StratifiedKMeans(StratifiedSampler):
 
     def layer(self, x: tf.Tensor, i: int):
         size = x.shape[1]
-        passes = math.ceil(size / self.max_size)
+        passes = math.ceil(size / self.max_size) # type: ignore
         for j in range(passes):
             print(f"Layer {i+1} pass {j+1}/{passes}")
             round = math.floor if j < passes - 1 else math.ceil # fix fix fix
@@ -111,18 +112,18 @@ def apply(sampler: Sampler, model: tf.keras.Sequential, included_layers, x: tf.T
     return sampler.accumulate().T
 
 
-def stratify(sampler: Sampler) -> Sampler:
-    def build(self, layers: list[tf.keras.layers.Layer]):
-        sizes = [np.prod(l.output.shape[1:]) for l in layers]  # type: ignore
-        self.n_layered = np.zeros_like(layers)
-        n_left = self.n
-        for i in range(len(layers)):
-            self.n_layered[-i] = min(n_left/i, sizes[-i])
-            n_left -= self.n_layered[-1]
-        self._model_layers = layers
-        self._activations = []
+# def stratify(sampler: Sampler) -> Sampler:
+#     def build(self, layers: list[tf.keras.layers.Layer]):
+#         sizes = [np.prod(l.output.shape[1:]) for l in layers]  # type: ignore
+#         self.n_layered = np.zeros_like(layers)
+#         n_left = self.n
+#         for i in range(len(layers)):
+#             self.n_layered[-i] = min(n_left/i, sizes[-i])
+#             n_left -= self.n_layered[-1]
+#         self._model_layers = layers
+#         self._activations = []
     
-    def layer(x: tf.Tensor, i: int):
-        self.n = self.n_layered[i]
-        sampler.build(self, [self._model_layers[i]])
-        sampler.layer(self, x, i)
+#     def layer(x: tf.Tensor, i: int):
+#         self.n = self.n_layered[i]
+#         sampler.build(self, [self._model_layers[i]])
+#         sampler.layer(self, x, i)

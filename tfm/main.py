@@ -4,7 +4,6 @@ from pathlib import Path
 
 import numpy as np
 import ray
-import tensorflow as tf
 from gph import ripser_parallel as ripser
 
 from ruben import PersistenceDiagram, PersistenceDiagramPoint
@@ -62,13 +61,6 @@ if __name__ == "__main__":
     # np.random.seed(1234)
     # tf.config.experimental.enable_op_determinism()
 
-    logging.basicConfig(
-        format="%(asctime)s %(message)s",
-        datefmt="%Y-%m-%d %I:%M:%S",
-        level=logging.INFO)
-
-    logging.info("test")
-
     parser = argparse.ArgumentParser()
     parser.add_argument('data_path', type=Path)
     parser.add_argument('-o', '--output', default=OUTDIR, type=Path)
@@ -77,17 +69,28 @@ if __name__ == "__main__":
     # parser.add_argument('--threads', default=1, type=int)
     args = parser.parse_args()
 
+    logging.basicConfig(
+        format="%(asctime)s %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S",
+        level=logging.INFO)
+
+    logging.info(f"Starting experiment with {SAMPLER.name} timing out after {args.timeout}s")
+    logging.info(f"Importing data...")
+
     x_train = utils.import_and_sample_data(
         args.data_path / "dataset_1", DATA_SAMPLE_SIZE)
     outdir = args.output / 'task1' / SAMPLER.name
 
     # sort the models according to their number
-    model_paths = sorted(args.data_path.glob('model*'), key=lambda p: (len(p.name), p.name))
+    model_paths = sorted(args.data_path.glob('model*'),
+                         key=lambda p: (len(p.name), p.name))
 
+    logging.info(f"Finished importing data")
+    
     for model_path in model_paths:
         pd_path = outdir / f'{model_path.name}.bin'
 
-        if not args.overwrite or OVERWRITE and pd_path.exists():
+        if not (args.overwrite or OVERWRITE) and pd_path.exists():
             # logging?
             print(f'{pd_path.name} already exists, skipping...')
             continue
