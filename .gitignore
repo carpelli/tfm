@@ -2,6 +2,6 @@
 .venv/
 .vscode/
 __pycache__/
-out/
+# out/
 .azure/
 tfm/**/test*
