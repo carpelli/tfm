@@ -3,7 +3,7 @@ from datetime import datetime
 from timeit import default_timer
 from pathlib import Path
 import json
-import warnings
+import logging
 
 data = {}
 trail = [data]
@@ -14,9 +14,9 @@ def timer(name):
     head = trail[-1]
     if name in head:
         # make this better
-        warnings.warn(f"Timer {name} already exists!")
+        logging.warn(f"Timer {name} already exists!")
     head[name] = {}
-    trail.append(trail[-1][name])
+    trail.append(head[name])
     path.append(name)
     start = default_timer()
     try:
@@ -28,7 +28,7 @@ def timer(name):
             head['_total'] = time
         else:
             trail[-1][name] = time
-        print(f"timed {'/'.join(path)}: {time}s")
+        logging.info(f"timed {'/'.join(path)}: {time}s")
         path.pop()
 
 
