@@ -1,9 +1,8 @@
 import json
-import os
 from pathlib import Path
 import pickle
-import numpy as np
 
+import numpy as np
 import tensorflow as tf
 
 
@@ -30,11 +29,17 @@ def import_and_sample_data(path: Path, size):
     return array[np.random.choice(len(array), size, replace=False)].copy()
 
 
-def save_data(persistence_diagram, path: Path):
+def save_pd(persistence_diagram, path: Path):
     if not path.parent.exists():
         path.parent.mkdir(parents=True)
-    with open(path, 'wb') as f:
+    with open(path.with_suffix('.bin'), 'wb') as f:
         pickle.dump(persistence_diagram, f)
+
+
+def save_distances(distance_matrix: np.ndarray, path: Path):
+    if not path.parent.exists():
+        path.parent.mkdir(parents=True)
+    np.save(path.with_suffix('.dm.npy'), distance_matrix)
 
 
 def _create_model_instance(config_path):
@@ -73,15 +78,6 @@ def _model_def_to_keras_sequential(model_def):
 
 
 def _deserialize_example(serialized_example):
-    # record = tf.io.parse_single_example(
-    #     serialized_example,
-    #     features={
-    #         'inputs': tf.io.FixedLenFeature([], tf.string),
-    #         'output': tf.io.FixedLenFeature([], tf.string)
-    #     })
-    # inputs = tf.io.parse_tensor(record['inputs'], out_type=tf.float32)
-    # output = tf.io.parse_tensor(record['output'], out_type=tf.int32)
-    # return inputs, output
     record = tf.io.parse_single_example(
         serialized_example,
         features={
