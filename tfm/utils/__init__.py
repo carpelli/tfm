@@ -29,17 +29,18 @@ def import_and_sample_data(path: Path, size):
     return array[np.random.choice(len(array), size, replace=False)].copy()
 
 
-def save_pd(persistence_diagram, path: Path):
-    if not path.parent.exists():
-        path.parent.mkdir(parents=True)
-    with open(path.with_suffix('.bin'), 'wb') as f:
-        pickle.dump(persistence_diagram, f)
+# def save_pd(persistence_diagram, path: Path):
+#     if not path.parent.exists():
+#         path.parent.mkdir(parents=True)
+#     with open(path.with_suffix('.bin'), 'wb') as f:
+#         pickle.dump(persistence_diagram, f)
 
 
-def save_distances(distance_matrix: np.ndarray, path: Path):
+def save(type: str, array: np.ndarray, path: Path):
+    assert type in ('pd', 'dm')
     if not path.parent.exists():
         path.parent.mkdir(parents=True)
-    np.save(path.with_suffix('.dm.npy'), distance_matrix)
+    np.save(path.with_suffix(f'.{type}.npy'), array)
 
 
 def _create_model_instance(config_path):

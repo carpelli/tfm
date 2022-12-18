@@ -5,8 +5,8 @@ from pathlib import Path
 import numpy as np
 import ray
 from gph import ripser_parallel as ripser
+import tensorflow as tf
 
-from ruben import PersistenceDiagram, PersistenceDiagramPoint
 import samplers
 import utils
 from utils.timertree import timer, save_timer
@@ -16,7 +16,7 @@ UPPER_DIM = 1
 OUTDIR = Path(__file__).parent / '../out'
 # SAMPLER = samplers.StratifiedKMeans(3000, 20000)
 SAMPLER = samplers.Random(3000)
-TIMEOUT = 20
+TIMEOUT = 1000
 
 
 def compute_distance_matrix(activations):
@@ -28,13 +28,13 @@ def compute_distance_matrix(activations):
 
 @ray.remote
 def pd_from_distances(distance_matrix):
-    ripser_diagram = ripser(distance_matrix, maxdim=UPPER_DIM,
-                            metric="precomputed", n_threads=-1)['dgms']
-    diagram = PersistenceDiagram()
-    for dim in range(len(ripser_diagram)):
-        for point in ripser_diagram[dim]:
-            diagram.add_point(PersistenceDiagramPoint(dim, point[0], point[1]))
-    return diagram
+    diagrams = ripser(distance_matrix, maxdim=UPPER_DIM,
+                      metric="precomputed", n_threads=-1)['dgms']
+    return np.stack([
+        np.r_[point, dim]
+        for dim in range(UPPER_DIM+1)
+        for point in diagrams[dim]
+    ])
 
 def pd_from_model_and_save(model, x, pd_path, timeout):
     included_layers = model.layers[1:]
@@ -46,21 +46,22 @@ def pd_from_model_and_save(model, x, pd_path, timeout):
     with timer('distances'):
         distance_matrix = compute_distance_matrix(activation_samples)
 
-    pd = pd_from_distances.remote(distance_matrix)
+    pd_future = pd_from_distances.remote(distance_matrix)
     with timer('pds'):
-        finished = ray.wait([pd], timeout=timeout)[0]
+        finished = ray.wait([pd_future], timeout=timeout)[0]
 
     if finished:
-        utils.save_pd(pd, pd_path)
+        pd = ray.get(pd_future)
+        utils.save('pd', pd, pd_path)
     else:
-        ray.cancel(pd, force=True)
+        ray.cancel(pd_future, force=True)
         logging.warning(f"Timed out on calculating pd for {model_path.name}")
-        utils.save_distances(distance_matrix, pd_path)
+        utils.save('dm', distance_matrix, pd_path)
 
 if __name__ == "__main__":
-    # tf.random.set_seed(1234)
-    # np.random.seed(1234)
-    # tf.config.experimental.enable_op_determinism()
+    tf.random.set_seed(1234)
+    np.random.seed(1234)
+    tf.config.experimental.enable_op_determinism()
 
     parser = argparse.ArgumentParser()
     parser.add_argument('data_path', type=Path)
@@ -68,6 +69,7 @@ if __name__ == "__main__":
     parser.add_argument('--overwrite', action='store_true')
     parser.add_argument('--timeout', default=TIMEOUT, type=int)
     # parser.add_argument('--threads', default=1, type=int)
+    parser.add_argument('-i', '--interactive', action='store_true')
     args = parser.parse_args()
 
     logging.basicConfig(
@@ -80,7 +82,7 @@ if __name__ == "__main__":
 
     x_train = utils.import_and_sample_data(
         args.data_path / "dataset_1", DATA_SAMPLE_SIZE)
-    outdir = args.output / 'task1' / SAMPLER.name
+    outdir = args.output / 'task1' / (SAMPLER.name + '1')
 
     logging.info(f"Finished importing data")
 
