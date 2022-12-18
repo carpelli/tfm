@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
+import logging
 import math
-from typing import Union # fix when back to 3.10
+from typing import Union  # fix when back to 3.10
 
 import numpy as np
 import tensorflow as tf
@@ -30,7 +31,8 @@ class Sampler(ABC):
 
 class Random(Sampler):
     def build(self, layers):
-        self.sizes = [np.prod(l.output.shape[1:]) for l in layers]  # type: ignore
+        self.sizes = [np.prod(l.output.shape[1:])
+                      for l in layers]  # type: ignore
         self.layer_ix = np.r_[0, self.sizes].cumsum()[:-1]
         self.sample_ix = np.sort(np.random.choice(
             sum(self.sizes), self.n, replace=False))  # type: ignore
@@ -60,7 +62,7 @@ class Importance(Random):
 
     def accumulate(self):
         assert len(self.top) > 0
-        print(f"Part importance vectors: {self.top.shape[1]}")
+        logging.debug(f"Part importance vectors: {self.top.shape[1]}")
         random_ix = np.random.choice(
             self.n, self.n - self.top.shape[1], replace=False)
         return np.hstack([self.top, super().accumulate()[:, random_ix]])
@@ -69,12 +71,18 @@ class Importance(Random):
 class StratifiedSampler(Sampler):
     def build(self, layers):
         sizes = [np.prod(l.output.shape[1:]) for l in layers]  # type: ignore
-        self.n_layered = np.zeros_like(layers)
+        self.n_layered = np.zeros_like(layers, dtype=int)
         n_left = self.n
         for i in range(len(layers)):
             self.n_layered[-i] = min(n_left/(len(layers)-i), sizes[-i])
             n_left -= self.n_layered[-i]
         super().build(layers)
+
+
+class StratifiedRandom(StratifiedSampler):
+    def layer(self, x: tf.Tensor, i: int):
+        ix = np.random.choice(x.shape[1], self.n_layered[i])
+        self.activations += [tf.gather(x, ix, axis=1)]
 
 
 class StratifiedKMeans(StratifiedSampler):
@@ -88,15 +96,16 @@ class StratifiedKMeans(StratifiedSampler):
 
     def layer(self, x: tf.Tensor, i: int):
         size = x.shape[1]
-        passes = math.ceil(size / self.max_size) # type: ignore
+        passes = math.ceil(size / self.max_size)  # type: ignore
         for j in range(passes):
             print(f"Layer {i+1} pass {j+1}/{passes}")
-            round = math.floor if j < passes - 1 else math.ceil # fix fix fix
+            round = math.floor if j < passes - 1 else math.ceil  # fix fix fix
             part = round(self.max_size / passes)
             n_clusters = int(self.n_layered[i] / passes)
             centers, _ = kmeans_plusplus(
-                x[:,j*part:(j+1)*part].numpy().T,
-                n_clusters + int(self.n_layered[i] % n_clusters if j == passes - 1 else 0)
+                x[:, j*part:(j+1)*part].numpy().T,
+                n_clusters + int(self.n_layered[i] %
+                                 n_clusters if j == passes - 1 else 0)
             )
             self.activations += [centers.T]
 
@@ -122,7 +131,7 @@ def apply(sampler: Sampler, model: tf.keras.Sequential, included_layers, x: tf.T
 #             n_left -= self.n_layered[-1]
 #         self._model_layers = layers
 #         self._activations = []
-    
+
 #     def layer(x: tf.Tensor, i: int):
 #         self.n = self.n_layered[i]
 #         sampler.build(self, [self._model_layers[i]])

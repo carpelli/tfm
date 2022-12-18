@@ -15,7 +15,7 @@ DATA_SAMPLE_SIZE = 2000
 UPPER_DIM = 1
 OUTDIR = Path(__file__).parent / '../out'
 # SAMPLER = samplers.StratifiedKMeans(3000, 20000)
-SAMPLER = samplers.Random(3000)
+SAMPLER = samplers.StratifiedRandom(3000)
 TIMEOUT = 1000
 
 
@@ -59,9 +59,9 @@ def pd_from_model_and_save(model, x, pd_path, timeout):
         utils.save('dm', distance_matrix, pd_path)
 
 if __name__ == "__main__":
-    tf.random.set_seed(1234)
-    np.random.seed(1234)
-    tf.config.experimental.enable_op_determinism()
+    # tf.random.set_seed(1234)
+    # np.random.seed(1234)
+    # tf.config.experimental.enable_op_determinism()
 
     parser = argparse.ArgumentParser()
     parser.add_argument('data_path', type=Path)
@@ -82,7 +82,7 @@ if __name__ == "__main__":
 
     x_train = utils.import_and_sample_data(
         args.data_path / "dataset_1", DATA_SAMPLE_SIZE)
-    outdir = args.output / 'task1' / (SAMPLER.name + '1')
+    outdir = args.output / 'task1' / SAMPLER.name
 
     logging.info(f"Finished importing data")
 
