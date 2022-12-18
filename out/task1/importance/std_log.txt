@@ -1,0 +1,745 @@
+/bin/bash: /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+2022-12-17 00:20:47.360471: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-12-17 00:20:47.526819: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib:
+2022-12-17 00:20:47.526863: I tensorflow/compiler/xla/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-12-17 00:20:48.343011: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib:
+2022-12-17 00:20:48.343146: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib:
+2022-12-17 00:20:48.343161: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2022-12-17 00:20:49 Starting experiment with importance timing out after 500s
+2022-12-17 00:20:49 Importing data...
+2022-12-17 00:20:49.147491: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib:
+2022-12-17 00:20:49.147531: W tensorflow/compiler/xla/stream_executor/cuda/cuda_driver.cc:265] failed call to cuInit: UNKNOWN ERROR (303)
+2022-12-17 00:20:49.147558: I tensorflow/compiler/xla/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (5036566dc95242d4b2c29d6f375c9cdc000001): /proc/driver/nvidia/version does not exist
+2022-12-17 00:20:49.147888: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-12-17 00:20:56 Finished importing data
+2022-12-17 00:20:57.603718: W tensorflow/tsl/framework/cpu_allocator_impl.cc:82] Allocation of 2097152000 exceeds 10% of free system memory.
+2022-12-17 00:20:57.917983: W tensorflow/tsl/framework/cpu_allocator_impl.cc:82] Allocation of 2097152000 exceeds 10% of free system memory.
+2022-12-17 00:20:58.133329: W tensorflow/tsl/framework/cpu_allocator_impl.cc:82] Allocation of 2097152000 exceeds 10% of free system memory.
+2022-12-17 00:20:58.319891: W tensorflow/tsl/framework/cpu_allocator_impl.cc:82] Allocation of 2097152000 exceeds 10% of free system memory.
+2022-12-17 00:21:03.642349: W tensorflow/tsl/framework/cpu_allocator_impl.cc:82] Allocation of 2097152000 exceeds 10% of free system memory.
+2022-12-17 00:21:04 timed model_20/activations: 7.28617353300001s
+2022-12-17 00:21:05 timed model_20/distances: 0.2969143619998249s
+2022-12-17 00:21:06,867	WARNING services.py:1732 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 2147483648 bytes available. This will harm performance! You may be able to free up space by deleting files in /dev/shm. If you are inside a Docker container, you can increase /dev/shm size by passing '--shm-size=8.79gb' to 'docker run' (or add it to the run_options list in a Ray cluster config). Make sure to set this to more than 30% of available RAM.
+2022-12-17 00:21:07,928	INFO worker.py:1538 -- Started a local Ray instance.
+2022-12-17 00:21:53 timed model_20/pds: 44.25476714399997s
+2022-12-17 00:21:53 timed model_20: 56.16859152500001s
+2022-12-17 00:22:19 timed model_21/activations: 24.627357763999953s
+2022-12-17 00:22:19 timed model_21/distances: 0.288223902000027s
+2022-12-17 00:23:03 timed model_21/pds: 43.68059944700008s
+2022-12-17 00:23:03 timed model_21: 69.83300769499988s
+2022-12-17 00:23:11 timed model_22/activations: 7.71218366800008s
+2022-12-17 00:23:12 timed model_22/distances: 0.30737712600011946s
+2022-12-17 00:23:39 timed model_22/pds: 27.789058509999904s
+2022-12-17 00:23:40 timed model_22: 36.46453075799991s
+2022-12-17 00:24:05 timed model_23/activations: 24.559058621000077s
+2022-12-17 00:24:06 timed model_23/distances: 0.2870223560000795s
+2022-12-17 00:24:35 timed model_23/pds: 29.14262942000005s
+2022-12-17 00:24:35 timed model_23: 55.232769784999846s
+2022-12-17 00:24:44 timed model_24/activations: 7.722541179000018s
+2022-12-17 00:24:44 timed model_24/distances: 0.3030261590001828s
+2022-12-17 00:25:10 timed model_24/pds: 26.28112975099998s
+2022-12-17 00:25:11 timed model_24: 35.46899014299993s
+2022-12-17 00:25:36 timed model_25/activations: 24.540939735000165s
+2022-12-17 00:25:37 timed model_25/distances: 0.304594477999899s
+2022-12-17 00:26:05 timed model_25/pds: 28.311876754999957s
+2022-12-17 00:26:05 timed model_25: 54.465736262000064s
+2022-12-17 00:26:14 timed model_26/activations: 7.654704709000043s
+2022-12-17 00:26:14 timed model_26/distances: 0.2882858769999075s
+2022-12-17 00:26:33 timed model_26/pds: 19.32148026499999s
+2022-12-17 00:26:33 timed model_26: 28.049950824999996s
+2022-12-17 00:26:59 timed model_27/activations: 24.558578801000067s
+2022-12-17 00:26:59 timed model_27/distances: 0.2933782469999642s
+2022-12-17 00:27:18 timed model_27/pds: 18.897454773999925s
+2022-12-17 00:27:18 timed model_27: 44.82168540999987s
+2022-12-17 00:27:27 timed model_28/activations: 7.588819812000111s
+2022-12-17 00:27:27 timed model_28/distances: 0.3001978469999358s
+2022-12-17 00:35:47 timed model_28/pds: 500.0417228650001s
+2022-12-17 00:35:47 timed model_28: 508.59822093699995s
+2022-12-17 00:35:47 Timed out on calculating pd for model_28
+2022-12-17 00:36:13 timed model_29/activations: 25.257511385000043s
+2022-12-17 00:36:14 timed model_29/distances: 0.35772232199997234s
+2022-12-17 00:44:34 timed model_29/pds: 500.06332638900017s
+2022-12-17 00:44:34 timed model_29: 526.7702445399998s
+2022-12-17 00:44:34 Timed out on calculating pd for model_29
+2022-12-17 00:44:43 timed model_30/activations: 7.973692130000018s
+2022-12-17 00:44:44 timed model_30/distances: 0.34132805799981725s
+2022-12-17 00:49:41 timed model_30/pds: 297.67962730499994s
+2022-12-17 00:49:41 timed model_30: 307.560397537s
+2022-12-17 00:50:10 timed model_31/activations: 26.755564083999616s
+2022-12-17 00:50:10 timed model_31/distances: 0.3446276829999988s
+2022-12-17 00:54:51 timed model_31/pds: 280.54964403600025s
+2022-12-17 00:54:51 timed model_31: 309.00138685s
+2022-12-17 00:55:00 timed model_84/activations: 8.132830264000404s
+2022-12-17 00:55:00 timed model_84/distances: 0.3208642670001609s
+2022-12-17 00:55:38 timed model_84/pds: 37.41396347099999s
+2022-12-17 00:55:38 timed model_84: 46.716180946999884s
+2022-12-17 00:56:05 timed model_85/activations: 25.47490520800011s
+2022-12-17 00:56:05 timed model_85/distances: 0.3912599460004458s
+2022-12-17 00:56:56 timed model_85/pds: 51.407669848000296s
+2022-12-17 00:56:56 timed model_85: 78.45082757599994s
+2022-12-17 00:57:05 timed model_86/activations: 7.931925926000076s
+2022-12-17 00:57:06 timed model_86/distances: 0.3572756390003633s
+2022-12-17 00:57:35 timed model_86/pds: 29.741475477000222s
+2022-12-17 00:57:35 timed model_86: 38.72763775200019s
+2022-12-17 00:58:02 timed model_87/activations: 25.450469252999937s
+2022-12-17 00:58:03 timed model_87/distances: 0.4128858549997858s
+2022-12-17 00:58:32 timed model_87/pds: 29.182026033000056s
+2022-12-17 00:58:32 timed model_87: 56.208865944999616s
+2022-12-17 00:58:41 timed model_88/activations: 7.927403728000172s
+2022-12-17 00:58:41 timed model_88/distances: 0.31675898399998914s
+2022-12-17 00:59:08 timed model_88/pds: 26.959293276999688s
+2022-12-17 00:59:08 timed model_88: 35.846919938000156s
+2022-12-17 00:59:35 timed model_89/activations: 25.915364898999997s
+2022-12-17 00:59:36 timed model_89/distances: 0.30209372099989196s
+2022-12-17 01:00:02 timed model_89/pds: 26.65933403600002s
+2022-12-17 01:00:02 timed model_89: 54.20794372899991s
+2022-12-17 01:00:12 timed model_90/activations: 8.724304465999921s
+2022-12-17 01:00:13 timed model_90/distances: 0.45261835800010886s
+2022-12-17 01:00:36 timed model_90/pds: 23.11485172799985s
+2022-12-17 01:00:36 timed model_90: 33.53663972100003s
+2022-12-17 01:01:03 timed model_91/activations: 26.270957759999874s
+2022-12-17 01:01:04 timed model_91/distances: 0.3488283980000233s
+2022-12-17 01:01:25 timed model_91/pds: 21.29131594399996s
+2022-12-17 01:01:25 timed model_91: 49.06480808900005s
+2022-12-17 01:01:34 timed model_92/activations: 8.014771013999962s
+2022-12-17 01:01:34 timed model_92/distances: 0.3607136499999797s
+2022-12-17 01:06:51,528	ERROR worker.py:400 -- Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): The worker died unexpectedly while executing this task. Check python-core-worker-*.log files for more information.
+2022-12-17 01:08:59 timed model_92/pds: 444.20378912000024s
+2022-12-17 01:08:59 timed model_92: 453.29635941800007s
+2022-12-17 01:09:25 timed model_93/activations: 24.976859527000215s
+2022-12-17 01:09:25 timed model_93/distances: 0.29594947299983687s
+2022-12-17 01:15:30 timed model_93/pds: 365.1168318079999s
+2022-12-17 01:15:30 timed model_93: 391.40550540400045s
+2022-12-17 01:15:40 timed model_94/activations: 7.939552504000858s
+2022-12-17 01:15:40 timed model_94/distances: 0.37327271699996345s
+2022-12-17 01:16:39 timed model_94/pds: 59.26776019800036s
+2022-12-17 01:16:39 timed model_94: 68.57134065600076s
+2022-12-17 01:17:06 timed model_95/activations: 25.029614327000672s
+2022-12-17 01:17:06 timed model_95/distances: 0.3495363129995894s
+2022-12-17 01:17:57 timed model_95/pds: 50.700300565999896s
+2022-12-17 01:17:57 timed model_95: 77.33513143299933s
+2022-12-17 01:18:06 timed model_148/activations: 8.032040322000285s
+2022-12-17 01:18:06 timed model_148/distances: 0.33898281100027816s
+2022-12-17 01:19:20 timed model_148/pds: 73.99160673499955s
+2022-12-17 01:19:20 timed model_148: 83.1768963100003s
+2022-12-17 01:19:46 timed model_149/activations: 25.12629428299988s
+2022-12-17 01:19:47 timed model_149/distances: 0.35961701100040955s
+2022-12-17 01:20:59 timed model_149/pds: 72.28505010299978s
+2022-12-17 01:20:59 timed model_149: 98.80749626499983s
+2022-12-17 01:21:08 timed model_150/activations: 8.04426438900009s
+2022-12-17 01:21:09 timed model_150/distances: 0.2881424359993616s
+2022-12-17 01:21:39 timed model_150/pds: 30.278001479000523s
+2022-12-17 01:21:39 timed model_150: 39.570518700999855s
+2022-12-17 01:22:06 timed model_151/activations: 25.211563387999377s
+2022-12-17 01:22:06 timed model_151/distances: 0.3395283460004066s
+2022-12-17 01:22:35 timed model_151/pds: 28.548539592000452s
+2022-12-17 01:22:35 timed model_151: 55.11157888100024s
+2022-12-17 01:22:44 timed model_152/activations: 7.979639032000705s
+2022-12-17 01:22:44 timed model_152/distances: 0.3531784700007847s
+[2m[36m(pd_from_distances pid=204)[0m [2022-12-17 01:22:51,905 E 204 204] logging.cc:97: Unhandled exception: St9bad_alloc. what(): std::bad_alloc
+[2m[36m(pd_from_distances pid=204)[0m [2022-12-17 01:22:52,016 E 204 204] logging.cc:104: Stack trace: 
+[2m[36m(pd_from_distances pid=204)[0m  /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0xce4daa) [0x7f9285350daa] ray::operator<<()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0xce7568) [0x7f9285353568] ray::TerminateHandler()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/bin/../lib/libstdc++.so.6(+0xb135a) [0x7f928450935a] __cxxabiv1::__terminate()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/bin/../lib/libstdc++.so.6(+0xb13c5) [0x7f92845093c5]
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/bin/../lib/libstdc++.so.6(+0xb1658) [0x7f9284509658]
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/bin/../lib/libstdc++.so.6(+0xa54a7) [0x7f92844fd4a7] operator new()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/pyRipser.cpython-39-x86_64-linux-gnu.so(_ZNSt6vectorI16diameter_entry_tSaIS0_EE17_M_realloc_insertIJRKS0_EEEvN9__gnu_cxx17__normal_iteratorIPS0_S2_EEDpOT_+0x70) [0x7f901738afb0] std::vector<>::_M_realloc_insert<>()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/pyRipser.cpython-39-x86_64-linux-gnu.so(_ZN6ripserI26compressed_distance_matrixIL24compressed_matrix_layout0EEE13compute_pairsERSt6vectorISt4pairIflESaIS6_EER8hash_mapI7entry_tmNS3_10entry_hashENS3_11equal_indexEEl+0x1871) [0x7f901738efe1] _ZN6ripserI26compressed_distance_matrixIL24compressed_matrix_layout0EEE13compute_pairsERSt6vectorISt4pairIflESaIS6_EER8hash_mapI7entry_tmNS3_10entry_hashENS3_11equal_indexEEl
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/pyRipser.cpython-39-x86_64-linux-gnu.so(_ZN6ripserI26compressed_distance_matrixIL24compressed_matrix_layout0EEE16compute_barcodesEv+0x250) [0x7f9017394d30] _ZN6ripserI26compressed_distance_matrixIL24compressed_matrix_layout0EEE16compute_barcodesEv
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/pyRipser.cpython-39-x86_64-linux-gnu.so(_Z7rips_dmPfiiifi+0xa6d) [0x7f90173863cd] rips_dm()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/pyRipser.cpython-39-x86_64-linux-gnu.so(+0xdb4d) [0x7f9017386b4d] __pyx_pw_8pyRipser_1doRipsFiltrationDM()
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(+0x14e0fc) [0x55b0ec7320fc] cfunction_call
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(_PyObject_MakeTpCall+0x347) [0x55b0ec718a57] _PyObject_MakeTpCall
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(_PyEval_EvalFrameDefault+0x4abe) [0x55b0ec71426e] _PyEval_EvalFrameDefault
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(+0x12a7d7) [0x55b0ec70e7d7] _PyEval_EvalCode
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(_PyFunction_Vectorcall+0xb9) [0x55b0ec720bb9] _PyFunction_Vectorcall
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(_PyEval_EvalFrameDefault+0x11df) [0x55b0ec71098f] _PyEval_EvalFrameDefault
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(+0x13cec3) [0x55b0ec720ec3] function_code_fastcall
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x4a5fdf) [0x7f9284b11fdf] __Pyx_PyObject_Call()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x52fd61) [0x7f9284b9bd61] __pyx_f_3ray_7_raylet_task_execution_handler()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZNSt17_Function_handlerIFN3ray6StatusERKNS0_3rpc7AddressENS2_8TaskTypeESsRKNS0_4core11RayFunctionERKSt13unordered_mapISsdSt4hashISsESt8equal_toISsESaISt4pairIKSsdEEERKSt6vectorISt10shared_ptrINS0_9RayObjectEESaISQ_EERKSN_INS2_15ObjectReferenceESaISV_EERSH_S10_PSN_ISG_INS0_8ObjectIDESQ_ESaIS12_EES15_RSO_INS0_17LocalMemoryBufferEEPbS19_RKSN_INS0_16ConcurrencyGroupESaIS1A_EESsbEPFS1_S5_S6_SsSA_SM_SU_SZ_SsSsS15_S15_S18_S19_S19_S1E_SsbEE9_M_invokeERKSt9_Any_dataS5_OS6_OSsSA_SM_SU_SZ_S10_S10_OS15_S1O_S18_OS19_S1P_S1E_S1N_Ob+0x111) [0x7f9284b18f71] std::_Function_handler<>::_M_invoke()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZN3ray4core10CoreWorker11ExecuteTaskERKNS_17TaskSpecificationERKSt10shared_ptrISt13unordered_mapISsSt6vectorISt4pairIldESaIS9_EESt4hashISsESt8equal_toISsESaIS8_IKSsSB_EEEEPS7_IS8_INS_8ObjectIDES5_INS_9RayObjectEEESaISQ_EEST_PN6google8protobuf16RepeatedPtrFieldINS_3rpc20ObjectReferenceCountEEEPbS11_+0xa58) [0x7f9284c93d88] ray::core::CoreWorker::ExecuteTask()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZNSt17_Function_handlerIFN3ray6StatusERKNS0_17TaskSpecificationESt10shared_ptrISt13unordered_mapISsSt6vectorISt4pairIldESaIS9_EESt4hashISsESt8equal_toISsESaIS8_IKSsSB_EEEEPS7_IS8_INS0_8ObjectIDES5_INS0_9RayObjectEEESaISO_EESR_PN6google8protobuf16RepeatedPtrFieldINS0_3rpc20ObjectReferenceCountEEEPbSZ_ESt5_BindIFMNS0_4core10CoreWorkerEFS1_S4_RKSK_SR_SR_SY_SZ_SZ_EPS13_St12_PlaceholderILi1EES19_ILi2EES19_ILi3EES19_ILi4EES19_ILi5EES19_ILi6EES19_ILi7EEEEE9_M_invokeERKSt9_Any_dataS4_OSK_OSR_S1O_OSY_OSZ_S1Q_+0x54) [0x7f9284be7554] std::_Function_handler<>::_M_invoke()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x6530f8) [0x7f9284cbf0f8] ray::core::CoreWorkerDirectTaskReceiver::HandleTask()::{lambda()#1}::operator()()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x653fda) [0x7f9284cbffda] std::_Function_handler<>::_M_invoke()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x666e5e) [0x7f9284cd2e5e] ray::core::InboundRequest::Accept()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x63b5e0) [0x7f9284ca75e0] ray::core::NormalSchedulingQueue::ScheduleRequests()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x8b9ab6) [0x7f9284f25ab6] EventTracker::RecordExecution()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x85cb6e) [0x7f9284ec8b6e] std::_Function_handler<>::_M_invoke()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x85cdc6) [0x7f9284ec8dc6] boost::asio::detail::completion_handler<>::do_complete()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0xcf5a3b) [0x7f9285361a3b] boost::asio::detail::scheduler::do_run_one()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0xcf6c71) [0x7f9285362c71] boost::asio::detail::scheduler::run()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0xcf6ee0) [0x7f9285362ee0] boost::asio::io_context::run()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZN3ray4core10CoreWorker20RunTaskExecutionLoopEv+0x1c) [0x7f9284c6710c] ray::core::CoreWorker::RunTaskExecutionLoop()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZN3ray4core21CoreWorkerProcessImpl26RunWorkerTaskExecutionLoopEv+0x8c) [0x7f9284ca27ec] ray::core::CoreWorkerProcessImpl::RunWorkerTaskExecutionLoop()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZN3ray4core17CoreWorkerProcess20RunTaskExecutionLoopEv+0x1d) [0x7f9284ca299d] ray::core::CoreWorkerProcess::RunTaskExecutionLoop()
+[2m[36m(pd_from_distances pid=204)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x4a7157) [0x7f9284b13157] __pyx_pw_3ray_7_raylet_10CoreWorker_7run_task_loop()
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(+0x141eca) [0x55b0ec725eca] method_vectorcall_NOARGS
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(_PyEval_EvalFrameDefault+0x672) [0x55b0ec70fe22] _PyEval_EvalFrameDefault
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(+0x13cec3) [0x55b0ec720ec3] function_code_fastcall
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(_PyEval_EvalFrameDefault+0x672) [0x55b0ec70fe22] _PyEval_EvalFrameDefault
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(+0x12a7d7) [0x55b0ec70e7d7] _PyEval_EvalCode
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(_PyEval_EvalCodeWithName+0x47) [0x55b0ec70e497] _PyEval_EvalCodeWithName
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(PyEval_EvalCodeEx+0x39) [0x55b0ec70e449] PyEval_EvalCodeEx
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(PyEval_EvalCode+0x1b) [0x55b0ec7c8ddb] PyEval_EvalCode
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(+0x213409) [0x55b0ec7f7409] run_eval_code_obj
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(+0x20f5a4) [0x55b0ec7f35a4] run_mod
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(+0x951a8) [0x55b0ec6791a8] pyrun_file.cold
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(PyRun_SimpleFileExFlags+0x1b2) [0x55b0ec7ed0e2] PyRun_SimpleFileExFlags
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(Py_RunMain+0x393) [0x55b0ec7ea443] Py_RunMain
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(Py_BytesMain+0x39) [0x55b0ec7bca79] Py_BytesMain
+[2m[36m(pd_from_distances pid=204)[0m /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3) [0x7f9285db2083] __libc_start_main
+[2m[36m(pd_from_distances pid=204)[0m ray::pd_from_distances(+0x1d8981) [0x55b0ec7bc981]
+[2m[36m(pd_from_distances pid=204)[0m 
+[2m[36m(pd_from_distances pid=204)[0m *** SIGABRT received at time=1671240172 on cpu 0 ***
+[2m[36m(pd_from_distances pid=204)[0m PC: @     0x7f9285dd100b  (unknown)  raise
+[2m[36m(pd_from_distances pid=204)[0m     @     0x7f92860fa420  (unknown)  (unknown)
+[2m[36m(pd_from_distances pid=204)[0m     @     0x7f928450935a  (unknown)  __cxxabiv1::__terminate()
+[2m[36m(pd_from_distances pid=204)[0m     @     0x7f9284509580  (unknown)  (unknown)
+[2m[36m(pd_from_distances pid=204)[0m [2022-12-17 01:22:52,018 E 204 204] logging.cc:361: *** SIGABRT received at time=1671240172 on cpu 0 ***
+[2m[36m(pd_from_distances pid=204)[0m [2022-12-17 01:22:52,018 E 204 204] logging.cc:361: PC: @     0x7f9285dd100b  (unknown)  raise
+[2m[36m(pd_from_distances pid=204)[0m [2022-12-17 01:22:52,018 E 204 204] logging.cc:361:     @     0x7f92860fa420  (unknown)  (unknown)
+[2m[36m(pd_from_distances pid=204)[0m [2022-12-17 01:22:52,018 E 204 204] logging.cc:361:     @     0x7f928450935a  (unknown)  __cxxabiv1::__terminate()
+[2m[36m(pd_from_distances pid=204)[0m [2022-12-17 01:22:52,019 E 204 204] logging.cc:361:     @     0x7f9284509580  (unknown)  (unknown)
+[2m[36m(pd_from_distances pid=204)[0m Fatal Python error: Aborted
+[2m[36m(pd_from_distances pid=204)[0m 
+[2m[36m(pd_from_distances pid=204)[0m Stack (most recent call first):
+[2m[36m(pd_from_distances pid=204)[0m   File "/azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ripser/ripser.py", line 321 in ripser
+[2m[36m(pd_from_distances pid=204)[0m   File "/mnt/azureml/cr/j/41683508ae6a4794bdf3e6969732a70c/exe/wd/main.py", line 35 in pd_from_distances
+[2m[36m(pd_from_distances pid=204)[0m   File "/azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_private/worker.py", line 763 in main_loop
+[2m[36m(pd_from_distances pid=204)[0m   File "/azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_private/workers/default_worker.py", line 233 in <module>
+2022-12-17 01:22:52,333	WARNING worker.py:1851 -- A worker died or was killed while executing a task by an unexpected system error. To troubleshoot the problem, check the logs for the dead worker. RayTask ID: a723628ca75a60077428b0651a2f1cb8f18e8b1a01000000 Worker ID: 5ff8ec27b37f96db79f456739f74d6b0cfe91fccfe93eef9a2a115ab Node ID: 92b0d9e038df4f1e3742d4161895774bcdb1c6593b07a1bc43f74135 Worker IP address: 10.0.0.5 Worker port: 45039 Worker PID: 204 Worker exit type: SYSTEM_ERROR Worker exit detail: Worker unexpectedly exits with a connection error code 2. End of file. There are some potential root causes. (1) The process is killed by SIGKILL by OOM killer due to high memory usage. (2) ray stop --force is called. (3) The worker is crashed unexpectedly due to SIGSEGV or other unexpected errors.
+2022-12-17 01:22:52,333	ERROR worker.py:400 -- Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): The worker died unexpectedly while executing this task. Check python-core-worker-*.log files for more information.
+2022-12-17 01:23:13 timed model_152/pds: 28.8562791989998s
+2022-12-17 01:23:13 timed model_152: 38.26114252299976s
+2022-12-17 01:23:40 timed model_153/activations: 24.498741672000506s
+2022-12-17 01:23:40 timed model_153/distances: 0.29377810299956764s
+2022-12-17 01:24:06 timed model_153/pds: 26.31595663600001s
+2022-12-17 01:24:06 timed model_153: 52.93521263799994s
+2022-12-17 01:24:16 timed model_154/activations: 7.574500118999822s
+2022-12-17 01:24:16 timed model_154/distances: 0.30031172200051515s
+2022-12-17 01:24:36 timed model_154/pds: 19.181225376999464s
+2022-12-17 01:24:36 timed model_154: 28.64565360100005s
+2022-12-17 01:25:02 timed model_155/activations: 24.48858785199991s
+2022-12-17 01:25:03 timed model_155/distances: 0.3109739860001355s
+2022-12-17 01:25:20 timed model_155/pds: 17.59726746600063s
+2022-12-17 01:25:20 timed model_155: 44.63574673899984s
+2022-12-17 01:25:30 timed model_156/activations: 7.554287164000016s
+2022-12-17 01:25:31 timed model_156/distances: 0.3041245259992138s
+2022-12-17 01:33:51 timed model_156/pds: 500.0535558190004s
+2022-12-17 01:33:51 timed model_156: 509.8119897910001s
+2022-12-17 01:33:51 Timed out on calculating pd for model_156
+2022-12-17 01:34:17 timed model_157/activations: 25.021134468999662s
+2022-12-17 01:34:18 timed model_157/distances: 0.30049476099975436s
+2022-12-17 01:42:38 timed model_157/pds: 500.05111743199996s
+2022-12-17 01:42:38 timed model_157: 526.8325016850004s
+2022-12-17 01:42:38 Timed out on calculating pd for model_157
+2022-12-17 01:42:46 timed model_158/activations: 8.094806945000528s
+2022-12-17 01:42:47 timed model_158/distances: 0.3031003599999167s
+2022-12-17 01:51:07 timed model_158/pds: 500.078798175s
+2022-12-17 01:51:07 timed model_158: 509.243286248s
+2022-12-17 01:51:07 Timed out on calculating pd for model_158
+2022-12-17 01:51:07,402	ERROR worker.py:400 -- Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): The worker died unexpectedly while executing this task. Check python-core-worker-*.log files for more information.
+2022-12-17 01:51:35 timed model_159/activations: 26.24442008599999s
+2022-12-17 01:51:35 timed model_159/distances: 0.350151172000551s
+2022-12-17 01:56:12 timed model_159/pds: 276.78135011299946s
+2022-12-17 01:56:12 timed model_159: 304.9982931610002s
+2022-12-17 01:56:21 timed model_212/activations: 8.278739594999934s
+2022-12-17 01:56:21 timed model_212/distances: 0.2968387159999111s
+2022-12-17 01:58:59 timed model_212/pds: 157.57342628900005s
+2022-12-17 01:58:59 timed model_212: 166.86526960500032s
+2022-12-17 01:59:28 timed model_213/activations: 27.551107776999743s
+2022-12-17 01:59:28 timed model_213/distances: 0.3128760239997064s
+2022-12-17 02:01:28 timed model_213/pds: 120.02469664599994s
+2022-12-17 02:01:28 timed model_213: 149.01532984499954s
+2022-12-17 02:01:38 timed model_214/activations: 8.169865950000712s
+2022-12-17 02:01:38 timed model_214/distances: 0.34232717899976706s
+2022-12-17 02:02:09 timed model_214/pds: 31.01565944000049s
+2022-12-17 02:02:09 timed model_214: 40.41122269300013s
+2022-12-17 02:02:36 timed model_215/activations: 25.235788555s
+2022-12-17 02:02:36 timed model_215/distances: 0.29593603200009966s
+2022-12-17 02:03:11 timed model_215/pds: 34.39319639899986s
+2022-12-17 02:03:11 timed model_215: 61.42747163900003s
+2022-12-17 02:03:20 timed model_216/activations: 8.182753205000154s
+2022-12-17 02:03:20 timed model_216/distances: 0.3485317919994486s
+2022-12-17 02:03:55 timed model_216/pds: 34.99886964899997s
+2022-12-17 02:03:55 timed model_216: 44.24134746500022s
+2022-12-17 02:04:22 timed model_217/activations: 25.72805685200001s
+2022-12-17 02:04:22 timed model_217/distances: 0.3075829729996258s
+2022-12-17 02:04:52 timed model_217/pds: 29.32050649299981s
+2022-12-17 02:04:52 timed model_217: 56.4684971480001s
+2022-12-17 02:05:00 timed model_218/activations: 8.047410928000318s
+2022-12-17 02:05:01 timed model_218/distances: 0.297265757999412s
+2022-12-17 02:05:25 timed model_218/pds: 24.331276203000016s
+2022-12-17 02:05:25 timed model_218: 33.34108523099985s
+2022-12-17 02:05:55 timed model_219/activations: 28.560796116000347s
+2022-12-17 02:05:55 timed model_219/distances: 0.30085144999975455s
+[2m[36m(pd_from_distances pid=201)[0m [2022-12-17 02:06:04,266 E 201 201] logging.cc:97: Unhandled exception: St9bad_alloc. what(): std::bad_alloc
+[2m[36m(pd_from_distances pid=201)[0m [2022-12-17 02:06:04,392 E 201 201] logging.cc:104: Stack trace: 
+[2m[36m(pd_from_distances pid=201)[0m  /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0xce4daa) [0x7fa409a92daa] ray::operator<<()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0xce7568) [0x7fa409a95568] ray::TerminateHandler()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/bin/../lib/libstdc++.so.6(+0xb135a) [0x7fa408c4b35a] __cxxabiv1::__terminate()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/bin/../lib/libstdc++.so.6(+0xb13c5) [0x7fa408c4b3c5]
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/bin/../lib/libstdc++.so.6(+0xb1658) [0x7fa408c4b658]
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/bin/../lib/libstdc++.so.6(+0xa54a7) [0x7fa408c3f4a7] operator new()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/pyRipser.cpython-39-x86_64-linux-gnu.so(_ZNSt6vectorI16diameter_entry_tSaIS0_EE17_M_realloc_insertIJRKS0_EEEvN9__gnu_cxx17__normal_iteratorIPS0_S2_EEDpOT_+0x70) [0x7fa19c2cffb0] std::vector<>::_M_realloc_insert<>()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/pyRipser.cpython-39-x86_64-linux-gnu.so(_ZN6ripserI26compressed_distance_matrixIL24compressed_matrix_layout0EEE13compute_pairsERSt6vectorISt4pairIflESaIS6_EER8hash_mapI7entry_tmNS3_10entry_hashENS3_11equal_indexEEl+0x1871) [0x7fa19c2d3fe1] _ZN6ripserI26compressed_distance_matrixIL24compressed_matrix_layout0EEE13compute_pairsERSt6vectorISt4pairIflESaIS6_EER8hash_mapI7entry_tmNS3_10entry_hashENS3_11equal_indexEEl
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/pyRipser.cpython-39-x86_64-linux-gnu.so(_ZN6ripserI26compressed_distance_matrixIL24compressed_matrix_layout0EEE16compute_barcodesEv+0x250) [0x7fa19c2d9d30] _ZN6ripserI26compressed_distance_matrixIL24compressed_matrix_layout0EEE16compute_barcodesEv
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/pyRipser.cpython-39-x86_64-linux-gnu.so(_Z7rips_dmPfiiifi+0xa6d) [0x7fa19c2cb3cd] rips_dm()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/pyRipser.cpython-39-x86_64-linux-gnu.so(+0xdb4d) [0x7fa19c2cbb4d] __pyx_pw_8pyRipser_1doRipsFiltrationDM()
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(+0x14e0fc) [0x559eacdd70fc] cfunction_call
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(_PyObject_MakeTpCall+0x347) [0x559eacdbda57] _PyObject_MakeTpCall
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(_PyEval_EvalFrameDefault+0x4abe) [0x559eacdb926e] _PyEval_EvalFrameDefault
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(+0x12a7d7) [0x559eacdb37d7] _PyEval_EvalCode
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(_PyFunction_Vectorcall+0xb9) [0x559eacdc5bb9] _PyFunction_Vectorcall
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(_PyEval_EvalFrameDefault+0x11df) [0x559eacdb598f] _PyEval_EvalFrameDefault
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(+0x13cec3) [0x559eacdc5ec3] function_code_fastcall
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x4a5fdf) [0x7fa409253fdf] __Pyx_PyObject_Call()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x52fd61) [0x7fa4092ddd61] __pyx_f_3ray_7_raylet_task_execution_handler()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZNSt17_Function_handlerIFN3ray6StatusERKNS0_3rpc7AddressENS2_8TaskTypeESsRKNS0_4core11RayFunctionERKSt13unordered_mapISsdSt4hashISsESt8equal_toISsESaISt4pairIKSsdEEERKSt6vectorISt10shared_ptrINS0_9RayObjectEESaISQ_EERKSN_INS2_15ObjectReferenceESaISV_EERSH_S10_PSN_ISG_INS0_8ObjectIDESQ_ESaIS12_EES15_RSO_INS0_17LocalMemoryBufferEEPbS19_RKSN_INS0_16ConcurrencyGroupESaIS1A_EESsbEPFS1_S5_S6_SsSA_SM_SU_SZ_SsSsS15_S15_S18_S19_S19_S1E_SsbEE9_M_invokeERKSt9_Any_dataS5_OS6_OSsSA_SM_SU_SZ_S10_S10_OS15_S1O_S18_OS19_S1P_S1E_S1N_Ob+0x111) [0x7fa40925af71] std::_Function_handler<>::_M_invoke()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZN3ray4core10CoreWorker11ExecuteTaskERKNS_17TaskSpecificationERKSt10shared_ptrISt13unordered_mapISsSt6vectorISt4pairIldESaIS9_EESt4hashISsESt8equal_toISsESaIS8_IKSsSB_EEEEPS7_IS8_INS_8ObjectIDES5_INS_9RayObjectEEESaISQ_EEST_PN6google8protobuf16RepeatedPtrFieldINS_3rpc20ObjectReferenceCountEEEPbS11_+0xa58) [0x7fa4093d5d88] ray::core::CoreWorker::ExecuteTask()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZNSt17_Function_handlerIFN3ray6StatusERKNS0_17TaskSpecificationESt10shared_ptrISt13unordered_mapISsSt6vectorISt4pairIldESaIS9_EESt4hashISsESt8equal_toISsESaIS8_IKSsSB_EEEEPS7_IS8_INS0_8ObjectIDES5_INS0_9RayObjectEEESaISO_EESR_PN6google8protobuf16RepeatedPtrFieldINS0_3rpc20ObjectReferenceCountEEEPbSZ_ESt5_BindIFMNS0_4core10CoreWorkerEFS1_S4_RKSK_SR_SR_SY_SZ_SZ_EPS13_St12_PlaceholderILi1EES19_ILi2EES19_ILi3EES19_ILi4EES19_ILi5EES19_ILi6EES19_ILi7EEEEE9_M_invokeERKSt9_Any_dataS4_OSK_OSR_S1O_OSY_OSZ_S1Q_+0x54) [0x7fa409329554] std::_Function_handler<>::_M_invoke()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x6530f8) [0x7fa4094010f8] ray::core::CoreWorkerDirectTaskReceiver::HandleTask()::{lambda()#1}::operator()()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x653fda) [0x7fa409401fda] std::_Function_handler<>::_M_invoke()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x666e5e) [0x7fa409414e5e] ray::core::InboundRequest::Accept()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x63b5e0) [0x7fa4093e95e0] ray::core::NormalSchedulingQueue::ScheduleRequests()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x8b9ab6) [0x7fa409667ab6] EventTracker::RecordExecution()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x85cb6e) [0x7fa40960ab6e] std::_Function_handler<>::_M_invoke()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x85cdc6) [0x7fa40960adc6] boost::asio::detail::completion_handler<>::do_complete()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0xcf5a3b) [0x7fa409aa3a3b] boost::asio::detail::scheduler::do_run_one()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0xcf6c71) [0x7fa409aa4c71] boost::asio::detail::scheduler::run()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0xcf6ee0) [0x7fa409aa4ee0] boost::asio::io_context::run()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZN3ray4core10CoreWorker20RunTaskExecutionLoopEv+0x1c) [0x7fa4093a910c] ray::core::CoreWorker::RunTaskExecutionLoop()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZN3ray4core21CoreWorkerProcessImpl26RunWorkerTaskExecutionLoopEv+0x8c) [0x7fa4093e47ec] ray::core::CoreWorkerProcessImpl::RunWorkerTaskExecutionLoop()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZN3ray4core17CoreWorkerProcess20RunTaskExecutionLoopEv+0x1d) [0x7fa4093e499d] ray::core::CoreWorkerProcess::RunTaskExecutionLoop()
+[2m[36m(pd_from_distances pid=201)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x4a7157) [0x7fa409255157] __pyx_pw_3ray_7_raylet_10CoreWorker_7run_task_loop()
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(+0x141eca) [0x559eacdcaeca] method_vectorcall_NOARGS
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(_PyEval_EvalFrameDefault+0x672) [0x559eacdb4e22] _PyEval_EvalFrameDefault
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(+0x13cec3) [0x559eacdc5ec3] function_code_fastcall
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(_PyEval_EvalFrameDefault+0x672) [0x559eacdb4e22] _PyEval_EvalFrameDefault
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(+0x12a7d7) [0x559eacdb37d7] _PyEval_EvalCode
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(_PyEval_EvalCodeWithName+0x47) [0x559eacdb3497] _PyEval_EvalCodeWithName
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(PyEval_EvalCodeEx+0x39) [0x559eacdb3449] PyEval_EvalCodeEx
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(PyEval_EvalCode+0x1b) [0x559eace6dddb] PyEval_EvalCode
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(+0x213409) [0x559eace9c409] run_eval_code_obj
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(+0x20f5a4) [0x559eace985a4] run_mod
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(+0x951a8) [0x559eacd1e1a8] pyrun_file.cold
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(PyRun_SimpleFileExFlags+0x1b2) [0x559eace920e2] PyRun_SimpleFileExFlags
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(Py_RunMain+0x393) [0x559eace8f443] Py_RunMain
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(Py_BytesMain+0x39) [0x559eace61a79] Py_BytesMain
+[2m[36m(pd_from_distances pid=201)[0m /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3) [0x7fa40a4f4083] __libc_start_main
+[2m[36m(pd_from_distances pid=201)[0m ray::pd_from_distances(+0x1d8981) [0x559eace61981]
+[2m[36m(pd_from_distances pid=201)[0m 
+[2m[36m(pd_from_distances pid=201)[0m *** SIGABRT received at time=1671242764 on cpu 3 ***
+[2m[36m(pd_from_distances pid=201)[0m PC: @     0x7fa40a51300b  (unknown)  raise
+[2m[36m(pd_from_distances pid=201)[0m     @     0x7fa40a83c420  (unknown)  (unknown)
+[2m[36m(pd_from_distances pid=201)[0m     @     0x7fa408c4b35a  (unknown)  __cxxabiv1::__terminate()
+[2m[36m(pd_from_distances pid=201)[0m     @     0x7fa408c4b580  (unknown)  (unknown)
+[2m[36m(pd_from_distances pid=201)[0m [2022-12-17 02:06:04,395 E 201 201] logging.cc:361: *** SIGABRT received at time=1671242764 on cpu 3 ***
+[2m[36m(pd_from_distances pid=201)[0m [2022-12-17 02:06:04,395 E 201 201] logging.cc:361: PC: @     0x7fa40a51300b  (unknown)  raise
+[2m[36m(pd_from_distances pid=201)[0m [2022-12-17 02:06:04,395 E 201 201] logging.cc:361:     @     0x7fa40a83c420  (unknown)  (unknown)
+[2m[36m(pd_from_distances pid=201)[0m [2022-12-17 02:06:04,395 E 201 201] logging.cc:361:     @     0x7fa408c4b35a  (unknown)  __cxxabiv1::__terminate()
+[2m[36m(pd_from_distances pid=201)[0m [2022-12-17 02:06:04,396 E 201 201] logging.cc:361:     @     0x7fa408c4b580  (unknown)  (unknown)
+[2m[36m(pd_from_distances pid=201)[0m Fatal Python error: Aborted
+[2m[36m(pd_from_distances pid=201)[0m 
+[2m[36m(pd_from_distances pid=201)[0m Stack (most recent call first):
+[2m[36m(pd_from_distances pid=201)[0m   File "/azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ripser/ripser.py", line 321 in ripser
+[2m[36m(pd_from_distances pid=201)[0m   File "/mnt/azureml/cr/j/41683508ae6a4794bdf3e6969732a70c/exe/wd/main.py", line 35 in pd_from_distances
+[2m[36m(pd_from_distances pid=201)[0m   File "/azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_private/worker.py", line 763 in main_loop
+[2m[36m(pd_from_distances pid=201)[0m   File "/azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_private/workers/default_worker.py", line 233 in <module>
+2022-12-17 02:06:04,686	ERROR worker.py:400 -- Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): The worker died unexpectedly while executing this task. Check python-core-worker-*.log files for more information.
+2022-12-17 02:06:04,688	WARNING worker.py:1851 -- A worker died or was killed while executing a task by an unexpected system error. To troubleshoot the problem, check the logs for the dead worker. RayTask ID: d98f42cc2e85e000bb604d2cc1f029c69c63fb1b01000000 Worker ID: 1e4574a38dd624a0a499882f50823cea4cf112d9d5633013559f467c Node ID: 92b0d9e038df4f1e3742d4161895774bcdb1c6593b07a1bc43f74135 Worker IP address: 10.0.0.5 Worker port: 32903 Worker PID: 201 Worker exit type: SYSTEM_ERROR Worker exit detail: Worker unexpectedly exits with a connection error code 2. End of file. There are some potential root causes. (1) The process is killed by SIGKILL by OOM killer due to high memory usage. (2) ray stop --force is called. (3) The worker is crashed unexpectedly due to SIGSEGV or other unexpected errors.
+2022-12-17 02:06:14 timed model_219/pds: 18.943751025999518s
+2022-12-17 02:06:14 timed model_219: 49.17341272900012s
+2022-12-17 02:06:23 timed model_220/activations: 7.788120653000078s
+2022-12-17 02:06:23 timed model_220/distances: 0.30754043200067827s
+[2m[36m(pd_from_distances pid=203)[0m [2022-12-17 02:11:53,882 E 203 203] logging.cc:97: Unhandled exception: St9bad_alloc. what(): std::bad_alloc
+[2m[36m(pd_from_distances pid=203)[0m [2022-12-17 02:11:53,981 E 203 203] logging.cc:104: Stack trace: 
+[2m[36m(pd_from_distances pid=203)[0m  /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0xce4daa) [0x7fcd7ae5fdaa] ray::operator<<()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0xce7568) [0x7fcd7ae62568] ray::TerminateHandler()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/bin/../lib/libstdc++.so.6(+0xb135a) [0x7fcd7a01835a] __cxxabiv1::__terminate()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/bin/../lib/libstdc++.so.6(+0xb13c5) [0x7fcd7a0183c5]
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/bin/../lib/libstdc++.so.6(+0xb1658) [0x7fcd7a018658]
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/bin/../lib/libstdc++.so.6(+0xa54a7) [0x7fcd7a00c4a7] operator new()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/pyRipser.cpython-39-x86_64-linux-gnu.so(_ZNSt6vectorI16diameter_entry_tSaIS0_EE17_M_realloc_insertIJRKS0_EEEvN9__gnu_cxx17__normal_iteratorIPS0_S2_EEDpOT_+0x70) [0x7fcb0d699fb0] std::vector<>::_M_realloc_insert<>()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/pyRipser.cpython-39-x86_64-linux-gnu.so(_ZN6ripserI26compressed_distance_matrixIL24compressed_matrix_layout0EEE13compute_pairsERSt6vectorISt4pairIflESaIS6_EER8hash_mapI7entry_tmNS3_10entry_hashENS3_11equal_indexEEl+0x1871) [0x7fcb0d69dfe1] _ZN6ripserI26compressed_distance_matrixIL24compressed_matrix_layout0EEE13compute_pairsERSt6vectorISt4pairIflESaIS6_EER8hash_mapI7entry_tmNS3_10entry_hashENS3_11equal_indexEEl
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/pyRipser.cpython-39-x86_64-linux-gnu.so(_ZN6ripserI26compressed_distance_matrixIL24compressed_matrix_layout0EEE16compute_barcodesEv+0x250) [0x7fcb0d6a3d30] _ZN6ripserI26compressed_distance_matrixIL24compressed_matrix_layout0EEE16compute_barcodesEv
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/pyRipser.cpython-39-x86_64-linux-gnu.so(_Z7rips_dmPfiiifi+0xa6d) [0x7fcb0d6953cd] rips_dm()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/pyRipser.cpython-39-x86_64-linux-gnu.so(+0xdb4d) [0x7fcb0d695b4d] __pyx_pw_8pyRipser_1doRipsFiltrationDM()
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(+0x14e0fc) [0x5633a453d0fc] cfunction_call
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(_PyObject_MakeTpCall+0x347) [0x5633a4523a57] _PyObject_MakeTpCall
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(_PyEval_EvalFrameDefault+0x4abe) [0x5633a451f26e] _PyEval_EvalFrameDefault
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(+0x12a7d7) [0x5633a45197d7] _PyEval_EvalCode
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(_PyFunction_Vectorcall+0xb9) [0x5633a452bbb9] _PyFunction_Vectorcall
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(_PyEval_EvalFrameDefault+0x11df) [0x5633a451b98f] _PyEval_EvalFrameDefault
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(+0x13cec3) [0x5633a452bec3] function_code_fastcall
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x4a5fdf) [0x7fcd7a620fdf] __Pyx_PyObject_Call()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x52fd61) [0x7fcd7a6aad61] __pyx_f_3ray_7_raylet_task_execution_handler()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZNSt17_Function_handlerIFN3ray6StatusERKNS0_3rpc7AddressENS2_8TaskTypeESsRKNS0_4core11RayFunctionERKSt13unordered_mapISsdSt4hashISsESt8equal_toISsESaISt4pairIKSsdEEERKSt6vectorISt10shared_ptrINS0_9RayObjectEESaISQ_EERKSN_INS2_15ObjectReferenceESaISV_EERSH_S10_PSN_ISG_INS0_8ObjectIDESQ_ESaIS12_EES15_RSO_INS0_17LocalMemoryBufferEEPbS19_RKSN_INS0_16ConcurrencyGroupESaIS1A_EESsbEPFS1_S5_S6_SsSA_SM_SU_SZ_SsSsS15_S15_S18_S19_S19_S1E_SsbEE9_M_invokeERKSt9_Any_dataS5_OS6_OSsSA_SM_SU_SZ_S10_S10_OS15_S1O_S18_OS19_S1P_S1E_S1N_Ob+0x111) [0x7fcd7a627f71] std::_Function_handler<>::_M_invoke()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZN3ray4core10CoreWorker11ExecuteTaskERKNS_17TaskSpecificationERKSt10shared_ptrISt13unordered_mapISsSt6vectorISt4pairIldESaIS9_EESt4hashISsESt8equal_toISsESaIS8_IKSsSB_EEEEPS7_IS8_INS_8ObjectIDES5_INS_9RayObjectEEESaISQ_EEST_PN6google8protobuf16RepeatedPtrFieldINS_3rpc20ObjectReferenceCountEEEPbS11_+0xa58) [0x7fcd7a7a2d88] ray::core::CoreWorker::ExecuteTask()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZNSt17_Function_handlerIFN3ray6StatusERKNS0_17TaskSpecificationESt10shared_ptrISt13unordered_mapISsSt6vectorISt4pairIldESaIS9_EESt4hashISsESt8equal_toISsESaIS8_IKSsSB_EEEEPS7_IS8_INS0_8ObjectIDES5_INS0_9RayObjectEEESaISO_EESR_PN6google8protobuf16RepeatedPtrFieldINS0_3rpc20ObjectReferenceCountEEEPbSZ_ESt5_BindIFMNS0_4core10CoreWorkerEFS1_S4_RKSK_SR_SR_SY_SZ_SZ_EPS13_St12_PlaceholderILi1EES19_ILi2EES19_ILi3EES19_ILi4EES19_ILi5EES19_ILi6EES19_ILi7EEEEE9_M_invokeERKSt9_Any_dataS4_OSK_OSR_S1O_OSY_OSZ_S1Q_+0x54) [0x7fcd7a6f6554] std::_Function_handler<>::_M_invoke()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x6530f8) [0x7fcd7a7ce0f8] ray::core::CoreWorkerDirectTaskReceiver::HandleTask()::{lambda()#1}::operator()()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x653fda) [0x7fcd7a7cefda] std::_Function_handler<>::_M_invoke()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x666e5e) [0x7fcd7a7e1e5e] ray::core::InboundRequest::Accept()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x63b5e0) [0x7fcd7a7b65e0] ray::core::NormalSchedulingQueue::ScheduleRequests()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x8b9ab6) [0x7fcd7aa34ab6] EventTracker::RecordExecution()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x85cb6e) [0x7fcd7a9d7b6e] std::_Function_handler<>::_M_invoke()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x85cdc6) [0x7fcd7a9d7dc6] boost::asio::detail::completion_handler<>::do_complete()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0xcf5a3b) [0x7fcd7ae70a3b] boost::asio::detail::scheduler::do_run_one()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0xcf6c71) [0x7fcd7ae71c71] boost::asio::detail::scheduler::run()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0xcf6ee0) [0x7fcd7ae71ee0] boost::asio::io_context::run()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZN3ray4core10CoreWorker20RunTaskExecutionLoopEv+0x1c) [0x7fcd7a77610c] ray::core::CoreWorker::RunTaskExecutionLoop()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZN3ray4core21CoreWorkerProcessImpl26RunWorkerTaskExecutionLoopEv+0x8c) [0x7fcd7a7b17ec] ray::core::CoreWorkerProcessImpl::RunWorkerTaskExecutionLoop()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(_ZN3ray4core17CoreWorkerProcess20RunTaskExecutionLoopEv+0x1d) [0x7fcd7a7b199d] ray::core::CoreWorkerProcess::RunTaskExecutionLoop()
+[2m[36m(pd_from_distances pid=203)[0m /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_raylet.so(+0x4a7157) [0x7fcd7a622157] __pyx_pw_3ray_7_raylet_10CoreWorker_7run_task_loop()
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(+0x141eca) [0x5633a4530eca] method_vectorcall_NOARGS
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(_PyEval_EvalFrameDefault+0x672) [0x5633a451ae22] _PyEval_EvalFrameDefault
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(+0x13cec3) [0x5633a452bec3] function_code_fastcall
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(_PyEval_EvalFrameDefault+0x672) [0x5633a451ae22] _PyEval_EvalFrameDefault
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(+0x12a7d7) [0x5633a45197d7] _PyEval_EvalCode
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(_PyEval_EvalCodeWithName+0x47) [0x5633a4519497] _PyEval_EvalCodeWithName
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(PyEval_EvalCodeEx+0x39) [0x5633a4519449] PyEval_EvalCodeEx
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(PyEval_EvalCode+0x1b) [0x5633a45d3ddb] PyEval_EvalCode
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(+0x213409) [0x5633a4602409] run_eval_code_obj
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(+0x20f5a4) [0x5633a45fe5a4] run_mod
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(+0x951a8) [0x5633a44841a8] pyrun_file.cold
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(PyRun_SimpleFileExFlags+0x1b2) [0x5633a45f80e2] PyRun_SimpleFileExFlags
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(Py_RunMain+0x393) [0x5633a45f5443] Py_RunMain
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(Py_BytesMain+0x39) [0x5633a45c7a79] Py_BytesMain
+[2m[36m(pd_from_distances pid=203)[0m /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xf3) [0x7fcd7b8c1083] __libc_start_main
+[2m[36m(pd_from_distances pid=203)[0m ray::pd_from_distances(+0x1d8981) [0x5633a45c7981]
+[2m[36m(pd_from_distances pid=203)[0m 
+[2m[36m(pd_from_distances pid=203)[0m *** SIGABRT received at time=1671243113 on cpu 2 ***
+[2m[36m(pd_from_distances pid=203)[0m PC: @     0x7fcd7b8e000b  (unknown)  raise
+[2m[36m(pd_from_distances pid=203)[0m     @     0x7fcd7bc09420  266416320  (unknown)
+[2m[36m(pd_from_distances pid=203)[0m     @     0x7fcd7a01835a  (unknown)  __cxxabiv1::__terminate()
+[2m[36m(pd_from_distances pid=203)[0m     @     0x7fcd7a018580  (unknown)  (unknown)
+[2m[36m(pd_from_distances pid=203)[0m [2022-12-17 02:11:53,983 E 203 203] logging.cc:361: *** SIGABRT received at time=1671243113 on cpu 2 ***
+[2m[36m(pd_from_distances pid=203)[0m [2022-12-17 02:11:53,983 E 203 203] logging.cc:361: PC: @     0x7fcd7b8e000b  (unknown)  raise
+[2m[36m(pd_from_distances pid=203)[0m [2022-12-17 02:11:53,983 E 203 203] logging.cc:361:     @     0x7fcd7bc09420  266416320  (unknown)
+[2m[36m(pd_from_distances pid=203)[0m [2022-12-17 02:11:53,983 E 203 203] logging.cc:361:     @     0x7fcd7a01835a  (unknown)  __cxxabiv1::__terminate()
+[2m[36m(pd_from_distances pid=203)[0m [2022-12-17 02:11:53,983 E 203 203] logging.cc:361:     @     0x7fcd7a018580  (unknown)  (unknown)
+[2m[36m(pd_from_distances pid=203)[0m Fatal Python error: Aborted
+[2m[36m(pd_from_distances pid=203)[0m 
+[2m[36m(pd_from_distances pid=203)[0m Stack (most recent call first):
+[2m[36m(pd_from_distances pid=203)[0m   File "/azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ripser/ripser.py", line 321 in ripser
+[2m[36m(pd_from_distances pid=203)[0m   File "/mnt/azureml/cr/j/41683508ae6a4794bdf3e6969732a70c/exe/wd/main.py", line 35 in pd_from_distances
+[2m[36m(pd_from_distances pid=203)[0m   File "/azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_private/worker.py", line 763 in main_loop
+[2m[36m(pd_from_distances pid=203)[0m   File "/azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/python3.9/site-packages/ray/_private/workers/default_worker.py", line 233 in <module>
+2022-12-17 02:11:54,170	ERROR worker.py:400 -- Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): The worker died unexpectedly while executing this task. Check python-core-worker-*.log files for more information.
+2022-12-17 02:11:54,171	WARNING worker.py:1851 -- A worker died or was killed while executing a task by an unexpected system error. To troubleshoot the problem, check the logs for the dead worker. RayTask ID: 301006fc2fcca76f57b92b5c10f3d8bb8794f38001000000 Worker ID: 0ded76ca35f4ee03eba75f592b9a862cc4f6eccf5ad26627f4d57635 Node ID: 92b0d9e038df4f1e3742d4161895774bcdb1c6593b07a1bc43f74135 Worker IP address: 10.0.0.5 Worker port: 44715 Worker PID: 203 Worker exit type: SYSTEM_ERROR Worker exit detail: Worker unexpectedly exits with a connection error code 2. End of file. There are some potential root causes. (1) The process is killed by SIGKILL by OOM killer due to high memory usage. (2) ray stop --force is called. (3) The worker is crashed unexpectedly due to SIGSEGV or other unexpected errors.
+2022-12-17 02:14:43 timed model_220/pds: 500.07158388900007s
+2022-12-17 02:14:43 timed model_220: 508.8062703409996s
+2022-12-17 02:14:43 Timed out on calculating pd for model_220
+2022-12-17 02:15:09 timed model_221/activations: 24.675809639999898s
+2022-12-17 02:15:10 timed model_221/distances: 0.29313800599993556s
+2022-12-17 02:23:30 timed model_221/pds: 500.05744106099974s
+2022-12-17 02:23:30 timed model_221: 526.1604737090001s
+2022-12-17 02:23:30 Timed out on calculating pd for model_221
+2022-12-17 02:23:38 timed model_222/activations: 8.059908454000833s
+2022-12-17 02:23:39 timed model_222/distances: 0.32743666200076404s
+2022-12-17 02:25:22 timed model_222/pds: 102.95386457399945s
+2022-12-17 02:25:22 timed model_222: 112.12432584099952s
+2022-12-17 02:25:49 timed model_223/activations: 25.32918959900053s
+2022-12-17 02:25:49 timed model_223/distances: 0.3507032050001726s
+2022-12-17 02:26:58,671	ERROR worker.py:400 -- Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): The worker died unexpectedly while executing this task. Check python-core-worker-*.log files for more information.
+2022-12-17 02:27:19 timed model_223/pds: 89.45665066699985s
+2022-12-17 02:27:19 timed model_223: 116.56840677299988s
+2022-12-17 02:27:22 timed model_532/activations: 3.172789975998967s
+2022-12-17 02:27:23 timed model_532/distances: 0.3128550870005711s
+2022-12-17 02:28:02 timed model_532/pds: 38.71140163999917s
+2022-12-17 02:28:02 timed model_532: 42.681868845998906s
+2022-12-17 02:28:10 timed model_533/activations: 8.112609672998587s
+2022-12-17 02:28:11 timed model_533/distances: 0.2916513059990393s
+2022-12-17 02:28:45 timed model_533/pds: 34.534613665000506s
+2022-12-17 02:28:45 timed model_533: 43.57560780300082s
+2022-12-17 02:28:49 timed model_534/activations: 3.088372509000692s
+2022-12-17 02:28:49 timed model_534/distances: 0.2933887080016575s
+2022-12-17 02:29:36 timed model_534/pds: 46.612290757000665s
+2022-12-17 02:29:36 timed model_534: 50.448335312999916s
+2022-12-17 02:29:44 timed model_535/activations: 8.01358432500092s
+2022-12-17 02:29:45 timed model_535/distances: 0.35754418400028953s
+2022-12-17 02:30:19 timed model_535/pds: 34.33580200899996s
+2022-12-17 02:30:19 timed model_535: 43.352584751000904s
+2022-12-17 02:30:23 timed model_536/activations: 3.2275463269998s
+2022-12-17 02:30:23 timed model_536/distances: 0.3609814510000433s
+2022-12-17 02:30:55 timed model_536/pds: 31.57692144700013s
+2022-12-17 02:30:55 timed model_536: 35.69038372000068s
+2022-12-17 02:31:04 timed model_537/activations: 7.7518425729995215s
+2022-12-17 02:31:04 timed model_537/distances: 0.36457691800023895s
+2022-12-17 02:31:32 timed model_537/pds: 27.628361937999216s
+2022-12-17 02:31:32 timed model_537: 36.32978173899937s
+2022-12-17 02:31:35 timed model_538/activations: 3.0198500879996573s
+2022-12-17 02:31:35 timed model_538/distances: 0.3385461899997608s
+2022-12-17 02:31:55 timed model_538/pds: 19.571138684999823s
+2022-12-17 02:31:55 timed model_538: 23.336354864000896s
+2022-12-17 02:32:04 timed model_539/activations: 7.920588743001645s
+2022-12-17 02:32:04 timed model_539/distances: 0.32711367399861047s
+2022-12-17 02:32:26 timed model_539/pds: 22.2588812160011s
+2022-12-17 02:32:26 timed model_539: 31.086394763999124s
+2022-12-17 02:32:30 timed model_540/activations: 3.065866526998434s
+2022-12-17 02:32:30 timed model_540/distances: 0.3192650999990292s
+2022-12-17 02:32:58 timed model_540/pds: 27.54336680600136s
+2022-12-17 02:32:58 timed model_540: 31.401868765000472s
+2022-12-17 02:33:07 timed model_541/activations: 8.144367713000975s
+2022-12-17 02:33:07 timed model_541/distances: 0.314095826999619s
+2022-12-17 02:33:32 timed model_541/pds: 24.693442054000116s
+2022-12-17 02:33:32 timed model_541: 33.815315433999785s
+2022-12-17 02:33:35 timed model_542/activations: 3.0531458369987376s
+2022-12-17 02:33:36 timed model_542/distances: 0.3512612119993719s
+2022-12-17 02:33:59 timed model_542/pds: 23.545078060000378s
+2022-12-17 02:33:59 timed model_542: 27.405184200000804s
+2022-12-17 02:34:08 timed model_543/activations: 8.118062518000443s
+2022-12-17 02:34:08 timed model_543/distances: 0.29274436599916953s
+2022-12-17 02:34:34 timed model_543/pds: 25.857660849998865s
+2022-12-17 02:34:34 timed model_543: 35.013513273999706s
+2022-12-17 02:34:38 timed model_596/activations: 3.214627852999911s
+2022-12-17 02:34:39 timed model_596/distances: 0.3504014879999886s
+2022-12-17 02:35:12 timed model_596/pds: 33.804354706000595s
+2022-12-17 02:35:13 timed model_596: 37.9913010270011s
+2022-12-17 02:35:21 timed model_597/activations: 8.17032375800045s
+2022-12-17 02:35:22 timed model_597/distances: 0.4347769010000775s
+2022-12-17 02:35:57 timed model_597/pds: 34.886298409999654s
+2022-12-17 02:35:57 timed model_597: 44.18762269900071s
+2022-12-17 02:36:01 timed model_598/activations: 3.172441257000173s
+2022-12-17 02:36:01 timed model_598/distances: 0.2969899629988504s
+2022-12-17 02:36:27 timed model_598/pds: 26.343185904001075s
+2022-12-17 02:36:27 timed model_598: 30.333615598001415s
+2022-12-17 02:36:36 timed model_599/activations: 7.941486293999333s
+2022-12-17 02:36:37 timed model_599/distances: 0.33429980000073556s
+2022-12-17 02:36:59 timed model_599/pds: 22.141397171999415s
+2022-12-17 02:36:59 timed model_599: 31.20057265899959s
+2022-12-17 02:37:02 timed model_600/activations: 3.083002954999756s
+2022-12-17 02:37:03 timed model_600/distances: 0.2962214599992876s
+2022-12-17 02:37:28 timed model_600/pds: 25.074097081000218s
+2022-12-17 02:37:28 timed model_600: 28.849049112001012s
+2022-12-17 02:37:36 timed model_601/activations: 7.937577553000665s
+2022-12-17 02:37:37 timed model_601/distances: 0.3760689650007407s
+2022-12-17 02:38:03 timed model_601/pds: 26.704327927000122s
+2022-12-17 02:38:03 timed model_601: 35.56309714800045s
+2022-12-17 02:38:07 timed model_602/activations: 2.9676566870002716s
+2022-12-17 02:38:07 timed model_602/distances: 0.2952774989989848s
+2022-12-17 02:38:27 timed model_602/pds: 19.50042603899965s
+2022-12-17 02:38:27 timed model_602: 23.233485559001565s
+2022-12-17 02:38:35 timed model_603/activations: 8.05736606299979s
+2022-12-17 02:38:36 timed model_603/distances: 0.294614227999773s
+2022-12-17 02:39:09 timed model_603/pds: 33.39531156799967s
+2022-12-17 02:39:09 timed model_603: 42.34725390600033s
+2022-12-17 02:39:13 timed model_604/activations: 3.081811583999297s
+2022-12-17 02:39:13 timed model_604/distances: 0.28347319299973606s
+2022-12-17 02:40:05 timed model_604/pds: 51.68283336499917s
+2022-12-17 02:40:05 timed model_604: 55.637937204999616s
+2022-12-17 02:40:14 timed model_605/activations: 7.975344664000659s
+2022-12-17 02:40:14 timed model_605/distances: 0.29772344199955114s
+2022-12-17 02:40:49 timed model_605/pds: 35.097453447999214s
+2022-12-17 02:40:49 timed model_605: 44.04665603099966s
+2022-12-17 02:40:53 timed model_606/activations: 3.1600514609999664s
+2022-12-17 02:40:53 timed model_606/distances: 0.3655143150008371s
+2022-12-17 02:41:27 timed model_606/pds: 33.83584146300018s
+2022-12-17 02:41:27 timed model_606: 37.88779327100019s
+2022-12-17 02:41:36 timed model_607/activations: 8.053954267001245s
+2022-12-17 02:41:36 timed model_607/distances: 0.28730912399987574s
+2022-12-17 02:42:08 timed model_607/pds: 31.451385456000935s
+2022-12-17 02:42:08 timed model_607: 40.381251226999666s
+2022-12-17 02:42:12 timed model_660/activations: 3.2775857020005787s
+2022-12-17 02:42:12 timed model_660/distances: 0.3482486869997956s
+2022-12-17 02:42:49 timed model_660/pds: 37.37805958300123s
+2022-12-17 02:42:49 timed model_660: 41.43555870899945s
+2022-12-17 02:42:58 timed model_661/activations: 8.056445053000061s
+2022-12-17 02:42:59 timed model_661/distances: 0.28247518399984983s
+2022-12-17 02:43:37 timed model_661/pds: 38.06110268700104s
+2022-12-17 02:43:37 timed model_661: 47.3045299739988s
+2022-12-17 02:43:40 timed model_662/activations: 3.1098013629998604s
+2022-12-17 02:43:41 timed model_662/distances: 0.32558703400172817s
+2022-12-17 02:44:11 timed model_662/pds: 30.225981612000396s
+2022-12-17 02:44:11 timed model_662: 34.09599554899978s
+2022-12-17 02:44:20 timed model_663/activations: 8.013191939000535s
+2022-12-17 02:44:20 timed model_663/distances: 0.3354087570005504s
+2022-12-17 02:44:50 timed model_663/pds: 30.033209369999895s
+2022-12-17 02:44:50 timed model_663: 39.06539636800153s
+2022-12-17 02:44:54 timed model_664/activations: 3.051268508999783s
+2022-12-17 02:44:54 timed model_664/distances: 0.3255409920002421s
+2022-12-17 02:45:19 timed model_664/pds: 24.798617247999573s
+2022-12-17 02:45:19 timed model_664: 28.715928145998987s
+2022-12-17 02:45:28 timed model_665/activations: 7.965042388001166s
+2022-12-17 02:45:28 timed model_665/distances: 0.30354791799982195s
+2022-12-17 02:45:56 timed model_665/pds: 27.435433705999458s
+2022-12-17 02:45:56 timed model_665: 36.571745272000044s
+2022-12-17 02:45:59 timed model_666/activations: 2.974027082000248s
+2022-12-17 02:46:00 timed model_666/distances: 0.2831910169988987s
+2022-12-17 02:46:19 timed model_666/pds: 19.2975334620005s
+2022-12-17 02:46:19 timed model_666: 23.03159407699968s
+2022-12-17 02:46:28 timed model_667/activations: 8.156540474999929s
+2022-12-17 02:46:28 timed model_667/distances: 0.30360954699972353s
+2022-12-17 02:46:47 timed model_667/pds: 18.857081823000044s
+2022-12-17 02:46:47 timed model_667: 27.97085973600042s
+2022-12-17 02:46:51 timed model_668/activations: 3.3024363089989492s
+2022-12-17 02:46:51 timed model_668/distances: 0.30666028000086953s
+2022-12-17 02:47:20 timed model_668/pds: 28.47445716400034s
+2022-12-17 02:47:20 timed model_668: 32.62939553199976s
+2022-12-17 02:47:29 timed model_669/activations: 8.099050212000293s
+2022-12-17 02:47:29 timed model_669/distances: 0.29000537600040843s
+2022-12-17 02:47:57 timed model_669/pds: 27.947690039998633s
+2022-12-17 02:47:57 timed model_669: 37.08695623400126s
+2022-12-17 02:48:01 timed model_670/activations: 3.216113504999157s
+2022-12-17 02:48:01 timed model_670/distances: 0.30291492700052913s
+2022-12-17 02:48:26 timed model_670/pds: 25.32606260099965s
+2022-12-17 02:48:26 timed model_670: 29.35471091600084s
+2022-12-17 02:48:35 timed model_671/activations: 8.095839916999466s
+2022-12-17 02:48:36 timed model_671/distances: 0.4314654589998099s
+2022-12-17 02:49:01 timed model_671/pds: 25.144411532999584s
+2022-12-17 02:49:01 timed model_671: 34.37525629099946s
+2022-12-17 02:49:05 timed model_724/activations: 3.0431228959987493s
+2022-12-17 02:49:05 timed model_724/distances: 0.3102053490001708s
+2022-12-17 02:49:35 timed model_724/pds: 29.73549203100083s
+2022-12-17 02:49:35 timed model_724: 33.6229106009996s
+2022-12-17 02:49:44 timed model_725/activations: 8.144117460999041s
+2022-12-17 02:49:44 timed model_725/distances: 0.2972345720008889s
+2022-12-17 02:50:11 timed model_725/pds: 27.159818010999516s
+2022-12-17 02:50:11 timed model_725: 36.213252629000635s
+2022-12-17 02:50:15 timed model_726/activations: 3.2632187279996288s
+2022-12-17 02:50:15 timed model_726/distances: 0.2877154880006856s
+2022-12-17 02:50:39 timed model_726/pds: 23.441165584001283s
+2022-12-17 02:50:39 timed model_726: 27.441023312998368s
+2022-12-17 02:50:48 timed model_727/activations: 8.299960029000431s
+2022-12-17 02:50:48 timed model_727/distances: 0.3728348169988749s
+2022-12-17 02:51:15 timed model_727/pds: 26.756087592999393s
+2022-12-17 02:51:15 timed model_727: 36.10901383500095s
+2022-12-17 02:51:19 timed model_728/activations: 3.0622071050001978s
+2022-12-17 02:51:19 timed model_728/distances: 0.32021409300068626s
+2022-12-17 02:51:51 timed model_728/pds: 32.001736980000715s
+2022-12-17 02:51:51 timed model_728: 35.920767323999826s
+2022-12-17 02:52:00 timed model_729/activations: 7.966062907999003s
+2022-12-17 02:52:00 timed model_729/distances: 0.3440639189993817s
+2022-12-17 02:52:28 timed model_729/pds: 28.477698745000453s
+2022-12-17 02:52:28 timed model_729: 37.360317366001254s
+2022-12-17 02:52:32 timed model_730/activations: 3.162959076998959s
+2022-12-17 02:52:33 timed model_730/distances: 0.28460684699894045s
+2022-12-17 02:52:56 timed model_730/pds: 23.352693254999394s
+2022-12-17 02:52:56 timed model_730: 27.30468640199979s
+2022-12-17 02:53:05 timed model_731/activations: 8.081229638000877s
+2022-12-17 02:53:05 timed model_731/distances: 0.2916010869994352s
+2022-12-17 02:53:30 timed model_731/pds: 24.578008425000007s
+2022-12-17 02:53:30 timed model_731: 33.6064659700005s
+2022-12-17 02:53:34 timed model_732/activations: 3.238576624000416s
+2022-12-17 02:53:34 timed model_732/distances: 0.3035882940002921s
+2022-12-17 02:54:21 timed model_732/pds: 47.57947291699929s
+2022-12-17 02:54:21 timed model_732: 51.746428291000484s
+2022-12-17 02:54:31 timed model_733/activations: 8.19927465100045s
+2022-12-17 02:54:31 timed model_733/distances: 0.32542975199976354s
+2022-12-17 02:55:12 timed model_733/pds: 40.99114741100129s
+2022-12-17 02:55:12 timed model_733: 50.225869070000044s
+2022-12-17 02:55:16 timed model_734/activations: 3.142786332000469s
+2022-12-17 02:55:16 timed model_734/distances: 0.3511514059991896s
+2022-12-17 02:55:51 timed model_734/pds: 34.95154228899992s
+2022-12-17 02:55:51 timed model_734: 38.95072341000014s
+2022-12-17 02:56:00 timed model_735/activations: 8.020238467999661s
+2022-12-17 02:56:00 timed model_735/distances: 0.29392126699895016s
+2022-12-17 02:56:34 timed model_735/pds: 33.64785888300139s
+2022-12-17 02:56:34 timed model_735: 42.59545341000012s
+Part importance vectors: 10
+Part importance vectors: 10
+Part importance vectors: 53
+Part importance vectors: 34
+Part importance vectors: 152
+Part importance vectors: 48
+Part importance vectors: 123
+Part importance vectors: 94
+Part importance vectors: 10
+Part importance vectors: 10
+Part importance vectors: 10
+Part importance vectors: 10
+Part importance vectors: 12
+Part importance vectors: 10
+Part importance vectors: 25
+Part importance vectors: 55
+Part importance vectors: 230
+Part importance vectors: 32
+Part importance vectors: 89
+Part importance vectors: 99
+Part importance vectors: 12
+Part importance vectors: 10
+Part importance vectors: 13
+Part importance vectors: 17
+Part importance vectors: 10
+Part importance vectors: 10
+Part importance vectors: 11
+Part importance vectors: 10
+Part importance vectors: 18
+Part importance vectors: 16
+Part importance vectors: 48
+Part importance vectors: 46
+Part importance vectors: 10
+Part importance vectors: 10
+Part importance vectors: 10
+Part importance vectors: 10
+Part importance vectors: 10
+Part importance vectors: 10
+Part importance vectors: 12
+Part importance vectors: 12
+Part importance vectors: 26
+Part importance vectors: 12
+Part importance vectors: 83
+Part importance vectors: 67
+Part importance vectors: 17
+Part importance vectors: 12
+Part importance vectors: 10
+Part importance vectors: 10
+Part importance vectors: 1220
+Part importance vectors: 1149
+Part importance vectors: 1042
+Part importance vectors: 978
+Part importance vectors: 999
+Part importance vectors: 1100
+Part importance vectors: 866
+Part importance vectors: 806
+Part importance vectors: 45
+Part importance vectors: 57
+Part importance vectors: 73
+Part importance vectors: 28
+Part importance vectors: 719
+Part importance vectors: 816
+Part importance vectors: 452
+Part importance vectors: 276
+Part importance vectors: 1037
+Part importance vectors: 1138
+Part importance vectors: 755
+Part importance vectors: 959
+Part importance vectors: 362
+Part importance vectors: 195
+Part importance vectors: 142
+Part importance vectors: 102
+Part importance vectors: 1252
+Part importance vectors: 1006
+Part importance vectors: 1051
+Part importance vectors: 815
+Part importance vectors: 1082
+Part importance vectors: 907
+Part importance vectors: 829
+Part importance vectors: 976
+Part importance vectors: 120
+Part importance vectors: 117
+Part importance vectors: 74
+Part importance vectors: 39
+Part importance vectors: 241
+Part importance vectors: 307
+Part importance vectors: 138
+Part importance vectors: 110
+Part importance vectors: 653
+Part importance vectors: 556
+Part importance vectors: 796
+Part importance vectors: 811
+Part importance vectors: 909
+Part importance vectors: 179
+Part importance vectors: 155
+Part importance vectors: 83
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (6) Could not resolve host: experiment
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   109  100   101  100     8    587     46 --:--:-- --:--:-- --:--:--   630100   109  100   101  100     8    583     46 --:--:-- --:--:-- --:--:--   626
+{"id":"nWtau5i6va6a","time":1671245798,"event":"message","topic":"tfm_tda_exp","message":"Finished"}
