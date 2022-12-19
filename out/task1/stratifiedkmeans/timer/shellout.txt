@@ -1,4 +1,0 @@
-timed model_20/activations: 124.864775745s
-timed model_20/distances: 0.6949206520000075s
-timed model_20/pds: 13.703750856s
-timed model_20: 139.543888313s
