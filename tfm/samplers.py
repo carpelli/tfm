@@ -90,20 +90,34 @@ class StratifiedKMeans(StratifiedSampler):
         return super().name + str(self.max_size)
 
     def layer(self, x: tf.Tensor, i: int):
+        # size = x.shape[1]
+        # num_chunks = math.ceil(size / self.max_size)  # type: ignore
+        # size_chunks = size // num_chunks
+
+        # slices = [slice(j*size_chunks, (j+1)*size_chunks) for j in range(num_chunks)]
+        # slices[-1] = slice(slices[-1].start, None)
+
+        # ns_clusters = [round(self.n_layered[i] / num_chunks)] * num_chunks
+        # ns_clusters[-1] += self.n_layered[i] - sum(ns_clusters)
+
+        # for j, (slc, n_clusters) in enumerate(zip(slices, ns_clusters)):
+        #     centers, _ = kmeans_plusplus(x[:, slc].numpy().T, n_clusters)
+        #     self.activations += [centers.T]
+        #     print(f'Chunk {j+1}/{num_chunks} in layer {i+1}/{len(self.n_layered)}       ', end='\r')
+
         size = x.shape[1]
-        num_chunks = math.ceil(size / self.max_size)  # type: ignore
-        size_chunks = size // num_chunks
-
-        slices = [slice(j*size_chunks, (j+1)*size_chunks) for j in range(num_chunks)]
-        slices[-1] = slice(slices[-1].start, None)
-
-        ns_clusters = [round(self.n_layered[i] / num_chunks)] * num_chunks
-        ns_clusters[-1] += self.n_layered[i] - sum(ns_clusters)
-
-        for j, (slc, n_clusters) in enumerate(zip(slices, ns_clusters)):
-            centers, _ = kmeans_plusplus(x[:, slc].numpy().T, n_clusters)
+        passes = math.ceil(size / self.max_size)  # type: ignore
+        for j in range(passes):
+            print(f'Chunk {j+1}/{passes} in layer {i+1}/{len(self.n_layered)}       ', end='\r')
+            round = math.floor if j < passes - 1 else math.ceil  # fix fix fix
+            part = round(self.max_size / passes)
+            n_clusters = int(self.n_layered[i] / passes)
+            centers, _ = kmeans_plusplus(
+                x[:, j*part:(j+1)*part].numpy().T,
+                n_clusters + int(self.n_layered[i] %
+                                n_clusters if j == passes - 1 else 0)
+            )
             self.activations += [centers.T]
-            print(f'Chunk {j+1}/{num_chunks} in layer {i+1}/{len(self.n_layered)}       ', end='\r')
 
 
 def apply(sampler: Sampler, model: tf.keras.Sequential, included_layers, x: tf.Tensor) -> np.ndarray:
