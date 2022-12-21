@@ -1,0 +1,450 @@
+Log has been generated for use in PD time calculation, not an actual log!
+
+
+timed model_21/activations: 206.686827789s
+timed model_21/distances: 0.7093466240000055s
+timed model_21/pds: 10.432764432999988s
+timed model_21: 218.221457279s
+timed model_22/activations: 114.59684483899997s
+timed model_22/distances: 0.6500783769999998s
+timed model_22/pds: 9.797689004000006s
+timed model_22: 125.45250581700003s
+timed model_23/activations: 137.96276731299997s
+timed model_23/distances: 0.6387436819999834s
+timed model_23/pds: 10.367888572000027s
+timed model_23: 149.29771552800003s
+timed model_24/activations: 116.84031535600002s
+timed model_24/distances: 0.8362059269999236s
+timed model_24/pds: 12.89810541700001s
+timed model_24: 130.90723488599997s
+timed model_25/activations: 176.49136052799997s
+timed model_25/distances: 0.7305538430000524s
+timed model_25/pds: 18.011880237000014s
+timed model_25: 195.58318026799998s
+timed model_26/activations: 123.50416005400007s
+timed model_26/distances: 0.7151457809999329s
+timed model_26/pds: 39.203647503999946s
+timed model_26: 163.73880616200006s
+timed model_27/activations: 149.23285546300008s
+timed model_27/distances: 0.730013543000041s
+timed model_27/pds: 91.53105860799997s
+timed model_27: 241.84231347700006s
+timed model_28/activations: 129.65119101200003s
+timed model_28/distances: 0.7383102720000352s
+timed model_28/pds: 31.64280549099999s
+timed model_28: 162.388397188s
+timed model_29/activations: 143.33045953099986s
+timed model_29/distances: 0.71434390599984s
+timed model_29/pds: 23.562235328000043s
+timed model_29: 167.9462494039999s
+timed model_30/activations: 118.56217559499987s
+timed model_30/distances: 0.677112409000074s
+timed model_30/pds: 14.329290858999912s
+timed model_30: 133.82682535200001s
+timed model_31/activations: 154.11277624900004s
+timed model_31/distances: 0.7172299939998084s
+timed model_31/pds: 23.894842165s
+timed model_31: 179.09314813600008s
+timed model_84/activations: 125.85760534399992s
+timed model_84/distances: 0.6738007999999809s
+timed model_84/pds: 15.073157452000032s
+timed model_84: 141.94386504399995s
+timed model_85/activations: 161.90308435299994s
+timed model_85/distances: 0.7088037600001371s
+timed model_85/pds: 12.07860906499991s
+timed model_85: 175.03769197500014s
+timed model_86/activations: 120.1483633150001s
+timed model_86/distances: 0.703568665000148s
+timed model_86/pds: 9.595718346000012s
+timed model_86: 130.77381405899996s
+timed model_87/activations: 181.9609017339999s
+timed model_87/distances: 0.7479719299999488s
+timed model_87/pds: 11.33789879799997s
+timed model_87: 194.38317699200024s
+timed model_88/activations: 122.37175840300006s
+timed model_88/distances: 0.7062041909998698s
+timed model_88/pds: 15.004601077999723s
+timed model_88: 138.39705900299987s
+timed model_89/activations: 149.00977621999982s
+timed model_89/distances: 0.717915248999816s
+timed model_89/pds: 16.792372710999643s
+timed model_89: 166.89767804899975s
+timed model_90/activations: 132.3854104979996s
+timed model_90/distances: 0.766324345999692s
+timed model_90/pds: 21.350187933000143s
+timed model_90: 154.77348321499994s
+timed model_91/activations: 157.75690104500018s
+timed model_91/distances: 0.8090760049999517s
+timed model_91/pds: 67.78699620599991s
+timed model_91: 226.69108880199974s
+timed model_92/activations: 120.00531579800008s
+timed model_92/distances: 0.6264665749999949s
+timed model_92/pds: 14.608174720000079s
+timed model_92: 135.5026561169998s
+timed model_93/activations: 173.69460413600018s
+timed model_93/distances: 0.870379949999915s
+timed model_93/pds: 14.112722106000092s
+timed model_93: 189.00851077499965s
+timed model_94/activations: 129.40116838699987s
+timed model_94/distances: 0.6529768109999168s
+timed model_94/pds: 12.835616589999972s
+timed model_94: 143.37981502699995s
+timed model_95/activations: 120.56644471200025s
+timed model_95/distances: 0.6107307290003519s
+timed model_95/pds: 9.493815922000067s
+timed model_95: 130.991911695s
+timed model_148/activations: 108.75816871500001s
+timed model_148/distances: 0.6364133560000482s
+timed model_148/pds: 14.452687809000054s
+timed model_148: 124.2355410490004s
+timed model_149/activations: 121.4642416429997s
+timed model_149/distances: 0.6043941140001152s
+timed model_149/pds: 11.734933588000331s
+timed model_149: 134.19648860999996s
+timed model_150/activations: 213.3366773470002s
+timed model_150/distances: 1.0274268210005175s
+timed model_150/pds: 23.11701247000019s
+timed model_150: 237.7993287090003s
+timed model_151/activations: 230.86736643099994s
+timed model_151/distances: 0.8444671649995144s
+timed model_151/pds: 13.320870522000405s
+timed model_151: 245.4773104169999s
+timed model_152/activations: 171.95078295199983s
+timed model_152/distances: 0.6948739340004977s
+timed model_152/pds: 13.48714592700071s
+timed model_152: 186.42457952299992s
+timed model_153/activations: 153.956963267s
+timed model_153/distances: 0.6724133379993873s
+timed model_153/pds: 13.076327667999976s
+timed model_153: 168.0732718399995s
+timed model_154/activations: 141.94632518799972s
+timed model_154/distances: 0.6462732129994038s
+timed model_154/pds: 13.71492803700039s
+timed model_154: 156.5432392469993s
+timed model_155/activations: 175.85319595300007s
+timed model_155/distances: 0.7818857880001815s
+timed model_155/pds: 58.962934236000365s
+timed model_155: 235.95540745899962s
+timed model_156/activations: 140.336036099s
+timed model_156/distances: 0.6319267020007828s
+timed model_156/pds: 71.69859361399995s
+timed model_156: 213.13869367499956s
+timed model_157/activations: 161.07724314999996s
+timed model_157/distances: 0.6308741470002133s
+timed model_157/pds: 27.706854953999937s
+timed model_157: 189.8563423580008s
+timed model_158/activations: 143.94200599000033s
+timed model_158/distances: 0.6172517779996269s
+timed model_158/pds: 21.271652971999174s
+timed model_158: 166.14715988100033s
+timed model_159/activations: 166.4949370129998s
+timed model_159/distances: 0.6820013850001487s
+timed model_159/pds: 14.043788465000034s
+timed model_159: 181.63313381599983s
+timed model_212/activations: 153.59774916100014s
+timed model_212/distances: 0.8736534700001357s
+timed model_212/pds: 15.719552730999567s
+timed model_212: 170.5773880050001s
+timed model_213/activations: 183.18395486700047s
+timed model_213/distances: 1.0596457250003368s
+timed model_213/pds: 13.382724086999588s
+timed model_213: 197.97418997400018s
+timed model_214/activations: 166.04895241800023s
+timed model_214/distances: 0.9812909579995903s
+timed model_214/pds: 13.174589598999773s
+timed model_214: 180.52941326100063s
+timed model_215/activations: 178.37468817199988s
+timed model_215/distances: 0.8603383350000513s
+timed model_215/pds: 16.007884790999924s
+timed model_215: 195.62148249500024s
+timed model_216/activations: 162.60492798199994s
+timed model_216/distances: 0.6622571300003983s
+timed model_216/pds: 13.651519303999521s
+timed model_216: 177.37385150499995s
+timed model_217/activations: 205.13636697499987s
+timed model_217/distances: 1.2819125139994867s
+timed model_217/pds: 22.12028847199963s
+timed model_217: 228.98587406000024s
+timed model_218/activations: 194.52933507600028s
+timed model_218/distances: 0.9993958539998857s
+timed model_218/pds: 38.12984286499977s
+timed model_218: 233.99430463299996s
+timed model_219/activations: 183.44978192800045s
+timed model_219/distances: 0.9660565589992984s
+timed model_219/pds: 44.85865793799985s
+timed model_219: 229.7065281109999s
+timed model_220/activations: 141.03692158499962s
+timed model_220/distances: 0.6428573630000756s
+timed model_220/pds: 36.681743289000224s
+timed model_220: 178.69579287600027s
+timed model_221/activations: 142.50364972700027s
+timed model_221/distances: 0.6577716399997371s
+timed model_221/pds: 19.657909954999923s
+timed model_221: 163.192047861s
+timed model_222/activations: 144.41634262299976s
+timed model_222: 144.6929781559993s
+timed model_20/activations: 124.864775745s
+timed model_20/distances: 0.6949206520000075s
+timed model_20/pds: 13.703750856s
+timed model_20: 139.543888313s
+
+
+
+2022-12-20 02:16:25.960802: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Files/lib/python/debugpy/adapter/../../debugpy/launcher 51035 -- /Users/otis/Sync/uni/tfm/tfm/main.py /Users/otis/Documents/rubens_speelhoekje/google/google_data/public_data/input_data/tas
+k1_v4 -o out_test 
+2022-12-20 02:16:43.235475: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-12-20 02:16:51 Starting experiment with stratifiedkmeans20000 timing out after 1000s
+2022-12-20 02:16:51 Importing data...
+2022-12-20 02:16:51.679696: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-12-20 02:17:13 Finished importing data
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_20.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_217.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_221.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_23.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_24.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_25.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_26.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_27.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_28.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_29.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_30.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_31.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_84.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_85.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_86.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_87.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_88.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_89.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_90.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_91.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_92.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_93.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_94.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_95.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_148.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_149.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_150.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_151.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_152.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_153.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_154.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_155.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_156.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_157.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_158.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_159.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_212.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_213.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_214.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_215.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_216.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_217.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_218.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_219.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_220.pd.npy, skipping...
+2022-12-20 02:17:13 Found out_test/task1/stratifiedkmeans20000/model_221.pd.npy, skipping...
+2022-12-20 02:20:22 timed model_222/activations: 189.214594856s
+2022-12-20 02:20:23 timed model_222/distances: 0.8033083630000135s
+2022-12-20 02:20:29,643 INFO worker.py:1538 -- Started a local Ray instance.
+2022-12-20 02:20:57 timed model_222/pds: 23.791009395999993s
+2022-12-20 02:20:57 timed model_222: 223.524277252s
+2022-12-20 02:23:52 timed model_223/activations: 174.69793044700003s
+2022-12-20 02:23:53 timed model_223/distances: 0.7519505370000275s
+2022-12-20 02:24:05 timed model_223/pds: 12.320769165000002s
+2022-12-20 02:24:05 timed model_223: 187.83363950299997s
+2022-12-20 02:28:26 timed model_532/activations: 260.44681094299995s
+2022-12-20 02:28:27 timed model_532/distances: 0.7011437429999887s
+2022-12-20 02:28:43 timed model_532/pds: 15.656547548000049s
+2022-12-20 02:28:43 timed model_532: 276.84076416s
+2022-12-20 02:32:30 timed model_533/activations: 227.30933451600004s
+2022-12-20 02:32:31 timed model_533/distances: 0.6182280659999151s
+2022-12-20 02:32:47 timed model_533/pds: 16.49522329800004s
+2022-12-20 02:32:48 timed model_533: 244.45315271700008s
+2022-12-20 02:37:01 timed model_534/activations: 252.7790489460001s
+2022-12-20 02:37:01 timed model_534/distances: 0.7012406059998284s
+2022-12-20 02:37:15 timed model_534/pds: 13.637645850999888s
+2022-12-20 02:37:15 timed model_534: 267.14484511700005s
+2022-12-20 02:41:06 timed model_535/activations: 231.08952200999988s
+2022-12-20 02:41:07 timed model_535/distances: 0.6536589669999557s
+2022-12-20 02:41:22 timed model_535/pds: 14.372092596999892s
+2022-12-20 02:41:22 timed model_535: 246.14331459200002s
+2022-12-20 02:45:21 timed model_536/activations: 239.6162821810001s
+2022-12-20 02:45:22 timed model_536/distances: 0.6325884829998358s
+2022-12-20 02:45:34 timed model_536/pds: 12.138014952000049s
+2022-12-20 02:45:34 timed model_536: 252.41070199299998s
+2022-12-20 02:49:08 timed model_537/activations: 213.6493254259999s
+2022-12-20 02:49:09 timed model_537/distances: 0.5744556009999542s
+2022-12-20 02:49:23 timed model_537/pds: 14.496556784000177s
+2022-12-20 02:49:23 timed model_537: 228.74364415900004s
+2022-12-20 02:53:22 timed model_538/activations: 238.41978859900019s
+2022-12-20 02:53:23 timed model_538/distances: 0.618941227999585s
+2022-12-20 02:53:32 timed model_538/pds: 9.215020140999968s
+2022-12-20 02:53:32 timed model_538: 248.2744543719998s
+2022-12-20 02:57:05 timed model_539/activations: 212.50198242500028s
+2022-12-20 02:57:05 timed model_539/distances: 0.5804292360003274s
+2022-12-20 02:57:18 timed model_539/pds: 12.83105671400017s
+2022-12-20 02:57:18 timed model_539: 225.93149817400035s
+2022-12-20 03:01:09 timed model_540/activations: 230.290249228s
+2022-12-20 03:01:09 timed model_540/distances: 0.5993498640000325s
+2022-12-20 03:01:18 timed model_540/pds: 8.46280178500001s
+2022-12-20 03:01:18 timed model_540: 239.36711767800034s
+2022-12-20 03:04:48 timed model_541/activations: 209.910922647s
+2022-12-20 03:04:49 timed model_541/distances: 0.5793763159999799s
+2022-12-20 03:05:00 timed model_541/pds: 10.974956054999893s
+2022-12-20 03:05:00 timed model_541: 221.48090310499992s
+2022-12-20 03:08:56 timed model_542/activations: 236.30811441600008s
+2022-12-20 03:08:57 timed model_542/distances: 0.6288324500001181s
+2022-12-20 03:09:06 timed model_542/pds: 9.229836562999935s
+2022-12-20 03:09:06 timed model_542: 246.181112967s
+2022-12-20 03:12:38 timed model_543/activations: 211.41140020500006s
+2022-12-20 03:12:39 timed model_543/distances: 0.5749571880000985s
+2022-12-20 03:12:49 timed model_543/pds: 10.09488707499986s
+2022-12-20 03:12:49 timed model_543: 222.09621781099986s
+2022-12-20 03:16:53 timed model_596/activations: 243.49763506299996s
+2022-12-20 03:16:53 timed model_596/distances: 0.5992950450004173s
+2022-12-20 03:17:04 timed model_596/pds: 10.363087558000188s
+2022-12-20 03:17:04 timed model_596: 254.4756340419999s
+2022-12-20 03:20:36 timed model_597/activations: 212.49412537800026s
+2022-12-20 03:20:37 timed model_597/distances: 0.5862248839998756s
+2022-12-20 03:20:48 timed model_597/pds: 11.384168368000246s
+2022-12-20 03:20:48 timed model_597: 224.48040711999965s
+2022-12-20 03:24:45 timed model_598/activations: 235.77059280499998s
+2022-12-20 03:24:45 timed model_598/distances: 0.6264280500004134s
+2022-12-20 03:24:55 timed model_598/pds: 10.043595809999715s
+2022-12-20 03:24:55 timed model_598: 246.45547472399994s
+2022-12-20 03:28:27 timed model_599/activations: 211.92314885999986s
+2022-12-20 03:28:28 timed model_599/distances: 0.5765182599998298s
+2022-12-20 03:28:39 timed model_599/pds: 11.066964988000109s
+2022-12-20 03:28:39 timed model_599: 223.5817084989999s
+2022-12-20 03:32:35 timed model_600/activations: 235.7921643669997s
+2022-12-20 03:32:36 timed model_600/distances: 0.6277420169999459s
+2022-12-20 03:32:48 timed model_600/pds: 11.682263775000138s
+2022-12-20 03:32:48 timed model_600: 248.1179827349997s
+2022-12-20 03:36:19 timed model_601/activations: 211.2111617419996s
+2022-12-20 03:36:20 timed model_601/distances: 0.6077607600000192s
+2022-12-20 03:36:34 timed model_601/pds: 13.866253227000016s
+2022-12-20 03:36:34 timed model_601: 225.70254039799966s
+2022-12-20 03:40:31 timed model_602/activations: 236.92538046800018s
+2022-12-20 03:40:32 timed model_602/distances: 0.633854102999976s
+2022-12-20 03:40:41 timed model_602/pds: 9.141166358000191s
+2022-12-20 03:40:41 timed model_602: 246.7144751679998s
+2022-12-20 03:44:13 timed model_603/activations: 211.63822642800005s
+2022-12-20 03:44:13 timed model_603/distances: 0.5661046300001544s
+2022-12-20 03:44:24 timed model_603/pds: 10.782854119000149s
+2022-12-20 03:44:24 timed model_603: 223.00209972499943s
+2022-12-20 03:48:19 timed model_604/activations: 235.02333986299982s
+2022-12-20 03:48:20 timed model_604/distances: 0.6501842759998908s
+2022-12-20 03:48:31 timed model_604/pds: 10.868276381000214s
+2022-12-20 03:48:31 timed model_604: 246.55821050699979s
+2022-12-20 03:51:55 timed model_605/activations: 203.7052871629994s
+2022-12-20 03:51:56 timed model_605/distances: 0.5608476550005435s
+2022-12-20 03:52:08 timed model_605/pds: 12.020563713000229s
+2022-12-20 03:52:08 timed model_605: 216.3025307070002s
+2022-12-20 03:56:05 timed model_606/activations: 236.97704655400048s
+2022-12-20 03:56:06 timed model_606/distances: 0.6154634839995197s
+2022-12-20 03:56:14 timed model_606/pds: 8.485240496999722s
+2022-12-20 03:56:14 timed model_606: 246.09444698100015s
+2022-12-20 03:59:44 timed model_607/activations: 210.089810425s
+2022-12-20 03:59:45 timed model_607/distances: 0.5762233710001965s
+2022-12-20 03:59:56 timed model_607/pds: 11.261005699000634s
+2022-12-20 03:59:56 timed model_607: 221.97483952899984s
+2022-12-20 04:03:48 timed model_660/activations: 230.9777488719992s
+2022-12-20 04:03:48 timed model_660/distances: 0.6251329590004389s
+2022-12-20 04:04:00 timed model_660/pds: 11.92979908399957s
+2022-12-20 04:04:00 timed model_660: 243.5629834680003s
+2022-12-20 04:07:23 timed model_661/activations: 202.6100279989996s
+2022-12-20 04:07:24 timed model_661/distances: 0.5761384979996365s
+2022-12-20 04:07:44 timed model_661/pds: 19.73563412800013s
+2022-12-20 04:07:44 timed model_661: 222.95103131999986s
+2022-12-20 04:11:31 timed model_662/activations: 226.58355609599948s
+2022-12-20 04:11:31 timed model_662/distances: 0.6486492540007021s
+2022-12-20 04:11:42 timed model_662/pds: 10.507636493999598s
+2022-12-20 04:11:42 timed model_662: 237.76872471200022s
+2022-12-20 04:15:05 timed model_663/activations: 202.9403965069996s
+2022-12-20 04:15:06 timed model_663/distances: 0.561016374999781s
+2022-12-20 04:15:17 timed model_663/pds: 11.725760258999799s
+2022-12-20 04:15:17 timed model_663: 215.25452685800065s
+2022-12-20 04:19:05 timed model_664/activations: 227.3277428929996s
+2022-12-20 04:19:06 timed model_664/distances: 0.6372212500000387s
+2022-12-20 04:19:19 timed model_664/pds: 13.631757326999832s
+2022-12-20 04:19:19 timed model_664: 241.62278325399984s
+2022-12-20 04:22:55 timed model_665/activations: 214.77039848500044s
+2022-12-20 04:22:55 timed model_665/distances: 0.5895158399998763s
+2022-12-20 04:23:11 timed model_665/pds: 15.607955739999852s
+2022-12-20 04:23:11 timed model_665: 230.99566883599982s
+2022-12-20 04:26:59 timed model_666/activations: 227.76087679600005s
+2022-12-20 04:26:59 timed model_666/distances: 0.6309873879999941s
+2022-12-20 04:27:12 timed model_666/pds: 12.315663672000483s
+2022-12-20 04:27:12 timed model_666: 240.73023986600037s
+2022-12-20 04:30:38 timed model_667/activations: 205.84512950000044s
+2022-12-20 04:30:39 timed model_667/distances: 0.5651762170000438s
+2022-12-20 04:31:16 timed model_667/pds: 37.146159521999834s
+2022-12-20 04:31:16 timed model_667: 243.57614927600025s
+2022-12-20 04:35:03 timed model_668/activations: 226.99440028299978s
+2022-12-20 04:35:04 timed model_668/distances: 0.6219457460010744s
+2022-12-20 04:35:13 timed model_668/pds: 9.25481593999939s
+2022-12-20 04:35:13 timed model_668: 236.8891360840007s
+2022-12-20 04:38:35 timed model_669/activations: 201.7532752139996s
+2022-12-20 04:38:36 timed model_669/distances: 0.56878847400003s
+2022-12-20 04:38:48 timed model_669/pds: 12.619345506000172s
+2022-12-20 04:38:48 timed model_669: 214.95951282100032s
+2022-12-20 04:42:42 timed model_670/activations: 233.34169397500045s
+2022-12-20 04:42:43 timed model_670/distances: 0.6353881289996934s
+2022-12-20 04:42:52 timed model_670/pds: 9.542721458001324s
+2022-12-20 04:42:52 timed model_670: 243.53692055899955s
+2022-12-20 04:46:15 timed model_671/activations: 202.1495513789996s
+2022-12-20 04:46:15 timed model_671/distances: 0.5768618210004206s
+2022-12-20 04:46:31 timed model_671/pds: 15.086667564999516s
+2022-12-20 04:46:31 timed model_671: 217.82990411500032s
+2022-12-20 04:50:17 timed model_724/activations: 225.87593234000087s
+2022-12-20 04:50:17 timed model_724/distances: 0.6265066870000737s
+2022-12-20 04:50:27 timed model_724/pds: 9.428518937000263s
+2022-12-20 04:50:27 timed model_724: 235.94812521599852s
+2022-12-20 04:53:50 timed model_725/activations: 202.43052308599908s
+2022-12-20 04:53:50 timed model_725/distances: 0.5689298279994546s
+2022-12-20 04:54:01 timed model_725/pds: 10.521126484998604s
+2022-12-20 04:54:01 timed model_725: 213.53896522300056s
+2022-12-20 04:57:48 timed model_726/activations: 227.1009819259998s
+2022-12-20 04:57:49 timed model_726/distances: 0.623820192000494s
+2022-12-20 04:57:59 timed model_726/pds: 9.711479921999853s
+2022-12-20 04:57:59 timed model_726: 237.45381410199843s
+2022-12-20 05:01:19 timed model_727/activations: 199.61742475699975s
+2022-12-20 05:01:19 timed model_727/distances: 0.542340776999481s
+2022-12-20 05:01:30 timed model_727/pds: 10.789016145999994s
+2022-12-20 05:01:30 timed model_727: 210.9677599330007s
+2022-12-20 05:05:17 timed model_728/activations: 226.83485415500036s
+2022-12-20 05:05:18 timed model_728/distances: 0.629274049999367s
+2022-12-20 05:05:29 timed model_728/pds: 11.681970179000928s
+2022-12-20 05:05:29 timed model_728: 239.16348752399972s
+2022-12-20 05:08:53 timed model_729/activations: 203.25765922999926s
+2022-12-20 05:08:54 timed model_729/distances: 0.5630642849992s
+2022-12-20 05:09:07 timed model_729/pds: 13.10270389300058s
+2022-12-20 05:09:07 timed model_729: 216.94053240200083s
+2022-12-20 05:12:54 timed model_730/activations: 227.0879018609994s
+2022-12-20 05:12:55 timed model_730/distances: 0.6281841919990256s
+2022-12-20 05:13:06 timed model_730/pds: 10.802393812000446s
+2022-12-20 05:13:06 timed model_730: 238.5398731360001s
+2022-12-20 05:16:29 timed model_731/activations: 203.03155672699904s
+2022-12-20 05:16:30 timed model_731/distances: 0.5595547850007279s
+2022-12-20 05:17:03 timed model_731/pds: 33.375189763999515s
+2022-12-20 05:17:03 timed model_731: 236.98446434800098s
+2022-12-20 05:20:47 timed model_732/activations: 223.33825457299827s
+2022-12-20 05:20:47 timed model_732/distances: 0.6078841960006685s
+2022-12-20 05:20:56 timed model_732/pds: 8.17486531600116s
+2022-12-20 05:20:56 timed model_732: 232.13728388699928s
+2022-12-20 05:24:17 timed model_733/activations: 200.929037549s
+2022-12-20 05:24:17 timed model_733/distances: 0.5618828850001591s
+2022-12-20 05:24:27 timed model_733/pds: 9.471627498000089s
+2022-12-20 05:24:27 timed model_733: 210.98036557500018s
+2022-12-20 05:28:12 timed model_734/activations: 224.5627978829998s
+2022-12-20 05:28:12 timed model_734/distances: 0.6234307340000669s
+2022-12-20 05:28:20 timed model_734/pds: 7.787696961999245s
+2022-12-20 05:28:20 timed model_734: 232.99110198900053s
+2022-12-20 05:31:41 timed model_735/activations: 200.675701225s
+2022-12-20 05:31:42 timed model_735/distances: 0.5527241959989624s
+2022-12-20 05:31:52 timed model_735/pds: 9.643522178999774s
+2022-12-20 05:31:52 timed model_735: 210.88899626000057s

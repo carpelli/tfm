@@ -15,6 +15,8 @@ tqdm = "^4.64.1"
 hdbscan = "^0.8.29"
 scikit-learn-intelex = "2021.6.3"
 ray = "^2.2.0"
+genieclust = "^1.1.2"
+nmslib = "^2.1.1"
 
 [tool.poetry.dev-dependencies]
 jupyter = "^1.0.0"

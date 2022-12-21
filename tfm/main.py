@@ -14,7 +14,7 @@ from utils.timertree import timer, save_timer
 DATA_SAMPLE_SIZE = 2000
 UPPER_DIM = 1
 OUTDIR = Path(__file__).parent / '../out'
-SAMPLER = samplers.StratifiedKMeans(3000, 20000)
+SAMPLER = samplers.StratifiedMaxDist(3000)
 # SAMPLER = samplers.StratifiedRandom(3000)
 TIMEOUT = 1000
 

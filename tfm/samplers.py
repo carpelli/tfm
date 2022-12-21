@@ -80,6 +80,30 @@ class StratifiedRandom(StratifiedSampler):
         self.activations += [tf.gather(x, ix, axis=1)]
 
 
+class StratifiedMaxDist(StratifiedSampler):
+    def layer(self, x: tf.Tensor, i: int):
+        cur_ix = np.random.random_integers(0, x.shape[1])
+        ixs = np.full(x.shape[1], fill_value=False)
+        ixs[cur_ix] = True
+        x_T = tf.transpose(x).numpy()
+        for j in range(self.n_layered[i] - 1):
+            print(
+                f'Got activation {j+1}/{self.n_layered[i]} in layer {i+1}/{len(self.n_layered)}       ', end='\r')
+            with np.errstate(invalid='ignore'):
+                y = x_T[cur_ix]
+                # cov = tf.math.reduce_mean(
+                #     (x_T - tf.reshape(tf.math.reduce_mean(x_T, axis=1), (-1, 1)))
+                #     * (y - tf.math.reduce_mean(y)
+                # ), axis=1).numpy()
+                cov = np.mean((x_T - x_T.mean(axis=1).reshape((-1, 1))) * (y - y.mean()), axis=1)
+                sd = x_T.std(axis=1)*y.std()
+                corr = np.abs(np.nan_to_num(cov/sd))
+
+            cur_ix = np.argmin(corr[~ixs])
+            ixs[cur_ix] = True
+        self.activations += [x_T[ixs].T]
+
+
 class StratifiedKMeans(StratifiedSampler):
     def __init__(self, n: int, max_n_to_cluster: int):
         self.max_size = max_n_to_cluster
@@ -108,14 +132,15 @@ class StratifiedKMeans(StratifiedSampler):
         size = x.shape[1]
         passes = math.ceil(size / self.max_size)  # type: ignore
         for j in range(passes):
-            print(f'Chunk {j+1}/{passes} in layer {i+1}/{len(self.n_layered)}       ', end='\r')
+            print(
+                f'Chunk {j+1}/{passes} in layer {i+1}/{len(self.n_layered)}       ', end='\r')
             round = math.floor if j < passes - 1 else math.ceil  # fix fix fix
             part = round(self.max_size / passes)
             n_clusters = int(self.n_layered[i] / passes)
             centers, _ = kmeans_plusplus(
                 x[:, j*part:(j+1)*part].numpy().T,
                 n_clusters + int(self.n_layered[i] %
-                                n_clusters if j == passes - 1 else 0)
+                                 n_clusters if j == passes - 1 else 0)
             )
             self.activations += [centers.T]
 
