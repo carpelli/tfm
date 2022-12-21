@@ -7,7 +7,7 @@ import tensorflow as tf
 
 
 def import_model(path: Path) -> tf.keras.Sequential:
-    model = _create_model_instance(path / 'config.json')
+    model = create_model_instance(path / 'config.json')
     if (path / 'weights_init.hdf5').exists():
         model.load_weights(path / 'weights_init.hdf5')
         model.initial_weights = model.get_weights()
@@ -43,7 +43,7 @@ def save(type: str, array: np.ndarray, path: Path):
     np.save(path.with_suffix(f'.{type}.npy'), array)
 
 
-def _create_model_instance(config_path):
+def create_model_instance(config_path):
     with open(config_path, 'r') as f:
         config = json.load(f)
     model_instance = _model_def_to_keras_sequential(config['model_config'])
