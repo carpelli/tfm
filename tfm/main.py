@@ -1,4 +1,5 @@
 import argparse
+from datetime import datetime
 import logging
 from pathlib import Path
 
@@ -14,7 +15,7 @@ from utils.timertree import timer, save_timer
 DATA_SAMPLE_SIZE = 2000
 UPPER_DIM = 1
 OUTDIR = Path(__file__).parent / '../out'
-SAMPLER = samplers.StratifiedMaxDist(3000)
+SAMPLER = samplers.Random(3000)
 # SAMPLER = samplers.StratifiedRandom(3000)
 TIMEOUT = 1000
 
@@ -26,6 +27,7 @@ def compute_distance_matrix(activations):
     assert not (correlations < -1).any() or (1 < correlations).any()
     return 1 - np.abs(correlations)
 
+
 @ray.remote
 def pd_from_distances(distance_matrix):
     diagrams = ripser(distance_matrix, maxdim=UPPER_DIM,
@@ -35,6 +37,7 @@ def pd_from_distances(distance_matrix):
         for dim in range(UPPER_DIM+1)
         for point in diagrams[dim]
     ])
+
 
 def pd_from_model_and_save(model, x, pd_path, timeout):
     included_layers = model.layers[1:]
@@ -58,6 +61,7 @@ def pd_from_model_and_save(model, x, pd_path, timeout):
         logging.warning(f"Timed out on calculating pd for {model_path.name}")
         utils.save('dm', distance_matrix, pd_path)
 
+
 if __name__ == "__main__":
     # tf.random.set_seed(1234)
     # np.random.seed(1234)
@@ -70,19 +74,40 @@ if __name__ == "__main__":
     parser.add_argument('--timeout', default=TIMEOUT, type=int)
     # parser.add_argument('--threads', default=1, type=int)
     parser.add_argument('-i', '--interactive', action='store_true')
+    parser.add_argument('--resume', action='store_true')
     args = parser.parse_args()
+
+    if args.interactive:
+        for arg, value in args.__dict__.items():
+            if value == parser.get_default(arg):
+                if type(value) == bool:
+                    args.__dict__[arg] = \
+                        input(f'{arg.title()} (n)? y for yes: ') == 'y'
+                else:
+                    args.__dict__[arg] = type(value)(
+                        input(f'{arg.title()} ({value}): ') or value)
 
     logging.basicConfig(
         format="%(asctime)s %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
         level=logging.INFO)
 
-    logging.info(f"Starting experiment with {SAMPLER.name} timing out after {args.timeout}s")
+    logging.info(
+        f"Starting experiment with {SAMPLER.name} timing out after {args.timeout}s")
     logging.info(f"Importing data...")
 
     x_train = utils.import_and_sample_data(
         args.data_path / "dataset_1", DATA_SAMPLE_SIZE)
+
     outdir = args.output / 'task1' / SAMPLER.name
+    subdirs = sorted(outdir.glob("[0-9]"))
+    if args.resume and subdirs:
+        if subdirs:
+            outdir /= subdirs[-1]
+        else:
+            logging.warning("No previous output found, making a new directory")
+    else:
+        outdir /= datetime.now().strftime('%y.%m.%d-%H')
 
     logging.info(f"Finished importing data")
 
