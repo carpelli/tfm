@@ -27,6 +27,16 @@ class Sampler(ABC):
 
     def accumulate(self) -> np.ndarray:
         return np.hstack(self.activations)
+    
+    def apply(self, model: tf.keras.Sequential, included_layers, x: tf.Tensor) -> np.ndarray:
+        self.build(included_layers)
+        i = 0
+        for layer in model.layers:
+            x = layer(x)  # type: ignore
+            if layer in included_layers:
+                self.layer(tf.reshape(x, (x.shape[0], -1)), i)
+                i += 1
+        return self.accumulate().T
 
 
 class Random(Sampler):
@@ -143,17 +153,6 @@ class StratifiedKMeans(StratifiedSampler):
                                  n_clusters if j == passes - 1 else 0)
             )
             self.activations += [centers.T]
-
-
-def apply(sampler: Sampler, model: tf.keras.Sequential, included_layers, x: tf.Tensor) -> np.ndarray:
-    sampler.build(included_layers)
-    i = 0
-    for layer in model.layers:
-        x = layer(x)  # type: ignore
-        if layer in included_layers:
-            sampler.layer(tf.reshape(x, (x.shape[0], -1)), i)
-            i += 1
-    return sampler.accumulate().T
 
 
 # def stratify(sampler: Sampler) -> Sampler:

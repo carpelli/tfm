@@ -3,63 +3,24 @@ from datetime import datetime
 import logging
 from pathlib import Path
 
-import numpy as np
-import ray
 from gph import ripser_parallel as ripser
 import tensorflow as tf
 
-import samplers
+import pd
 import utils
 from utils.timertree import timer, save_timer
-
-DATA_SAMPLE_SIZE = 2000
-UPPER_DIM = 1
-OUTDIR = Path(__file__).parent / '../out'
-SAMPLER = samplers.Random(3000)
-# SAMPLER = samplers.StratifiedRandom(3000)
-TIMEOUT = 1000
+from constants import OUTDIR, TIMEOUT, SAMPLER, DATA_SAMPLE_SIZE
 
 
-def compute_distance_matrix(activations):
-    with np.errstate(invalid='ignore'):
-        correlations = np.nan_to_num(np.corrcoef(activations), copy=False)
-    np.fill_diagonal(correlations, 1)
-    assert not (correlations < -1).any() or (1 < correlations).any()
-    return 1 - np.abs(correlations)
-
-
-@ray.remote
-def pd_from_distances(distance_matrix):
-    diagrams = ripser(distance_matrix, maxdim=UPPER_DIM,
-                      metric="precomputed", n_threads=-1)['dgms']
-    return np.stack([
-        np.r_[point, dim]
-        for dim in range(UPPER_DIM+1)
-        for point in diagrams[dim]
-    ])
-
-
-def pd_from_model_and_save(model, x, pd_path, timeout):
-    included_layers = model.layers[1:]
-
-    with timer('activations'):
-        activation_samples = samplers.apply(SAMPLER, model, included_layers, x)
-        assert activation_samples.shape == (SAMPLER.n, DATA_SAMPLE_SIZE)
-
-    with timer('distances'):
-        distance_matrix = compute_distance_matrix(activation_samples)
-
-    pd_future = pd_from_distances.remote(distance_matrix)
-    with timer('pds'):
-        finished = ray.wait([pd_future], timeout=timeout)[0]
-
-    if finished:
-        pd = ray.get(pd_future)
-        utils.save('pd', pd, pd_path)
-    else:
-        ray.cancel(pd_future, force=True)
-        logging.warning(f"Timed out on calculating pd for {model_path.name}")
-        utils.save('dm', distance_matrix, pd_path)
+def ask_for_args(args):
+    for arg, value in args.__dict__.items():
+        if value == parser.get_default(arg):
+            if type(value) == bool:
+                args.__dict__[arg] = \
+                    input(f'{arg.title()} (n)? y for yes: ') == 'y'
+            else:
+                args.__dict__[arg] = type(value)(
+                    input(f'{arg.title()} ({value}): ') or value)
 
 
 if __name__ == "__main__":
@@ -70,7 +31,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('data_path', type=Path)
     parser.add_argument('-o', '--output', default=OUTDIR, type=Path)
-    parser.add_argument('--overwrite', action='store_true')
     parser.add_argument('--timeout', default=TIMEOUT, type=int)
     # parser.add_argument('--threads', default=1, type=int)
     parser.add_argument('-i', '--interactive', action='store_true')
@@ -78,19 +38,33 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.interactive:
-        for arg, value in args.__dict__.items():
-            if value == parser.get_default(arg):
-                if type(value) == bool:
-                    args.__dict__[arg] = \
-                        input(f'{arg.title()} (n)? y for yes: ') == 'y'
-                else:
-                    args.__dict__[arg] = type(value)(
-                        input(f'{arg.title()} ({value}): ') or value)
+        ask_for_args(args)
 
-    logging.basicConfig(
-        format="%(asctime)s %(message)s",
-        datefmt="%Y-%m-%d %H:%M:%S",
-        level=logging.INFO)
+    formatter = logging.Formatter("%(asctime)s %(message)s", "%Y-%m-%d %H:%M:%S")
+    stdoutHandler = logging.StreamHandler()
+    stdoutHandler.setFormatter(formatter)
+    stdoutHandler.setLevel(logging.INFO)
+    logging.basicConfig(handlers=[stdoutHandler], level=logging.INFO)
+    # logging.getLogger()
+
+    # set the outdir depending on if asked to continue the last batch or make a new one
+    outdir = Path(args.output) / 'task1' / SAMPLER.name
+    subdirs = sorted(outdir.glob("[0-9]"))
+    if args.resume:
+        if subdirs:
+            outdir /= subdirs[-1]
+        else:
+            logging.warning("Asked to resume but no previous output found, \
+                making a new directory")
+    else:
+        outdir /= datetime.now().strftime('%y.%m.%d-%H')
+    outdir.mkdir(parents=True, exist_ok=True)
+
+    (outdir / 'log.txt').touch(exist_ok=True) # fix
+    fileHandler = logging.FileHandler(outdir / 'log.txt')
+    fileHandler.setFormatter(formatter)
+    fileHandler.setLevel(logging.DEBUG)
+    logging.getLogger().addHandler(fileHandler)
 
     logging.info(
         f"Starting experiment with {SAMPLER.name} timing out after {args.timeout}s")
@@ -98,16 +72,6 @@ if __name__ == "__main__":
 
     x_train = utils.import_and_sample_data(
         args.data_path / "dataset_1", DATA_SAMPLE_SIZE)
-
-    outdir = args.output / 'task1' / SAMPLER.name
-    subdirs = sorted(outdir.glob("[0-9]"))
-    if args.resume and subdirs:
-        if subdirs:
-            outdir /= subdirs[-1]
-        else:
-            logging.warning("No previous output found, making a new directory")
-    else:
-        outdir /= datetime.now().strftime('%y.%m.%d-%H')
 
     logging.info(f"Finished importing data")
 
@@ -118,14 +82,13 @@ if __name__ == "__main__":
     for model_path in model_paths:
         pd_path = outdir / f'{model_path.name}'
 
-        if not args.overwrite:
-            try:
-                file = next(outdir.glob(pd_path.name + "*"))
-                logging.info(f'Found {file}, skipping...')
-                continue
-            except StopIteration:
-                pass
+        try:
+            file = next(outdir.glob(pd_path.name + "*"))
+            logging.info(f'Found {file}, skipping...')
+            continue
+        except StopIteration:
+            pass
 
         model = utils.import_model(model_path)
         with timer(model_path.name):
-            pd = pd_from_model_and_save(model, x_train, pd_path, args.timeout)
+            pd.from_model_and_save(model, x_train, pd_path, args.timeout)

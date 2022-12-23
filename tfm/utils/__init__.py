@@ -38,8 +38,7 @@ def import_and_sample_data(path: Path, size):
 
 def save(type: str, array: np.ndarray, path: Path):
     assert type in ('pd', 'dm')
-    if not path.parent.exists():
-        path.parent.mkdir(parents=True)
+    path.parent.mkdir(parents=True, exist_ok=True)
     np.save(path.with_suffix(f'.{type}.npy'), array)
 
 
