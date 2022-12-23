@@ -22,7 +22,7 @@ exp = Experiment(ws, 'tfm-exp')
 config = ScriptRunConfig(
     source_directory='tfm',
     command=[
-        'python', 'main.py', dataset.as_mount(), '-o', output.as_mount(), '--timeout', '500', '--overwrite',
+        'python', 'main.py', dataset.as_mount(), '-o', output.as_mount(), '--timeout', '500',
         '&&', 'curl' ,'-d', 'Finished experiment', 'ntfy.sh/tfm_tda_exp',
         '||', 'curl' ,'-d', 'Failed experiment', 'ntfy.sh/tfm_tda_exp',
     ],

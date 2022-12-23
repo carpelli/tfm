@@ -3,12 +3,11 @@ from datetime import datetime
 import logging
 from pathlib import Path
 
-from gph import ripser_parallel as ripser
 import tensorflow as tf
 
 import pd
 import utils
-from utils.timertree import timer, save_timer
+from utils.timertree import timer
 from constants import OUTDIR, TIMEOUT, SAMPLER, DATA_SAMPLE_SIZE
 
 
