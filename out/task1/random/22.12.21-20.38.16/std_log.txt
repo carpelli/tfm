@@ -1,0 +1,441 @@
+/bin/bash: /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+2022-12-21 20:38:16.787649: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-12-21 20:38:16.981296: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib:
+2022-12-21 20:38:16.981341: I tensorflow/compiler/xla/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-12-21 20:38:18.002738: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib:
+2022-12-21 20:38:18.002903: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib:
+2022-12-21 20:38:18.002923: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2022-12-21 20:38:18 Starting experiment with random timing out after 500s
+2022-12-21 20:38:18 Importing data...
+2022-12-21 20:38:18.967133: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcuda.so.1'; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /azureml-envs/azureml_60efeec2c9effa339e62eccc3a331444/lib:
+2022-12-21 20:38:18.967183: W tensorflow/compiler/xla/stream_executor/cuda/cuda_driver.cc:265] failed call to cuInit: UNKNOWN ERROR (303)
+2022-12-21 20:38:18.967211: I tensorflow/compiler/xla/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (10fcf1bfd0d940f48a297eee3e80a37e000001): /proc/driver/nvidia/version does not exist
+2022-12-21 20:38:18.967601: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-12-21 20:38:31 Finished importing data
+2022-12-21 20:38:32.170828: W tensorflow/tsl/framework/cpu_allocator_impl.cc:82] Allocation of 2097152000 exceeds 10% of free system memory.
+2022-12-21 20:38:32.539201: W tensorflow/tsl/framework/cpu_allocator_impl.cc:82] Allocation of 2097152000 exceeds 10% of free system memory.
+2022-12-21 20:38:32.830143: W tensorflow/tsl/framework/cpu_allocator_impl.cc:82] Allocation of 2097152000 exceeds 10% of free system memory.
+2022-12-21 20:38:33.077172: W tensorflow/tsl/framework/cpu_allocator_impl.cc:82] Allocation of 2097152000 exceeds 10% of free system memory.
+2022-12-21 20:38:43.765890: W tensorflow/tsl/framework/cpu_allocator_impl.cc:82] Allocation of 2097152000 exceeds 10% of free system memory.
+2022-12-21 20:38:44 timed model_20/activations: 12.566840898999999s
+2022-12-21 20:38:45 timed model_20/distances: 0.5194244559997969s
+2022-12-21 20:38:47,153	WARNING services.py:1732 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 2147483648 bytes available. This will harm performance! You may be able to free up space by deleting files in /dev/shm. If you are inside a Docker container, you can increase /dev/shm size by passing '--shm-size=8.77gb' to 'docker run' (or add it to the run_options list in a Ray cluster config). Make sure to set this to more than 30% of available RAM.
+2022-12-21 20:38:47,326	INFO worker.py:1538 -- Started a local Ray instance.
+2022-12-21 20:39:23 timed model_20/pds: 34.94393663000028s
+2022-12-21 20:39:23 timed model_20: 51.40498161200003s
+2022-12-21 20:40:11 timed model_21/activations: 46.519958807999956s
+2022-12-21 20:40:11 timed model_21/distances: 0.5112989419999394s
+2022-12-21 20:40:44 timed model_21/pds: 32.79242730000033s
+2022-12-21 20:40:44 timed model_21: 79.94649590900008s
+2022-12-21 20:40:58 timed model_22/activations: 13.205594099000336s
+2022-12-21 20:40:59 timed model_22/distances: 0.4993280069998036s
+2022-12-21 20:41:19 timed model_22/pds: 19.84977825900023s
+2022-12-21 20:41:19 timed model_22: 33.6808693830003s
+2022-12-21 20:42:07 timed model_23/activations: 46.503786883999965s
+2022-12-21 20:42:07 timed model_23/distances: 0.5682704789996933s
+2022-12-21 20:42:30 timed model_23/pds: 22.813825432000158s
+2022-12-21 20:42:30 timed model_23: 70.00250763900021s
+2022-12-21 20:42:45 timed model_24/activations: 13.395677132999936s
+2022-12-21 20:42:45 timed model_24/distances: 0.5284471539998776s
+2022-12-21 20:43:05 timed model_24/pds: 20.235649677999845s
+2022-12-21 20:43:05 timed model_24: 34.27479097200012s
+2022-12-21 20:43:53 timed model_25/activations: 46.582605837999836s
+2022-12-21 20:43:54 timed model_25/distances: 0.5256713600001603s
+2022-12-21 20:44:13 timed model_25/pds: 19.609215596000013s
+2022-12-21 20:44:13 timed model_25: 66.82414239100035s
+2022-12-21 20:44:27 timed model_26/activations: 13.189278425999873s
+2022-12-21 20:44:28 timed model_26/distances: 0.5348853600003167s
+2022-12-21 20:44:48 timed model_26/pds: 19.62207734200001s
+2022-12-21 20:44:48 timed model_26: 33.445443133000026s
+2022-12-21 20:45:35 timed model_27/activations: 46.6562779599999s
+2022-12-21 20:45:36 timed model_27/distances: 0.5015641219997633s
+2022-12-21 20:46:06 timed model_27/pds: 29.8942553830002s
+2022-12-21 20:46:06 timed model_27: 77.15024860200037s
+2022-12-21 20:46:20 timed model_28/activations: 13.244047498999862s
+2022-12-21 20:46:21 timed model_28/distances: 0.5494346430000405s
+2022-12-21 20:54:41 timed model_28/pds: 500.0749852179997s
+2022-12-21 20:54:41 Timed out on calculating pd for model_28
+2022-12-21 20:54:42 timed model_28: 514.8390612030003s
+2022-12-21 20:55:33 timed model_29/activations: 49.70800805299996s
+2022-12-21 20:55:33 timed model_29/distances: 0.6536862120001388s
+2022-12-21 21:03:53 timed model_29/pds: 500.05372385699957s
+2022-12-21 21:03:53 Timed out on calculating pd for model_29
+2022-12-21 21:03:54 timed model_29: 551.2809342599994s
+2022-12-21 21:04:09 timed model_30/activations: 14.379223713000101s
+2022-12-21 21:04:10 timed model_30/distances: 0.6220065370007433s
+2022-12-21 21:12:08 timed model_30/pds: 477.7163685409996s
+2022-12-21 21:12:08 timed model_30: 492.90798757799985s
+2022-12-21 21:12:58 timed model_31/activations: 48.67109379700014s
+2022-12-21 21:12:58 timed model_31/distances: 0.5529925599994385s
+2022-12-21 21:17:47 timed model_31/pds: 288.16551908400015s
+2022-12-21 21:17:47 timed model_31: 337.5929312620001s
+2022-12-21 21:18:03 timed model_84/activations: 15.199715595999805s
+2022-12-21 21:18:04 timed model_84/distances: 0.5796657880000566s
+2022-12-21 21:18:40 timed model_84/pds: 36.43523088599977s
+2022-12-21 21:18:40 timed model_84: 52.358079598000586s
+2022-12-21 21:19:34 timed model_85/activations: 51.71081552099986s
+2022-12-21 21:19:34 timed model_85/distances: 0.5666998779997812s
+2022-12-21 21:20:12 timed model_85/pds: 37.92353038999954s
+2022-12-21 21:20:12 timed model_85: 90.38516217200049s
+2022-12-21 21:20:28 timed model_86/activations: 14.774051772999883s
+2022-12-21 21:20:28 timed model_86/distances: 0.5491006980000748s
+2022-12-21 21:20:47 timed model_86/pds: 18.831114682999214s
+2022-12-21 21:20:47 timed model_86: 34.30113756500032s
+2022-12-21 21:21:40 timed model_87/activations: 50.66603286000009s
+2022-12-21 21:21:40 timed model_87/distances: 0.5896595049998723s
+2022-12-21 21:22:04 timed model_87/pds: 23.812913869000113s
+2022-12-21 21:22:04 timed model_87: 75.23236684200037s
+2022-12-21 21:22:20 timed model_88/activations: 15.163067914999374s
+2022-12-21 21:22:21 timed model_88/distances: 0.538394423999307s
+2022-12-21 21:22:39 timed model_88/pds: 18.74500027400063s
+2022-12-21 21:22:39 timed model_88: 34.57910230299967s
+2022-12-21 21:23:30 timed model_89/activations: 48.71104370699959s
+2022-12-21 21:23:30 timed model_89/distances: 0.7272478229997432s
+2022-12-21 21:23:52 timed model_89/pds: 22.15161870800057s
+2022-12-21 21:23:53 timed model_89: 71.73747821300003s
+2022-12-21 21:24:08 timed model_90/activations: 14.645686077000391s
+2022-12-21 21:24:09 timed model_90/distances: 0.5150672919999124s
+2022-12-21 21:24:31 timed model_90/pds: 22.446568506999938s
+2022-12-21 21:24:31 timed model_90: 37.71836040500057s
+2022-12-21 21:25:23 timed model_91/activations: 50.02483650999966s
+2022-12-21 21:25:23 timed model_91/distances: 0.5694133030001467s
+2022-12-21 21:25:45 timed model_91/pds: 21.901458348000233s
+2022-12-21 21:25:45 timed model_91: 72.61005060099978s
+2022-12-21 21:25:59,795	ERROR worker.py:400 -- Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): The worker died unexpectedly while executing this task. Check python-core-worker-*.log files for more information.
+2022-12-21 21:26:01 timed model_92/activations: 14.606279120999716s
+2022-12-21 21:26:01 timed model_92/distances: 0.5657063569997263s
+[2m[36m(pd_from_distances pid=196)[0m ../nptl/pthread_mutex_lock.c:428: __pthread_mutex_lock_full: Assertion `e != ESRCH || !robust' failed.
+[2m[36m(pd_from_distances pid=196)[0m *** SIGABRT received at time=1671658371 on cpu 2 ***
+[2m[36m(pd_from_distances pid=196)[0m PC: @     0x7f9f2c94700b  (unknown)  raise
+[2m[36m(pd_from_distances pid=196)[0m     @     0x7f9f2cc6e420  1730159448  (unknown)
+[2m[36m(pd_from_distances pid=196)[0m     @ 0x4173257325203a75  (unknown)  (unknown)
+[2m[36m(pd_from_distances pid=196)[0m [2022-12-21 21:32:51,909 E 196 528] logging.cc:361: *** SIGABRT received at time=1671658371 on cpu 2 ***
+[2m[36m(pd_from_distances pid=196)[0m [2022-12-21 21:32:51,910 E 196 528] logging.cc:361: PC: @     0x7f9f2c94700b  (unknown)  raise
+[2m[36m(pd_from_distances pid=196)[0m [2022-12-21 21:32:51,912 E 196 528] logging.cc:361:     @     0x7f9f2cc6e420  1730159448  (unknown)
+[2m[36m(pd_from_distances pid=196)[0m [2022-12-21 21:32:51,914 E 196 528] logging.cc:361:     @ 0x4173257325203a75  (unknown)  (unknown)
+[2m[36m(pd_from_distances pid=196)[0m Fatal Python error: Aborted
+[2m[36m(pd_from_distances pid=196)[0m 
+2022-12-21 21:32:52,314	ERROR worker.py:400 -- Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): The worker died unexpectedly while executing this task. Check python-core-worker-*.log files for more information.
+2022-12-21 21:32:52,315	WARNING worker.py:1851 -- A worker died or was killed while executing a task by an unexpected system error. To troubleshoot the problem, check the logs for the dead worker. RayTask ID: eefe811b2c2aaa495c63afbe5cfd41020f5bb01c01000000 Worker ID: 619ffbcbbe96899963b3bbb1524b4d2f049120c89c985196dba7fecd Node ID: b2764126fd13bc62a390499b8777afdeb957474bc331053ad6275471 Worker IP address: 10.0.0.5 Worker port: 40183 Worker PID: 196 Worker exit type: SYSTEM_ERROR Worker exit detail: The leased worker has unrecoverable failure. Worker is requested to be destroyed when it is returned.
+2022-12-21 21:33:50 timed model_92/pds: 468.2626869020005s
+2022-12-21 21:33:50 timed model_92: 483.60661954700026s
+2022-12-21 21:34:37 timed model_93/activations: 46.262830157999815s
+2022-12-21 21:34:38 timed model_93/distances: 0.5242034249995413s
+2022-12-21 21:42:58 timed model_93/pds: 500.05513346099997s
+2022-12-21 21:42:58 Timed out on calculating pd for model_93
+2022-12-21 21:42:58 timed model_93: 547.7433024929996s
+2022-12-21 21:42:58,974	ERROR worker.py:400 -- Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): The worker died unexpectedly while executing this task. Check python-core-worker-*.log files for more information.
+2022-12-21 21:43:12 timed model_94/activations: 12.908462033000433s
+2022-12-21 21:43:13 timed model_94/distances: 0.5261828200000309s
+2022-12-21 21:43:49 timed model_94/pds: 35.926605478000056s
+2022-12-21 21:43:49 timed model_94: 49.476796055000705s
+2022-12-21 21:44:36 timed model_95/activations: 45.7129576719999s
+2022-12-21 21:44:36 timed model_95/distances: 0.5291853799999444s
+2022-12-21 21:45:13 timed model_95/pds: 37.05803728799947s
+2022-12-21 21:45:13 timed model_95: 83.41402969499995s
+2022-12-21 21:45:27 timed model_148/activations: 12.96818495000025s
+2022-12-21 21:45:28 timed model_148/distances: 0.49349300999983825s
+2022-12-21 21:46:40 timed model_148/pds: 72.0953417390001s
+2022-12-21 21:46:40 timed model_148: 85.68254181700013s
+2022-12-21 21:47:27 timed model_149/activations: 45.81251554099981s
+2022-12-21 21:47:27 timed model_149/distances: 0.5369329170007404s
+2022-12-21 21:48:15 timed model_149/pds: 47.88517445800062s
+2022-12-21 21:48:15 timed model_149: 94.41190641499998s
+2022-12-21 21:48:29 timed model_150/activations: 13.105125596000107s
+2022-12-21 21:48:30 timed model_150/distances: 0.49833846599995013s
+2022-12-21 21:48:50 timed model_150/pds: 20.63451016700037s
+2022-12-21 21:48:51 timed model_150: 34.3549893039999s
+2022-12-21 21:49:38 timed model_151/activations: 45.770414892999725s
+2022-12-21 21:49:38 timed model_151/distances: 0.5077367300000333s
+2022-12-21 21:50:01 timed model_151/pds: 22.949439646999963s
+2022-12-21 21:50:01 timed model_151: 69.35713521700018s
+2022-12-21 21:50:15 timed model_152/activations: 13.0206283109992s
+2022-12-21 21:50:16 timed model_152/distances: 0.49345575899951655s
+2022-12-21 21:50:39 timed model_152/pds: 23.42721243899996s
+2022-12-21 21:50:39 timed model_152: 37.06736091499988s
+2022-12-21 21:51:26 timed model_153/activations: 45.77931021200038s
+2022-12-21 21:51:27 timed model_153/distances: 0.49749919599980785s
+2022-12-21 21:51:44 timed model_153/pds: 17.683727569999974s
+2022-12-21 21:51:45 timed model_153: 64.07904250299998s
+2022-12-21 21:51:58 timed model_154/activations: 12.873715806000291s
+2022-12-21 21:51:59 timed model_154/distances: 0.5036539049997373s
+2022-12-21 21:52:14 timed model_154/pds: 15.496630444999937s
+2022-12-21 21:52:14 timed model_154: 29.012937127999976s
+2022-12-21 21:53:01 timed model_155/activations: 45.88059483100005s
+2022-12-21 21:53:02 timed model_155/distances: 0.5215813699996943s
+2022-12-21 21:53:18 timed model_155/pds: 15.747227703000135s
+2022-12-21 21:53:18 timed model_155: 62.276647869000044s
+2022-12-21 21:53:32 timed model_156/activations: 13.038759320999816s
+2022-12-21 21:53:33 timed model_156/distances: 0.5399726770001507s
+2022-12-21 22:01:53 timed model_156/pds: 500.07384699700015s
+2022-12-21 22:01:53 Timed out on calculating pd for model_156
+2022-12-21 22:01:53 timed model_156: 514.5324154919999s
+2022-12-21 22:02:43 timed model_157/activations: 48.09393007400013s
+2022-12-21 22:02:43 timed model_157/distances: 0.5068699909998031s
+2022-12-21 22:11:03 timed model_157/pds: 500.0621991759999s
+2022-12-21 22:11:03 Timed out on calculating pd for model_157
+2022-12-21 22:11:04 timed model_157: 549.6250518709994s
+2022-12-21 22:11:19 timed model_158/activations: 14.168351633001294s
+2022-12-21 22:11:20 timed model_158/distances: 0.5538832940001157s
+2022-12-21 22:19:40 timed model_158/pds: 500.05287754100027s
+2022-12-21 22:19:40 Timed out on calculating pd for model_158
+2022-12-21 22:19:41 timed model_158: 515.7727109409989s
+2022-12-21 22:20:35 timed model_159/activations: 52.08335915299904s
+2022-12-21 22:20:35 timed model_159/distances: 0.5738800630006153s
+2022-12-21 22:25:53,598	ERROR worker.py:400 -- Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): The worker died unexpectedly while executing this task. Check python-core-worker-*.log files for more information.
+2022-12-21 22:26:18,495	ERROR worker.py:400 -- Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): The worker died unexpectedly while executing this task. Check python-core-worker-*.log files for more information.
+2022-12-21 22:28:08 timed model_159/pds: 452.32802994600024s
+2022-12-21 22:28:08 timed model_159: 505.19797616800133s
+2022-12-21 22:28:24 timed model_212/activations: 15.115317091998804s
+2022-12-21 22:28:24 timed model_212/distances: 0.5226787399988098s
+2022-12-21 22:29:47 timed model_212/pds: 82.52288485999998s
+2022-12-21 22:29:47 timed model_212: 98.41832735499884s
+2022-12-21 22:30:39 timed model_213/activations: 50.754489725000894s
+2022-12-21 22:30:40 timed model_213/distances: 0.5635067599996546s
+2022-12-21 22:32:24 timed model_213/pds: 103.97612958799982s
+2022-12-21 22:32:24 timed model_213: 155.50998148500003s
+2022-12-21 22:32:40 timed model_214/activations: 14.792720182000267s
+2022-12-21 22:32:40 timed model_214/distances: 0.5256819120004366s
+2022-12-21 22:32:58 timed model_214/pds: 18.121678010000323s
+2022-12-21 22:32:58 timed model_214: 33.5894876149996s
+2022-12-21 22:33:51 timed model_215/activations: 51.2944555999984s
+2022-12-21 22:33:51 timed model_215/distances: 0.6523924169996462s
+2022-12-21 22:34:11 timed model_215/pds: 19.939591983000355s
+2022-12-21 22:34:12 timed model_215: 72.04118834099972s
+2022-12-21 22:34:27 timed model_216/activations: 15.010465822999322s
+2022-12-21 22:34:28 timed model_216/distances: 0.5961466859989741s
+2022-12-21 22:34:45 timed model_216/pds: 16.95988787999886s
+2022-12-21 22:34:45 timed model_216: 32.69571743799861s
+2022-12-21 22:35:36 timed model_217/activations: 49.3666431849997s
+2022-12-21 22:35:36 timed model_217/distances: 0.6365755560000252s
+2022-12-21 22:35:54 timed model_217/pds: 17.50265759499962s
+2022-12-21 22:35:54 timed model_217: 67.63114314999984s
+2022-12-21 22:36:10 timed model_218/activations: 14.777549734000786s
+2022-12-21 22:36:10 timed model_218/distances: 0.5940725319997s
+2022-12-21 22:36:28 timed model_218/pds: 17.44620053899962s
+2022-12-21 22:36:28 timed model_218: 32.93836598300004s
+2022-12-21 22:37:20 timed model_219/activations: 50.84679676799897s
+2022-12-21 22:37:21 timed model_219/distances: 0.5254464119989279s
+2022-12-21 22:37:34 timed model_219/pds: 13.094552856000519s
+2022-12-21 22:37:34 timed model_219: 64.58677690700097s
+2022-12-21 22:37:49 timed model_220/activations: 14.77252531799968s
+2022-12-21 22:37:50 timed model_220/distances: 0.5354578769984073s
+2022-12-21 22:46:10 timed model_220/pds: 500.0624602140015s
+2022-12-21 22:46:10 Timed out on calculating pd for model_220
+2022-12-21 22:46:11 timed model_220: 516.2212532449994s
+2022-12-21 22:47:04 timed model_221/activations: 51.79082445600034s
+2022-12-21 22:47:05 timed model_221/distances: 0.6289679540004727s
+2022-12-21 22:55:25 timed model_221/pds: 500.0513511810004s
+2022-12-21 22:55:25 Timed out on calculating pd for model_221
+2022-12-21 22:55:25 timed model_221: 553.2806817679993s
+2022-12-21 22:55:42 timed model_222/activations: 15.184039670999482s
+2022-12-21 22:55:42 timed model_222/distances: 0.620904306999364s
+2022-12-21 22:57:07,344	ERROR worker.py:400 -- Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): The worker died unexpectedly while executing this task. Check python-core-worker-*.log files for more information.
+2022-12-21 22:57:57 timed model_222/pds: 134.98920954999994s
+2022-12-21 22:57:57 timed model_222: 151.02623763100019s
+2022-12-21 22:58:51 timed model_223/activations: 52.2906179849997s
+2022-12-21 22:58:52 timed model_223/distances: 0.6275643230001151s
+2022-12-21 23:00:53 timed model_223/pds: 120.8408445039986s
+2022-12-21 23:00:53 timed model_223: 173.913507184001s
+2022-12-21 23:00:58 timed model_532/activations: 4.377485478000381s
+2022-12-21 23:00:58 timed model_532/distances: 0.5306098210003256s
+2022-12-21 23:01:35 timed model_532/pds: 36.18151827700058s
+2022-12-21 23:01:35 timed model_532: 41.2153474250008s
+2022-12-21 23:01:50 timed model_533/activations: 14.61544768100066s
+2022-12-21 23:01:51 timed model_533/distances: 0.760468934000528s
+2022-12-21 23:02:32 timed model_533/pds: 41.30797450600039s
+2022-12-21 23:02:32 timed model_533: 56.80293221700049s
+2022-12-21 23:02:38 timed model_534/activations: 4.96613710299971s
+2022-12-21 23:02:38 timed model_534/distances: 0.5354759210003976s
+2022-12-21 23:03:14 timed model_534/pds: 35.31208290699942s
+2022-12-21 23:03:14 timed model_534: 40.92155834000005s
+2022-12-21 23:03:29 timed model_535/activations: 14.875451727999462s
+2022-12-21 23:03:30 timed model_535/distances: 0.6990387290006765s
+2022-12-21 23:04:08 timed model_535/pds: 37.67996804299946s
+2022-12-21 23:04:08 timed model_535: 53.36498562499946s
+2022-12-21 23:04:14 timed model_536/activations: 5.022337955999319s
+2022-12-21 23:04:14 timed model_536/distances: 0.7658863110009406s
+2022-12-21 23:04:45 timed model_536/pds: 30.70617831399977s
+2022-12-21 23:04:45 timed model_536: 36.60143177699865s
+2022-12-21 23:05:01 timed model_537/activations: 14.918133745999512s
+2022-12-21 23:05:01 timed model_537/distances: 0.5367445899992163s
+2022-12-21 23:05:30 timed model_537/pds: 28.7970608680007s
+2022-12-21 23:05:30 timed model_537: 44.35301465500015s
+2022-12-21 23:05:36 timed model_538/activations: 4.868366317999971s
+2022-12-21 23:05:36 timed model_538/distances: 0.542220522000207s
+2022-12-21 23:06:03 timed model_538/pds: 26.480245971999466s
+2022-12-21 23:06:03 timed model_538: 32.0054108610002s
+2022-12-21 23:06:19 timed model_539/activations: 14.672064018999663s
+2022-12-21 23:06:19 timed model_539/distances: 0.5946880999999848s
+2022-12-21 23:06:43 timed model_539/pds: 23.74527350199969s
+2022-12-21 23:06:43 timed model_539: 39.12202173500009s
+2022-12-21 23:06:48 timed model_540/activations: 4.793128118999448s
+2022-12-21 23:06:49 timed model_540/distances: 0.5286906059991452s
+2022-12-21 23:07:49 timed model_540/pds: 59.88889243799895s
+2022-12-21 23:07:49 timed model_540: 65.32495970499986s
+2022-12-21 23:08:05 timed model_541/activations: 15.007187319999503s
+2022-12-21 23:08:05 timed model_541/distances: 0.5631870460001664s
+2022-12-21 23:09:03 timed model_541/pds: 57.7441360849989s
+2022-12-21 23:09:03 timed model_541: 73.49156205299914s
+2022-12-21 23:09:08 timed model_542/activations: 4.6994480100001965s
+2022-12-21 23:09:09 timed model_542/distances: 0.5554399779994128s
+2022-12-21 23:09:55 timed model_542/pds: 45.98140372600028s
+2022-12-21 23:09:55 timed model_542: 51.38160917999994s
+2022-12-21 23:10:11 timed model_543/activations: 14.825401637999676s
+2022-12-21 23:10:11 timed model_543/distances: 0.653398186999766s
+2022-12-21 23:10:51 timed model_543/pds: 39.59990090700012s
+2022-12-21 23:10:51 timed model_543: 55.21866785600105s
+2022-12-21 23:10:56 timed model_596/activations: 4.6349535070003185s
+2022-12-21 23:10:57 timed model_596/distances: 0.5976543719989422s
+2022-12-21 23:11:31 timed model_596/pds: 34.16962910999973s
+2022-12-21 23:11:31 timed model_596: 39.53910608899969s
+2022-12-21 23:11:46 timed model_597/activations: 14.58147522299987s
+2022-12-21 23:11:47 timed model_597/distances: 0.5686351530002867s
+2022-12-21 23:12:20,155	ERROR worker.py:400 -- Unhandled error (suppress with 'RAY_IGNORE_UNHANDLED_ERRORS=1'): The worker died unexpectedly while executing this task. Check python-core-worker-*.log files for more information.
+2022-12-21 23:12:21 timed model_597/pds: 33.53631792399938s
+2022-12-21 23:12:21 timed model_597: 48.81346002800092s
+2022-12-21 23:12:26 timed model_598/activations: 4.954917751998437s
+2022-12-21 23:12:27 timed model_598/distances: 0.5580094710003323s
+2022-12-21 23:12:47 timed model_598/pds: 20.66397681700073s
+2022-12-21 23:12:48 timed model_598: 26.274384051999732s
+2022-12-21 23:13:03 timed model_599/activations: 14.691760206998879s
+2022-12-21 23:13:03 timed model_599/distances: 0.5122808340001939s
+2022-12-21 23:13:25 timed model_599/pds: 21.30091371799972s
+2022-12-21 23:13:25 timed model_599: 36.607936209999025s
+2022-12-21 23:13:30 timed model_600/activations: 4.946288831999482s
+2022-12-21 23:13:31 timed model_600/distances: 0.5538358339999832s
+2022-12-21 23:13:48 timed model_600/pds: 16.869930955999735s
+2022-12-21 23:13:48 timed model_600: 22.499975767999786s
+2022-12-21 23:14:03 timed model_601/activations: 14.74499144100082s
+2022-12-21 23:14:04 timed model_601/distances: 0.731629525000244s
+2022-12-21 23:14:23 timed model_601/pds: 18.810655086001134s
+2022-12-21 23:14:23 timed model_601: 34.397820555999715s
+2022-12-21 23:14:29 timed model_602/activations: 5.11946544499915s
+2022-12-21 23:14:29 timed model_602/distances: 0.5450942659990687s
+2022-12-21 23:14:43 timed model_602/pds: 13.213764911000908s
+2022-12-21 23:14:43 timed model_602: 19.006048749999536s
+2022-12-21 23:14:58 timed model_603/activations: 14.998735560999194s
+2022-12-21 23:14:59 timed model_603/distances: 0.5835793430014746s
+2022-12-21 23:15:14 timed model_603/pds: 14.589076451000437s
+2022-12-21 23:15:14 timed model_603: 30.27546551100022s
+2022-12-21 23:15:19 timed model_604/activations: 4.821336440001687s
+2022-12-21 23:15:20 timed model_604/distances: 0.6362923239994416s
+2022-12-21 23:16:03 timed model_604/pds: 43.40652652100107s
+2022-12-21 23:16:03 timed model_604: 48.970742359000724s
+2022-12-21 23:16:19 timed model_605/activations: 14.701812342000267s
+2022-12-21 23:16:19 timed model_605/distances: 0.5229482959985035s
+2022-12-21 23:16:53 timed model_605/pds: 33.58426713799963s
+2022-12-21 23:16:53 timed model_605: 48.93837261399858s
+2022-12-21 23:16:58 timed model_606/activations: 4.568931149000491s
+2022-12-21 23:16:59 timed model_606/distances: 0.5122614169995359s
+2022-12-21 23:17:28 timed model_606/pds: 28.961784966999403s
+2022-12-21 23:17:28 timed model_606: 34.174804787999165s
+2022-12-21 23:17:43 timed model_607/activations: 14.643942480000987s
+2022-12-21 23:17:44 timed model_607/distances: 0.5429083359995275s
+2022-12-21 23:18:08 timed model_607/pds: 24.1915937570011s
+2022-12-21 23:18:08 timed model_607: 39.50698760500018s
+2022-12-21 23:18:14 timed model_660/activations: 4.9945298959992215s
+2022-12-21 23:18:14 timed model_660/distances: 0.5554818259988679s
+2022-12-21 23:18:41 timed model_660/pds: 26.641127130000314s
+2022-12-21 23:18:41 timed model_660: 32.325023521998446s
+2022-12-21 23:18:57 timed model_661/activations: 15.112580469000022s
+2022-12-21 23:18:57 timed model_661/distances: 0.5117137059987726s
+2022-12-21 23:19:24 timed model_661/pds: 26.64022851899972s
+2022-12-21 23:19:24 timed model_661: 42.403205197000716s
+2022-12-21 23:19:30 timed model_662/activations: 4.864005116000044s
+2022-12-21 23:19:30 timed model_662/distances: 0.5572341339993727s
+2022-12-21 23:19:53 timed model_662/pds: 22.385363648001658s
+2022-12-21 23:19:53 timed model_662: 27.904575406999356s
+2022-12-21 23:20:08 timed model_663/activations: 14.722801355001138s
+2022-12-21 23:20:09 timed model_663/distances: 0.5609865590013214s
+2022-12-21 23:20:28 timed model_663/pds: 19.290098583000145s
+2022-12-21 23:20:28 timed model_663: 34.67284901499988s
+2022-12-21 23:20:34 timed model_664/activations: 4.9716773700001795s
+2022-12-21 23:20:34 timed model_664/distances: 0.5934986939992086s
+2022-12-21 23:20:52 timed model_664/pds: 17.738705524998295s
+2022-12-21 23:20:52 timed model_664: 23.389782310001465s
+2022-12-21 23:21:08 timed model_665/activations: 14.829307358999358s
+2022-12-21 23:21:08 timed model_665/distances: 0.5102439900001627s
+2022-12-21 23:21:32 timed model_665/pds: 23.447829663999073s
+2022-12-21 23:21:32 timed model_665: 38.90795738599991s
+2022-12-21 23:21:38 timed model_666/activations: 5.249474055999599s
+2022-12-21 23:21:38 timed model_666/distances: 0.5754574610000418s
+2022-12-21 23:21:52 timed model_666/pds: 14.034016863999568s
+2022-12-21 23:21:52 timed model_666: 19.95187385400095s
+2022-12-21 23:22:08 timed model_667/activations: 14.991842374998669s
+2022-12-21 23:22:09 timed model_667/distances: 0.5949140010015981s
+2022-12-21 23:22:23 timed model_667/pds: 14.171119528000418s
+2022-12-21 23:22:23 timed model_667: 29.900704835001306s
+2022-12-21 23:22:29 timed model_668/activations: 4.817320717000257s
+2022-12-21 23:22:29 timed model_668/distances: 0.5791463860005024s
+2022-12-21 23:22:57 timed model_668/pds: 28.14492918399992s
+2022-12-21 23:22:57 timed model_668: 33.63645327300037s
+2022-12-21 23:23:13 timed model_669/activations: 14.903832093999881s
+2022-12-21 23:23:14 timed model_669/distances: 0.5430792690003727s
+2022-12-21 23:23:47 timed model_669/pds: 33.5151329750006s
+2022-12-21 23:23:47 timed model_669: 49.09640796400163s
+2022-12-21 23:23:53 timed model_670/activations: 4.985068488998877s
+2022-12-21 23:23:53 timed model_670/distances: 0.5479068679996999s
+2022-12-21 23:24:23 timed model_670/pds: 30.051252818999274s
+2022-12-21 23:24:23 timed model_670: 35.70733089799978s
+2022-12-21 23:24:39 timed model_671/activations: 15.205070824000359s
+2022-12-21 23:24:40 timed model_671/distances: 0.5426691789998586s
+2022-12-21 23:25:08 timed model_671/pds: 27.91752530300073s
+2022-12-21 23:25:08 timed model_671: 43.799722211999324s
+2022-12-21 23:25:13 timed model_724/activations: 4.698951949998445s
+2022-12-21 23:25:14 timed model_724/distances: 0.6656243580000591s
+2022-12-21 23:25:37 timed model_724/pds: 22.812075138999717s
+2022-12-21 23:25:37 timed model_724: 28.28731705300015s
+2022-12-21 23:25:52 timed model_725/activations: 14.536956906998967s
+2022-12-21 23:25:53 timed model_725/distances: 0.516870708001079s
+2022-12-21 23:26:18 timed model_725/pds: 25.814716269998826s
+2022-12-21 23:26:19 timed model_725: 40.985562034000395s
+2022-12-21 23:26:24 timed model_726/activations: 4.993348844000138s
+2022-12-21 23:26:25 timed model_726/distances: 0.5749351549984567s
+2022-12-21 23:26:47 timed model_726/pds: 21.883933631001128s
+2022-12-21 23:26:47 timed model_726: 27.561368710999886s
+2022-12-21 23:27:02 timed model_727/activations: 14.967166962000192s
+2022-12-21 23:27:03 timed model_727/distances: 0.6128235300002416s
+2022-12-21 23:27:23 timed model_727/pds: 19.8775085569996s
+2022-12-21 23:27:23 timed model_727: 35.62304547799977s
+2022-12-21 23:27:28 timed model_728/activations: 4.669644631998381s
+2022-12-21 23:27:29 timed model_728/distances: 0.5800100470005418s
+2022-12-21 23:27:45 timed model_728/pds: 16.437062537999736s
+2022-12-21 23:27:45 timed model_728: 21.797503203000815s
+2022-12-21 23:28:00 timed model_729/activations: 14.333857136000006s
+2022-12-21 23:28:01 timed model_729/distances: 0.5994264809996821s
+2022-12-21 23:28:17 timed model_729/pds: 15.805721605000144s
+2022-12-21 23:28:17 timed model_729: 30.83718020300148s
+2022-12-21 23:28:22 timed model_730/activations: 4.736586172999523s
+2022-12-21 23:28:23 timed model_730/distances: 0.5530963969995355s
+2022-12-21 23:28:35 timed model_730/pds: 11.9692909839996s
+2022-12-21 23:28:35 timed model_730: 17.345592743000452s
+2022-12-21 23:28:50 timed model_731/activations: 14.717525894999198s
+2022-12-21 23:28:51 timed model_731/distances: 0.5360964470000908s
+2022-12-21 23:29:03 timed model_731/pds: 12.5945447769991s
+2022-12-21 23:29:03 timed model_731: 27.92993686599948s
+2022-12-21 23:29:09 timed model_732/activations: 4.741809683000611s
+2022-12-21 23:29:09 timed model_732/distances: 0.6521842540005309s
+2022-12-21 23:29:41 timed model_732/pds: 32.033199321998836s
+2022-12-21 23:29:42 timed model_732: 37.53405170199949s
+2022-12-21 23:29:56 timed model_733/activations: 14.168721120000555s
+2022-12-21 23:29:57 timed model_733/distances: 0.5059843750004802s
+2022-12-21 23:30:21 timed model_733/pds: 23.802372056999957s
+2022-12-21 23:30:21 timed model_733: 38.607169272001556s
+2022-12-21 23:30:26 timed model_734/activations: 4.6240204210007505s
+2022-12-21 23:30:26 timed model_734/distances: 0.5053647580007237s
+2022-12-21 23:30:57 timed model_734/pds: 30.224015893998512s
+2022-12-21 23:30:57 timed model_734: 35.471516895000605s
+2022-12-21 23:31:12 timed model_735/activations: 14.276788648001457s
+2022-12-21 23:31:12 timed model_735/distances: 0.5192183460003434s
+2022-12-21 23:31:40 timed model_735/pds: 27.338873269000032s
+2022-12-21 23:31:40 timed model_735: 42.255880603999685s
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (6) Could not resolve host: experiment
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   109  100   101  100     8    580     45 --:--:-- --:--:-- --:--:--   626
+{"id":"VKvkuGCicaMB","time":1671665504,"event":"message","topic":"tfm_tda_exp","message":"Finished"}
