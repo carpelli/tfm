@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-import pickle
+from typing import Tuple
 
 import numpy as np
 import tensorflow as tf
@@ -16,7 +16,7 @@ def import_model(path: Path) -> tf.keras.Sequential:
     return model
 
 
-def import_and_sample_data(path: Path, size):
+def import_and_sample_data(path: Path, size) -> Tuple[np.ndarray, int]:
     dataset = tf.data.TFRecordDataset([*path.glob('train/shard_*.tfrecord')])
     array = np.array([*dataset.map(_deserialize_example).as_numpy_iterator()])
     # sample = np.random.choice(
@@ -26,14 +26,9 @@ def import_and_sample_data(path: Path, size):
     # ret, _ = map(np.array, zip(
     # 	*train.shuffle(2000, reshuffle_each_iteration=True).take(2000).as_numpy_iterator()))
     # ret = np.array([*train.shuffle(2000, reshuffle_each_iteration=True).take(2000).as_numpy_iterator()])
-    return array[np.random.choice(len(array), size, replace=False)].copy()
-
-
-# def save_pd(persistence_diagram, path: Path):
-#     if not path.parent.exists():
-#         path.parent.mkdir(parents=True)
-#     with open(path.with_suffix('.bin'), 'wb') as f:
-#         pickle.dump(persistence_diagram, f)
+    seeds = np.random.SeedSequence()
+    sample_ix = np.random.default_rng(seeds).choice(len(array), size, replace=False)
+    return array[sample_ix].copy(), int(seeds.entropy)
 
 
 def save(type: str, array: np.ndarray, path: Path):

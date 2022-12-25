@@ -72,8 +72,9 @@ if __name__ == "__main__":
         f"Starting experiment with {SAMPLER.name} timing out after {args.timeout}s")
     logging.info(f"Importing data...")
 
-    x_train = utils.import_and_sample_data(
+    x_train, entropy = utils.import_and_sample_data(
         args.data_path / "dataset_1", DATA_SAMPLE_SIZE)
+    logging.info(f"Data sampling entropy: {entropy}")
 
     logging.info(f"Finished importing data")
 
