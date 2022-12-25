@@ -3,6 +3,8 @@ import sys
 from azureml.core import Workspace, Environment, Experiment, ScriptRunConfig, Dataset
 from azureml.data import OutputFileDatasetConfig
 
+from tfm.constants import SAMPLER
+
 ws = Workspace.from_config()
 target = ws.compute_targets['cpu-cluster-4-28']
 dataset = Dataset.File.from_files(
@@ -18,7 +20,7 @@ env = Environment.from_pip_requirements(
 )
 version_str = "{}.{}.{}".format(*sys.version_info)
 env.python.conda_dependencies.set_python_version(version_str)
-exp = Experiment(ws, 'tfm-exp')
+exp = Experiment(ws, f'tfm-exp-{SAMPLER.name}')
 config = ScriptRunConfig(
     source_directory='tfm',
     command=[
