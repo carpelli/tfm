@@ -3,7 +3,7 @@ from datetime import datetime
 import logging
 from pathlib import Path
 
-import tensorflow as tf
+# import tensorflow as tf
 
 import pd
 import utils
@@ -17,10 +17,12 @@ def ask_for_args(args):
             if type(value) == bool:
                 args.__dict__[arg] = \
                     input(f'{arg.title()} (n)? y for yes: ') == 'y'
+            elif type(value) == list:
+                response = input(f'{arg.title()}: ')
+                args.__dict__[arg] = response.split(' ') if response else []
             else:
                 args.__dict__[arg] = type(value)(
                     input(f'{arg.title()} ({value}): ') or value)
-
 
 if __name__ == "__main__":
     # tf.random.set_seed(1234)
@@ -34,7 +36,10 @@ if __name__ == "__main__":
     # parser.add_argument('--threads', default=1, type=int)
     parser.add_argument('-i', '--interactive', action='store_true')
     parser.add_argument('--resume', action='store_true')
+    parser.add_argument('--models', nargs='+', default=[])
     args = parser.parse_args()
+
+    parser._get_args
 
     if args.interactive:
         ask_for_args(args)
@@ -42,7 +47,6 @@ if __name__ == "__main__":
     formatter = logging.Formatter("%(asctime)s %(message)s", "%Y-%m-%d %H:%M:%S")
     stdoutHandler = logging.StreamHandler()
     stdoutHandler.setFormatter(formatter)
-    stdoutHandler.setLevel(logging.INFO)
     logging.basicConfig(handlers=[stdoutHandler], level=logging.INFO)
     # logging.getLogger()
 
@@ -53,16 +57,15 @@ if __name__ == "__main__":
         if subdirs:
             outdir /= subdirs[-1]
         else:
-            logging.warning("Asked to resume but no previous output found, \
-                making a new directory")
+            logging.warning("Asked to resume but no previous output found. \
+                Making a new directory")
     else:
-        outdir /= datetime.now().strftime('%y.%m.%d-%H')
+        outdir /= datetime.now().strftime('%y.%m.%d-%H.%M.%S')
     outdir.mkdir(parents=True, exist_ok=True)
 
     (outdir / 'log.txt').touch(exist_ok=True) # fix
     fileHandler = logging.FileHandler(outdir / 'log.txt')
     fileHandler.setFormatter(formatter)
-    fileHandler.setLevel(logging.DEBUG)
     logging.getLogger().addHandler(fileHandler)
 
     logging.info(
@@ -74,20 +77,23 @@ if __name__ == "__main__":
 
     logging.info(f"Finished importing data")
 
-    # sort the models according to their number
-    model_paths = sorted(args.data_path.glob('model*'),
-                         key=lambda p: (len(p.name), p.name))
+    if args.models:
+        model_paths = [args.data_path / f'model_{m}' for m in args.models]
+    else:
+        model_paths = args.data_path.glob('model*')
 
-    for model_path in model_paths:
+    for model_path in sorted(model_paths, key=lambda p: (len(p.name), p.name)):
         pd_path = outdir / f'{model_path.name}'
 
-        try:
-            file = next(outdir.glob(pd_path.name + "*"))
-            logging.info(f'Found {file}, skipping...')
+        if already_present := [*outdir.glob(pd_path.name + "*")]:
+            logging.info(f'Found {already_present[0]}, skipping...')
             continue
-        except StopIteration:
-            pass
-
-        model = utils.import_model(model_path)
+        
+        try:
+            model = utils.import_model(model_path)
+        except FileNotFoundError:
+            logging.warning(model_path.name + ' cannot be found')
+            continue
+        
         with timer(model_path.name):
             pd.from_model_and_save(model, x_train, pd_path, args.timeout)
