@@ -15,7 +15,7 @@ class Sampler(ABC):
 
     @property
     def name(self) -> str:
-        return type(self).__name__.lower()
+        return type(self).__name__
 
     @abstractmethod
     def build(self, layers: list[tf.keras.layers.Layer]):
