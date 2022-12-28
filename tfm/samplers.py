@@ -5,9 +5,9 @@ from typing import Union  # fix when back to 3.10
 
 import numpy as np
 import tensorflow as tf
-
 from sklearn.cluster import kmeans_plusplus
 
+import constants
 
 class Sampler(ABC):
     def __init__(self, n: int):
@@ -74,15 +74,15 @@ class MaxImportance(Random):
         return np.hstack([self.top, super().accumulate()[:, random_ix]])
 
 
-# class AvgImportance(Sampler):
-#     def layer(self, x, i):
-#         top = self.activations[0] if self.activations else []
-#         vals = tf.math.reduce_mean(tf.abs(x), axis=0)
-#         top_ix = tf.math.argmax(tf.concat([top, vals], 0))[:self.n]
-#         self.activations[0] = tf.concat(
-#             tf.gather(x, top_ix[top_ix >= self.n]),
-#             tf.gather(top, top_ix[top_ix < self.n]),
-#         )
+class AvgImportance(Sampler):
+    def build(self, _):
+        self.activations = [tf.zeros((constants.DATA_SAMPLE_SIZE, self.n))]
+
+    def layer(self, x, _):
+        x_abs = tf.math.abs(x)
+        augmented = tf.concat([self.activations[0], x_abs], axis=1)
+        top_ix = tf.math.top_k(tf.math.reduce_mean(augmented, axis=0), self.n).indices
+        self.activations[0] = tf.gather(augmented, top_ix, axis=1)
 
 
 class StratifiedSampler(Sampler):
