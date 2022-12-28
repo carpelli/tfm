@@ -7,7 +7,6 @@ import numpy as np
 import tensorflow as tf
 from sklearn.cluster import kmeans_plusplus
 
-import constants
 
 class Sampler(ABC):
     def __init__(self, n: int):
@@ -27,7 +26,7 @@ class Sampler(ABC):
 
     def accumulate(self) -> np.ndarray:
         return np.hstack(self.activations)
-    
+
     def apply(self, model: tf.keras.Sequential, included_layers, x: tf.Tensor) -> np.ndarray:
         self.build(included_layers)
         i = 0
@@ -76,7 +75,8 @@ class MaxImportance(Random):
 
 class AvgImportance(Sampler):
     def build(self, _):
-        self.activations = [tf.zeros((constants.DATA_SAMPLE_SIZE, self.n))]
+        from constants import DATA_SAMPLE_SIZE # fix?
+        self.activations = [tf.zeros((DATA_SAMPLE_SIZE, self.n))]
 
     def layer(self, x, _):
         x_abs = tf.math.abs(x)
@@ -109,15 +109,16 @@ class StratifiedMaxDist(StratifiedSampler):
         ixs[cur_ix] = True
         x_T = tf.transpose(x).numpy()
         for j in range(self.n_layered[i] - 1):
-            print(
-                f'Got activation {j+1}/{self.n_layered[i]} in layer {i+1}/{len(self.n_layered)}       ', end='\r')
+            print(f'Got activation {j+1}/{self.n_layered[i]} in layer '
+                f'{i+1}/{len(self.n_layered)}       ', end='\r')
             with np.errstate(invalid='ignore'):
                 y = x_T[cur_ix]
                 # cov = tf.math.reduce_mean(
                 #     (x_T - tf.reshape(tf.math.reduce_mean(x_T, axis=1), (-1, 1)))
                 #     * (y - tf.math.reduce_mean(y)
                 # ), axis=1).numpy()
-                cov = np.mean((x_T - x_T.mean(axis=1).reshape((-1, 1))) * (y - y.mean()), axis=1)
+                cov = np.mean(
+                    (x_T - x_T.mean(axis=1).reshape((-1, 1))) * (y - y.mean()), axis=1)
                 sd = x_T.std(axis=1)*y.std()
                 corr = np.abs(np.nan_to_num(cov/sd))
 
