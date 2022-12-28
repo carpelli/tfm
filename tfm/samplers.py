@@ -41,8 +41,8 @@ class Sampler(ABC):
 
 class Random(Sampler):
     def build(self, layers):
-        self.sizes = [np.prod(l.output.shape[1:])
-                      for l in layers]  # type: ignore
+        self.sizes = [np.prod(l.output.shape[1:])  # type: ignore
+                      for l in layers]
         self.layer_ix = np.r_[0, self.sizes].cumsum()[:-1]
         self.sample_ix = np.sort(np.random.choice(
             sum(self.sizes), self.n, replace=False))  # type: ignore
@@ -54,13 +54,14 @@ class Random(Sampler):
         self.activations += [tf.gather(x, ix, axis=1)]
 
 
-class Importance(Random):
+class MaxImportance(Random):
     def build(self, layers):
         self.top = tf.zeros(0)
         super().build(layers)
 
     def layer(self, x, i):
-        augmented = tf.concat([self.top, x], axis=1) if len(self.top) else x
+        x_abs = tf.math.abs(x)
+        augmented = tf.concat([self.top, x_abs], axis=1) if len(self.top) else x_abs
         top_ix, _ = tf.unique(tf.math.argmax(augmented, axis=1))
         self.top = tf.gather(augmented, top_ix, axis=1)
         super().layer(x, i)
@@ -71,6 +72,17 @@ class Importance(Random):
         random_ix = np.random.choice(
             self.n, self.n - self.top.shape[1], replace=False)
         return np.hstack([self.top, super().accumulate()[:, random_ix]])
+
+
+# class AvgImportance(Sampler):
+#     def layer(self, x, i):
+#         top = self.activations[0] if self.activations else []
+#         vals = tf.math.reduce_mean(tf.abs(x), axis=0)
+#         top_ix = tf.math.argmax(tf.concat([top, vals], 0))[:self.n]
+#         self.activations[0] = tf.concat(
+#             tf.gather(x, top_ix[top_ix >= self.n]),
+#             tf.gather(top, top_ix[top_ix < self.n]),
+#         )
 
 
 class StratifiedSampler(Sampler):

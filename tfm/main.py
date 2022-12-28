@@ -57,8 +57,8 @@ if __name__ == "__main__":
         if subdirs:
             outdir /= subdirs[-1]
         else:
-            logging.warning("Asked to resume but no previous output found. \
-                Making a new directory")
+            logging.warning('Asked to resume but no previous output found. '
+                'Making a new directory')
     else:
         outdir /= datetime.now().strftime('%y.%m.%d-%H.%M.%S')
     outdir.mkdir(parents=True, exist_ok=True)
@@ -68,8 +68,8 @@ if __name__ == "__main__":
     fileHandler.setFormatter(formatter)
     logging.getLogger().addHandler(fileHandler)
 
-    logging.info(
-        f"Starting experiment with {SAMPLER.name} timing out after {args.timeout}s")
+    logging.info(f'Starting experiment with {SAMPLER.name} sampler '
+        f'timing out after {args.timeout}s')
     logging.info(f"Importing data...")
 
     x_train, entropy = utils.import_and_sample_data(
