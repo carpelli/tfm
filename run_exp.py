@@ -1,8 +1,10 @@
+from pathlib import Path
 import sys
 
 from azureml.core import Workspace, Environment, Experiment, ScriptRunConfig, Dataset
 from azureml.data import OutputFileDatasetConfig
 
+sys.path.append(str(Path('./tfm')))
 from tfm.constants import SAMPLER
 
 ws = Workspace.from_config()
