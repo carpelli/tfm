@@ -1,3 +1,4 @@
+import argparse
 from pathlib import Path
 import sys
 
@@ -7,10 +8,15 @@ from azureml.data import OutputFileDatasetConfig
 sys.path.append(str(Path('./tfm')))
 from tfm.constants import SAMPLER
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--task', choices=[1, 2], type=int, required=True)
+parser.add_argument('--models')
+args = parser.parse_args()
+
 ws = Workspace.from_config()
 target = ws.compute_targets['cpu-cluster-4-28']
 dataset = Dataset.File.from_files(
-    path=(ws.datastores['tfm'], 'google_data/public_data/input_data/task1_v4')
+    path=(ws.datastores['tfm'], 'google_data')
 )
 output = OutputFileDatasetConfig(
     destination=(ws.datastores['tfm'], "out"),
@@ -22,11 +28,13 @@ env = Environment.from_pip_requirements(
 )
 version_str = "{}.{}.{}".format(*sys.version_info)
 env.python.conda_dependencies.set_python_version(version_str)
-exp = Experiment(ws, f'tfm-exp-{SAMPLER.name}')
+exp = Experiment(ws, f'tfm-exp-task{args.task}-{SAMPLER.name}')
 config = ScriptRunConfig(
     source_directory='tfm',
     command=[
-        'python', 'main.py', dataset.as_mount(), '-o', output.as_mount(), '--timeout', '500',
+        'python', 'main.py', dataset.as_mount(), '-o', output.as_mount(),
+            '--task', str(args.task), '--timeout', '500',
+            f'--models {args.models}' if args.models else ''
         '&&', 'curl' ,'-d', 'Finished experiment', 'ntfy.sh/tfm_tda_exp',
         '||', 'curl' ,'-d', 'Failed experiment', 'ntfy.sh/tfm_tda_exp',
     ],
