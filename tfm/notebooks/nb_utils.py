@@ -63,7 +63,7 @@ def get_files(task: int, sampler: Union[str, None] = None, pattern = '*.pd.npy')
 
 
 def dirs(path: Path):
-    return [dir for dir in path.iterdir() if dir.is_dir()]
+    return sorted(dir for dir in path.iterdir() if dir.is_dir())
 
 
 def annotated_heatmap(data, *, title, x_labels, y_labels):
