@@ -8,21 +8,8 @@ from pathlib import Path
 import pd
 import utils
 from utils.timertree import timer
-from constants import OUTDIR, TIMEOUT, SAMPLER, DATA_SAMPLE_SIZE
+from constants import OUTDIR, INPUT_DIR, TIMEOUT, SAMPLER, DATA_SAMPLE_SIZE
 
-
-def ask_for_args(args):
-    for arg, value in args.__dict__.items():
-        if value == parser.get_default(arg):
-            if type(value) == bool:
-                args.__dict__[arg] = \
-                    input(f'{arg.title()} (n)? y for yes: ') == 'y'
-            elif type(value) == list:
-                response = input(f'{arg.title()}: ')
-                args.__dict__[arg] = response.split(' ') if response else []
-            else:
-                args.__dict__[arg] = type(value)(
-                    input(f'{arg.title()} ({value}): ') or value)
 
 if __name__ == "__main__":
     # tf.random.set_seed(1234)
@@ -30,28 +17,22 @@ if __name__ == "__main__":
     # tf.config.experimental.enable_op_determinism()
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('data_path', type=Path)
+    parser.add_argument('data_path', type=Path, help="path to the google_data folder")
+    parser.add_argument('--task', choices=[1, 2], type=int, required=True)
     parser.add_argument('-o', '--output', default=OUTDIR, type=Path)
     parser.add_argument('--timeout', default=TIMEOUT, type=int)
     # parser.add_argument('--threads', default=1, type=int)
-    parser.add_argument('-i', '--interactive', action='store_true')
     parser.add_argument('--resume', action='store_true')
     parser.add_argument('--models', nargs='+', default=[])
     args = parser.parse_args()
-
-    parser._get_args
-
-    if args.interactive:
-        ask_for_args(args)
 
     formatter = logging.Formatter("%(asctime)s %(message)s", "%Y-%m-%d %H:%M:%S")
     stdoutHandler = logging.StreamHandler()
     stdoutHandler.setFormatter(formatter)
     logging.basicConfig(handlers=[stdoutHandler], level=logging.INFO)
-    # logging.getLogger()
 
     # set the outdir depending on if asked to continue the last batch or make a new one
-    outdir = Path(args.output) / 'task1' / SAMPLER.name
+    outdir = Path(args.output) / f'task{args.task}' / SAMPLER.name
     subdirs = sorted(outdir.glob("[0-9]"))
     if args.resume:
         if subdirs:
@@ -68,20 +49,21 @@ if __name__ == "__main__":
     fileHandler.setFormatter(formatter)
     logging.getLogger().addHandler(fileHandler)
 
-    logging.info(f'Starting experiment with {SAMPLER.name} sampler '
-        f'timing out after {args.timeout}s')
+    logging.info(f'Starting experiment on task {args.task} with {SAMPLER.name} '
+        f'sampler timing out after {args.timeout}s')
     logging.info(f"Importing data...")
 
+    input_dir = args.data_path / INPUT_DIR[args.task]
     x_train, entropy = utils.import_and_sample_data(
-        args.data_path / "dataset_1", DATA_SAMPLE_SIZE)
+        input_dir / "dataset_1", DATA_SAMPLE_SIZE)
     logging.info(f"Data sampling entropy: {entropy}")
 
     logging.info(f"Finished importing data")
 
     if args.models:
-        model_paths = [args.data_path / f'model_{m}' for m in args.models]
+        model_paths = [input_dir / f'model_{m}' for m in args.models]
     else:
-        model_paths = args.data_path.glob('model*')
+        model_paths = input_dir.glob('model*')
 
     for model_path in sorted(model_paths, key=lambda p: (len(p.name), p.name)):
         pd_path = outdir / f'{model_path.name}'
