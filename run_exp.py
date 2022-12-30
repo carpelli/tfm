@@ -10,8 +10,7 @@ from tfm.constants import SAMPLER
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--task', choices=[1, 2], type=int, required=True)
-parser.add_argument('--models')
-args = parser.parse_args()
+args, extra_args = parser.parse_known_args()
 
 ws = Workspace.from_config()
 target = ws.compute_targets['cpu-cluster-4-28']
@@ -33,8 +32,7 @@ config = ScriptRunConfig(
     source_directory='tfm',
     command=[
         'python', 'main.py', dataset.as_mount(), '-o', output.as_mount(),
-            '--task', str(args.task), '--timeout', '500',
-            f'--models {args.models}' if args.models else ''
+            '--task', str(args.task), '--timeout', '500', *extra_args,
         '&&', 'curl' ,'-d', 'Finished experiment', 'ntfy.sh/tfm_tda_exp',
         '||', 'curl' ,'-d', 'Failed experiment', 'ntfy.sh/tfm_tda_exp',
     ],
