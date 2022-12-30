@@ -38,6 +38,9 @@ def from_model_and_save(model, x, pd_path, timeout):
     with timer('distances'):
         distance_matrix = compute_distance_matrix(activation_samples)
 
+    from_dm_and_save(distance_matrix, pd_path, timeout)
+
+def from_dm_and_save(distance_matrix, pd_path, timeout):
     pd_future = from_distances.remote(distance_matrix)
     with timer('pds'):
         finished = ray.wait([pd_future], timeout=timeout)[0]

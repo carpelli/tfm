@@ -1,6 +1,8 @@
 import argparse
 from datetime import datetime
+import errno
 import logging
+import os
 from pathlib import Path
 
 # import tensorflow as tf
@@ -24,6 +26,7 @@ if __name__ == "__main__":
     # parser.add_argument('--threads', default=1, type=int)
     parser.add_argument('--resume', action='store_true')
     parser.add_argument('--models', nargs='+', default=[])
+    parser.add_argument('--from-dm')
     args = parser.parse_args()
 
     formatter = logging.Formatter("%(asctime)s %(message)s", "%Y-%m-%d %H:%M:%S")
@@ -33,13 +36,14 @@ if __name__ == "__main__":
 
     # set the outdir depending on if asked to continue the last batch or make a new one
     outdir = Path(args.output) / f'task{args.task}' / SAMPLER.name
-    subdirs = sorted(outdir.glob("[0-9]"))
+    subdirs = sorted(outdir.glob("[0-9]*"))
     if args.resume:
         if subdirs:
             outdir /= subdirs[-1]
         else:
-            logging.warning('Asked to resume but no previous output found. '
-                'Making a new directory')
+            raise FileNotFoundError(errno.ENOENT, 'No directories to continue from')
+    elif args.from_dm:
+        outdir /= args.from_dm
     else:
         outdir /= datetime.now().strftime('%y.%m.%d-%H.%M.%S')
     outdir.mkdir(parents=True, exist_ok=True)
@@ -48,6 +52,16 @@ if __name__ == "__main__":
     fileHandler = logging.FileHandler(outdir / 'log.txt')
     fileHandler.setFormatter(formatter)
     logging.getLogger().addHandler(fileHandler)
+
+    if args.from_dm:
+        logging.info(f'Starting calculating PDs for models {args.models} with timeout '
+            f'{args.timeout}')
+
+        for path in [outdir / f'model_{m}' for m in args.models]:
+            with timer(path.name):
+                pd.from_dm_and_save(utils.load('dm', path), path, args.timeout)
+
+        exit()
 
     logging.info(f'Starting experiment on task {args.task} with {SAMPLER.name} '
         f'sampler timing out after {args.timeout}s')
