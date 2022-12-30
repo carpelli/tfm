@@ -41,7 +41,8 @@ if __name__ == "__main__":
         if subdirs:
             outdir /= subdirs[-1]
         else:
-            raise FileNotFoundError(errno.ENOENT, 'No directories to continue from')
+            raise FileNotFoundError(errno.ENOENT, 'Asked to --resume, but no '
+                'directories to resume from')
     elif args.from_dm:
         outdir /= args.from_dm
     else:
