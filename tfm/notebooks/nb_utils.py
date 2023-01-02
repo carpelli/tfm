@@ -108,12 +108,12 @@ def heatmap(data, row_labels, col_labels, ax=None,
 
     # Show all ticks and label them with the respective list entries.
     ax.set_yticks(np.arange(data.shape[0]), labels=row_labels)
-    if col_labels:
+    if col_labels is not None:
         ax.set_xticks(np.arange(data.shape[1]), labels=col_labels)
 
     # Let the horizontal axes labeling appear on top.
-    ax.tick_params(top=bool(col_labels), bottom=False,
-                   labeltop=bool(col_labels), labelbottom=False)
+    ax.tick_params(top=col_labels is not None, bottom=False,
+                   labeltop=col_labels is not None, labelbottom=False)
 
     # Rotate the tick labels and set their alignment.
     plt.setp(ax.get_xticklabels(), rotation=-30, ha="right",
