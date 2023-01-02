@@ -6,7 +6,7 @@ from azureml.core import Workspace, Environment, Experiment, ScriptRunConfig, Da
 from azureml.data import OutputFileDatasetConfig
 
 sys.path.append(str(Path('./tfm')))
-from tfm.constants import SAMPLER
+from tfm.constants import SAMPLER, VERSION
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--task', choices=[1, 2], type=int, required=True)
@@ -27,7 +27,7 @@ env = Environment.from_pip_requirements(
 )
 version_str = "{}.{}.{}".format(*sys.version_info)
 env.python.conda_dependencies.set_python_version(version_str)
-exp = Experiment(ws, f'tfm-exp-task{args.task}-{SAMPLER.name}')
+exp = Experiment(ws, f'tfm-exp-task{args.task}-{SAMPLER.name}{"-" if VERSION else ""}{VERSION}')
 config = ScriptRunConfig(
     source_directory='tfm',
     command=[

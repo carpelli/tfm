@@ -10,5 +10,10 @@ INPUT_DIR = {
 	1: Path('public_data/input_data/task1_v4'),
 	2: Path('public_data/input_data/task2_v1')
 }
-SAMPLER = samplers.AvgImportance(3000)
+SAMPLER = samplers.StratifiedKMeans(3000, 20000)
+VERSION = ''
+INCLUDED_LAYERS = {
+	'': slice(1, None),
+	'WithFirst': slice(0, None)
+}
 TIMEOUT = 1000

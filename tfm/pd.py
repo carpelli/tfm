@@ -5,7 +5,7 @@ import numpy as np
 import ray
 
 import utils
-from constants import UPPER_DIM, SAMPLER, DATA_SAMPLE_SIZE
+from constants import UPPER_DIM, SAMPLER, DATA_SAMPLE_SIZE, VERSION, INCLUDED_LAYERS
 from utils.timertree import timer
 
 
@@ -29,7 +29,7 @@ def from_distances(distance_matrix):
 
 
 def from_model_and_save(model, x, pd_path, timeout):
-    included_layers = model.layers[1:]
+    included_layers = model.layers[INCLUDED_LAYERS[VERSION]]
 
     with timer('activations'):
         activation_samples = SAMPLER.apply(model, included_layers, x)

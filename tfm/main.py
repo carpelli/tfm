@@ -10,7 +10,7 @@ from pathlib import Path
 import pd
 import utils
 from utils.timertree import timer
-from constants import OUTDIR, INPUT_DIR, TIMEOUT, SAMPLER, DATA_SAMPLE_SIZE
+from constants import OUTDIR, INPUT_DIR, TIMEOUT, SAMPLER, DATA_SAMPLE_SIZE, VERSION
 
 
 if __name__ == "__main__":
@@ -35,7 +35,7 @@ if __name__ == "__main__":
     logging.basicConfig(handlers=[stdoutHandler], level=logging.INFO)
 
     # set the outdir depending on if asked to continue the last batch or make a new one
-    outdir = Path(args.output) / f'task{args.task}' / SAMPLER.name
+    outdir = Path(args.output) / f'task{args.task}/{SAMPLER.name}{"-" if VERSION else ""}{VERSION}'
     subdirs = sorted(outdir.glob("[0-9]*"))
     if args.resume:
         if subdirs:
@@ -65,7 +65,7 @@ if __name__ == "__main__":
         exit()
 
     logging.info(f'Starting experiment on task {args.task} with {SAMPLER.name} '
-        f'sampler timing out after {args.timeout}s')
+        f'(version \'{VERSION}\') sampler timing out after {args.timeout}s')
     logging.info(f"Importing data...")
 
     input_dir = args.data_path / INPUT_DIR[args.task]
