@@ -32,7 +32,8 @@ if __name__ == "__main__":
     formatter = logging.Formatter("%(asctime)s %(message)s", "%Y-%m-%d %H:%M:%S")
     stdoutHandler = logging.StreamHandler()
     stdoutHandler.setFormatter(formatter)
-    logging.basicConfig(handlers=[stdoutHandler], level=logging.INFO)
+    stdoutHandler.setLevel(logging.INFO)
+    logging.basicConfig(handlers=[stdoutHandler], level=logging.DEBUG)
 
     # set the outdir depending on if asked to continue the last batch or make a new one
     outdir = Path(args.output) / f'task{args.task}/{SAMPLER.name}{"-" if VERSION else ""}{VERSION}'
@@ -52,6 +53,7 @@ if __name__ == "__main__":
     (outdir / 'log.txt').touch(exist_ok=True) # fix
     fileHandler = logging.FileHandler(outdir / 'log.txt')
     fileHandler.setFormatter(formatter)
+    fileHandler.setLevel(logging.DEBUG)
     logging.getLogger().addHandler(fileHandler)
 
     if args.from_dm:
@@ -93,5 +95,6 @@ if __name__ == "__main__":
             logging.warning(model_path.name + ' cannot be found')
             continue
         
+        logging.info(f"Starting calculation on {model_path.name}")
         with timer(model_path.name):
             pd.from_model_and_save(model, x_train, pd_path, args.timeout)
