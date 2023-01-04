@@ -6,6 +6,35 @@ import numpy as np
 import tensorflow as tf
 
 
+def farthest(d, p):
+	d = np.triu(d, 1) + np.triu(d, 1).T
+	N = len(d)
+	maxdist  = 0
+	bestpair = ()
+	for i in range(N):
+		for j in range(i+1,N):
+			if d[i,j]>maxdist:
+				maxdist = d[i,j]
+				bestpair = (i,j)
+
+	P = set()
+	P.add(bestpair[0])
+	P.add(bestpair[1])
+
+	while len(P) < p:
+		maxdist = 0
+		vbest = None
+		for v in range(N):
+			if v in P:
+				continue
+			for vprime in P:
+				if d[v,vprime]>maxdist:
+					maxdist = d[v,vprime]
+					vbest   = v
+		P.add(vbest)
+	return list(P)
+
+
 def import_model(path: Path) -> tf.keras.Sequential:
     model = create_model_instance(path / 'config.json')
     if (path / 'weights_init.hdf5').exists():

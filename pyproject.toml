@@ -17,6 +17,7 @@ scikit-learn-intelex = "2021.6.3"
 ray = "^2.2.0"
 genieclust = "^1.1.2"
 nmslib = "^2.1.1"
+tensorflow-probability = "^0.19.0"
 
 [tool.poetry.dev-dependencies]
 jupyter = "^1.0.0"

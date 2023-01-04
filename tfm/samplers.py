@@ -5,10 +5,14 @@ from typing import Union  # fix when back to 3.10
 
 import numpy as np
 import tensorflow as tf
+import tensorflow_probability as tfp
 from sklearn.cluster import kmeans_plusplus
 
+import utils
 
 class Sampler(ABC):
+    _flat = True
+
     def __init__(self, n: int):
         self.n = n
 
@@ -33,7 +37,7 @@ class Sampler(ABC):
         for layer in model.layers:
             x = layer(x)  # type: ignore
             if layer in included_layers:
-                self.layer(tf.reshape(x, (x.shape[0], -1)), i)
+                self.layer(tf.reshape(x, (x.shape[0], -1)) if self._flat else x, i)
                 i += 1
         return self.accumulate().T
 
@@ -124,6 +128,22 @@ class StratifiedRandom(StratifiedSampler):
     def layer(self, x: tf.Tensor, i: int):
         ix = np.random.choice(x.shape[1], self.n_layered[i])
         self.activations += [tf.gather(x, ix, axis=1)]
+
+
+class StratifiedFilterCorr(StratifiedRandom):
+    _flat = False
+
+    def build(self, layers):
+        self._layers = layers
+        super().build(layers)
+
+    def layer(self, x: tf.Tensor, i: int):
+        if (isinstance(self._layers[i], tf.keras.layers.Conv2D) and
+                x.shape[1] * x.shape[2] > 1):
+            corr = 1 - tf.math.abs(tfp.stats.correlation(x[0], sample_axis=[0,1]))
+            filter_ix = utils.farthest(corr, 10)
+            x = tf.gather(x, filter_ix, axis=-1)
+        super().layer(tf.reshape(x, (x.shape[0], -1)), i)
 
 
 class StratifiedMaxDist(StratifiedSampler):
