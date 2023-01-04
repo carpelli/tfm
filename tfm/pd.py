@@ -9,18 +9,25 @@ from constants import UPPER_DIM, SAMPLER, DATA_SAMPLE_SIZE, VERSION, INCLUDED_LA
 from utils.timertree import timer
 
 
+def from_model_and_save(model, x, pd_path, timeout):
+    activation_sample = sample_neurons(model, x)
+    distance_matrix = compute_distance_matrix(activation_sample)
+    from_dm_and_save(distance_matrix, pd_path, timeout)
+
+
 def compute_distance_matrix(activations):
-    with np.errstate(invalid='ignore'):
-        correlations = np.nan_to_num(np.corrcoef(activations), copy=False)
-    np.fill_diagonal(correlations, 1)
-    assert not (correlations < -1).any() or (1 < correlations).any()
-    return 1 - np.abs(correlations)
+    with timer('distances'):
+        with np.errstate(invalid='ignore'):
+            correlations = np.nan_to_num(np.corrcoef(activations), copy=False)
+        np.fill_diagonal(correlations, 1)
+        assert not (correlations < -1).any() or (1 < correlations).any()
+        return 1 - np.abs(correlations)
 
 
 @ray.remote
 def from_distances(distance_matrix):
     diagrams = ripser_parallel(distance_matrix, maxdim=UPPER_DIM,
-                      metric="precomputed", n_threads=-1)['dgms']
+                               metric="precomputed", n_threads=-1)['dgms']
     return np.stack([
         np.r_[point, dim]
         for dim in range(UPPER_DIM+1)
@@ -28,17 +35,13 @@ def from_distances(distance_matrix):
     ])
 
 
-def from_model_and_save(model, x, pd_path, timeout):
+def sample_neurons(model, x):
     included_layers = model.layers[INCLUDED_LAYERS[VERSION]]
-
     with timer('activations'):
-        activation_samples = SAMPLER.apply(model, included_layers, x)
-        assert activation_samples.shape == (SAMPLER.n, DATA_SAMPLE_SIZE)
+        activations = SAMPLER.apply(model, included_layers, x)
+        assert activations.shape == (SAMPLER.n, DATA_SAMPLE_SIZE)
+    return activations
 
-    with timer('distances'):
-        distance_matrix = compute_distance_matrix(activation_samples)
-
-    from_dm_and_save(distance_matrix, pd_path, timeout)
 
 def from_dm_and_save(distance_matrix, pd_path, timeout):
     pd_future = from_distances.remote(distance_matrix)

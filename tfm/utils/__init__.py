@@ -16,7 +16,7 @@ def import_model(path: Path) -> tf.keras.Sequential:
     return model
 
 
-def import_and_sample_data(path: Path, size) -> Tuple[np.ndarray, int]:
+def import_and_sample_data(path: Path, size, entropy=None) -> Tuple[np.ndarray, int]:
     dataset = tf.data.TFRecordDataset([*path.glob('train/shard_*.tfrecord')])
     array = np.array([*dataset.map(_deserialize_example).as_numpy_iterator()])
     # sample = np.random.choice(
@@ -26,7 +26,7 @@ def import_and_sample_data(path: Path, size) -> Tuple[np.ndarray, int]:
     # ret, _ = map(np.array, zip(
     # 	*train.shuffle(2000, reshuffle_each_iteration=True).take(2000).as_numpy_iterator()))
     # ret = np.array([*train.shuffle(2000, reshuffle_each_iteration=True).take(2000).as_numpy_iterator()])
-    seeds = np.random.SeedSequence()
+    seeds = np.random.SeedSequence(entropy)
     sample_ix = np.random.default_rng(seeds).choice(
         len(array), size, replace=False)
     return array[sample_ix].copy(), int(seeds.entropy)

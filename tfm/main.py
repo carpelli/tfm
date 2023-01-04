@@ -5,8 +5,6 @@ import logging
 import os
 from pathlib import Path
 
-# import tensorflow as tf
-
 import pd
 import utils
 from utils.timertree import timer
@@ -14,25 +12,22 @@ from constants import OUTDIR, INPUT_DIR, TIMEOUT, SAMPLER, DATA_SAMPLE_SIZE, VER
 
 
 if __name__ == "__main__":
-    # tf.random.set_seed(1234)
-    # np.random.seed(1234)
-    # tf.config.experimental.enable_op_determinism()
-
     parser = argparse.ArgumentParser()
     parser.add_argument('data_path', type=Path, help="path to the google_data folder")
     parser.add_argument('--task', choices=[1, 2], type=int, required=True)
     parser.add_argument('-o', '--output', default=OUTDIR, type=Path)
     parser.add_argument('--timeout', default=TIMEOUT, type=int)
-    # parser.add_argument('--threads', default=1, type=int)
     parser.add_argument('--resume', action='store_true')
     parser.add_argument('--models', nargs='+', default=[])
     parser.add_argument('--from-dm')
+    parser.add_argument('--only-sample', action='store_true')
+    parser.add_argument('--entropy')
+
     args = parser.parse_args()
 
     formatter = logging.Formatter("%(asctime)s %(message)s", "%Y-%m-%d %H:%M:%S")
     stdoutHandler = logging.StreamHandler()
     stdoutHandler.setFormatter(formatter)
-    stdoutHandler.setLevel(logging.INFO)
     logging.basicConfig(handlers=[stdoutHandler], level=logging.DEBUG)
 
     # set the outdir depending on if asked to continue the last batch or make a new one
@@ -53,7 +48,6 @@ if __name__ == "__main__":
     (outdir / 'log.txt').touch(exist_ok=True) # fix
     fileHandler = logging.FileHandler(outdir / 'log.txt')
     fileHandler.setFormatter(formatter)
-    fileHandler.setLevel(logging.DEBUG)
     logging.getLogger().addHandler(fileHandler)
 
     if args.from_dm:
@@ -72,8 +66,8 @@ if __name__ == "__main__":
 
     input_dir = args.data_path / INPUT_DIR[args.task]
     x_train, entropy = utils.import_and_sample_data(
-        input_dir / "dataset_1", DATA_SAMPLE_SIZE)
-    logging.info(f"Data sampling entropy: {entropy}")
+        input_dir / "dataset_1", DATA_SAMPLE_SIZE, args.entropy)
+    logging.info(f"Data sampling seed entropy: {entropy}")
 
     logging.info(f"Finished importing data")
 
@@ -97,4 +91,7 @@ if __name__ == "__main__":
         
         logging.info(f"Starting calculation on {model_path.name}")
         with timer(model_path.name):
-            pd.from_model_and_save(model, x_train, pd_path, args.timeout)
+            if not args.only_sample:
+                pd.from_model_and_save(model, x_train, pd_path, args.timeout)
+            else:
+                pd.sample_neurons(model, x_train)
