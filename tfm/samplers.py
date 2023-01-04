@@ -74,15 +74,39 @@ class MaxImportance(Random):
 
 
 class AvgImportance(Sampler):
-    def build(self, _):
+    @staticmethod
+    def score(x: tf.Tensor):
+        return tf.math.reduce_mean(x, axis=0)
+
+    def build(self, layers):
         from constants import DATA_SAMPLE_SIZE # fix?
         self.activations = [tf.zeros((DATA_SAMPLE_SIZE, self.n))]
+        self.layer_ix = np.full(self.n, -1)
+        self.n_layers = len(layers)
 
-    def layer(self, x, _):
+
+    def layer(self, x, i):
         x_abs = tf.math.abs(x)
         augmented = tf.concat([self.activations[0], x_abs], axis=1)
-        top_ix = tf.math.top_k(tf.math.reduce_mean(augmented, axis=0), self.n).indices
+        scores = type(self).score(augmented)
+        top_ix = tf.math.top_k(scores, self.n).indices
+        logging.debug(f'Average score in layer {i}: {np.mean(scores)}')
+        self.layer_ix[top_ix >= self.n] = i
         self.activations[0] = tf.gather(augmented, top_ix, axis=1)
+
+
+    def accumulate(self) -> np.ndarray:
+        counts = [sum(self.layer_ix == i) for i in range(self.n_layers)]
+        logging.debug(f'Layer example counts: {counts}')
+        return super().accumulate()
+
+
+class ZeroImportance(AvgImportance):
+    # Importance according to number of nonzero elements
+    
+    @staticmethod
+    def score(x: tf.Tensor):
+        return tf.math.count_nonzero(x, axis=0)
 
 
 class StratifiedSampler(Sampler):
