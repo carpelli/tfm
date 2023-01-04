@@ -21,7 +21,7 @@ if __name__ == "__main__":
     parser.add_argument('--models', nargs='+', default=[])
     parser.add_argument('--from-dm')
     parser.add_argument('--only-sample', action='store_true')
-    parser.add_argument('--entropy')
+    parser.add_argument('--entropy', type=int)
 
     args = parser.parse_args()
 
