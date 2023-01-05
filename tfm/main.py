@@ -2,19 +2,18 @@ import argparse
 from datetime import datetime
 import errno
 import logging
-import os
 from pathlib import Path
 
 import pd
 import utils
 from utils.timertree import timer
-from constants import OUTDIR, INPUT_DIR, TIMEOUT, SAMPLER, DATA_SAMPLE_SIZE, VERSION
+from constants import OUTDIR, TIMEOUT, INPUT_DIR, SAMPLER, DATA_SAMPLE_SIZE, VERSION
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('data_path', type=Path, help="path to the google_data folder")
-    parser.add_argument('--task', choices=[1, 2], type=int, required=True)
+    parser.add_argument('--task', choices=[1, 2, 4, 5], type=int, required=True)
     parser.add_argument('-o', '--output', default=OUTDIR, type=Path)
     parser.add_argument('--timeout', default=TIMEOUT, type=int)
     parser.add_argument('--resume', action='store_true')
@@ -64,7 +63,7 @@ if __name__ == "__main__":
         f'(version \'{VERSION}\') sampler timing out after {args.timeout}s')
     logging.info(f"Importing data...")
 
-    input_dir = args.data_path / INPUT_DIR[args.task]
+    input_dir = args.data_path / INPUT_DIR / utils.taskdir(args.task)
     x_train, entropy = utils.import_and_sample_data(
         input_dir / "dataset_1", DATA_SAMPLE_SIZE, args.entropy)
     logging.info(f"Data sampling seed entropy: {entropy}")
