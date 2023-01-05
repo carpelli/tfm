@@ -11,7 +11,7 @@ INPUT_DIR = {
 	1: Path('public_data/input_data/task1_v4'),
 	2: Path('public_data/input_data/task2_v1')
 }
-SAMPLER = samplers.StratifiedFilterCorr(NEURON_SAMPLE_SIZE)
+SAMPLER = samplers.AvgImportance(NEURON_SAMPLE_SIZE)
 VERSION = ''
 INCLUDED_LAYERS = {
 	'': slice(1, None),
