@@ -5,8 +5,6 @@ from typing import Tuple
 import numpy as np
 import tensorflow as tf
 
-from constants import INPUT_DIR
-
 
 def farthest(d, p):
 	d = np.triu(d, 1) + np.triu(d, 1).T
@@ -45,7 +43,7 @@ class taskdir:
             return next(path.glob(f'task{self.task}*'))
         except StopIteration:
             raise FileNotFoundError
-            
+
 def import_model(path: Path) -> tf.keras.Sequential:
     model = create_model_instance(path / 'config.json')
     if (path / 'weights_init.hdf5').exists():
