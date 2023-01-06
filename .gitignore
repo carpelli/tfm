@@ -7,4 +7,4 @@ __pycache__/
 *test
 *test.*
 *.dm.npy
-tfm/notebooks/results/
+tfm/notebooks/out/
