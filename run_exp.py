@@ -9,7 +9,7 @@ sys.path.append(str(Path('./tfm')))
 from tfm.constants import SAMPLER, VERSION
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--task', choices=[1, 2], type=int, required=True)
+parser.add_argument('--task', choices=[1, 2, 4, 5], type=int, required=True)
 args, extra_args = parser.parse_known_args()
 
 ws = Workspace.from_config()
