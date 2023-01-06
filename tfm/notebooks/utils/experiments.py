@@ -6,7 +6,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import ShuffleSplit
 from tqdm import tqdm
 
-from . import gen_gaps, get_files
+from . import gen_gaps, get_files, cache_path
 
 def features_for_dim(pd, dim):
 	# b: birth, d: death
@@ -54,7 +54,7 @@ def features_all_dims(pd):
 
 
 def get_labeled_data(task, files):
-	gaps = gen_gaps[task]
+	gaps = gen_gaps(task)
 	pds = [*map(np.load, files)]
 	X = np.stack([*map(features_all_dims, pds)])
 	y = np.array([gaps[f.name.split('.')[0]] for f in files])
@@ -83,7 +83,7 @@ def run_experiment(X, y, masks, tries, model_fn):
 
 def results_for_sampler(task, files: list[Path]):
 	task_name_date = files[0].parts[-4:-1]
-	results_file = Path('results') / ("-".join(task_name_date) + '.npy')
+	results_file = cache_path / ("-".join(task_name_date) + '.npy')
 	try:
 		return np.load(results_file)
 	except FileNotFoundError:

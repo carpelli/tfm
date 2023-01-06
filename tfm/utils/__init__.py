@@ -3,8 +3,10 @@ from pathlib import Path
 from typing import Tuple
 
 import numpy as np
-import tensorflow as tf
 
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    import tensorflow as tf
 
 def farthest(d, p):
 	d = np.triu(d, 1) + np.triu(d, 1).T
@@ -44,7 +46,7 @@ class taskdir:
         except StopIteration:
             raise FileNotFoundError
 
-def import_model(path: Path) -> tf.keras.Sequential:
+def import_model(path: Path) -> 'tf.keras.Sequential':
     model = create_model_instance(path / 'config.json')
     if (path / 'weights_init.hdf5').exists():
         model.load_weights(path / 'weights_init.hdf5')
@@ -55,6 +57,8 @@ def import_model(path: Path) -> tf.keras.Sequential:
 
 
 def import_and_sample_data(path: Path, size, entropy=None) -> Tuple[np.ndarray, int]:
+    import tensorflow as tf
+
     dataset = tf.data.TFRecordDataset([*path.glob('train/shard_*.tfrecord')])
     array = np.array([*dataset.map(_deserialize_example).as_numpy_iterator()])
     # sample = np.random.choice(
@@ -99,6 +103,7 @@ def _model_def_to_keras_sequential(model_def):
     Returns:
         A Keras Sequential model with the required architecture.
     """
+    import tensorflow as tf
 
     def _cast_to_integer_if_possible(dct):
         dct = dict(dct)
@@ -117,6 +122,8 @@ def _model_def_to_keras_sequential(model_def):
 
 
 def _deserialize_example(serialized_example):
+    import tensorflow as tf
+    
     record = tf.io.parse_single_example(
         serialized_example,
         features={

@@ -1,6 +1,7 @@
 from pathlib import Path
 import json
 import sys
+import functools
 from types import ModuleType, FunctionType
 from gc import get_referents
 from typing import Callable, Iterable, TypeVar, Union
@@ -9,25 +10,23 @@ import matplotlib
 from matplotlib import pyplot as plt
 import numpy as np
 
+from utils import taskdir
+
 T = TypeVar('T')
 
-outdir = Path('../../out')
-data_root = Path('../../data')
-task_string = {1: 'task1_v4', 2: 'task2_v1'}
-data_path = {
-    task: data_root / f'public_data/input_data/{string}'
-    for task, string in task_string.items()
-}
-ref_file = {
-    task: data_root / f'public_data/reference_data/{string}/model_configs.json'
-    for task, string in task_string.items()
-}
+outdir = Path('../out')
+data_root = Path('../data')
+data_path = data_root / 'public_data/input_data'
+ref_path = data_root / 'public_data/reference_data'
+cache_path = Path('notebooks/out/cache')
 
-gen_gaps = {}
-for task in task_string:
-    gen_gaps[task] = {
+
+@functools.lru_cache
+def gen_gaps(task):
+    file = ref_path / taskdir(task) / 'model_configs.json'
+    return {
         'model_' + k: v['metrics']['train_acc'] - v['metrics']['test_acc']
-        for k, v in json.loads(ref_file[task].read_text()).items()
+        for k, v in json.loads(file.read_text()).items()
     }
 
 
