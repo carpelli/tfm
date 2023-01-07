@@ -1,9 +1,9 @@
 samplers = {
+	'Random': r'Random',
+	'StratifiedRandom': r'Random (s)',
 	'AvgImportance': r'Importance (mean)',
 	'MaxImportance': r'Importance (max)',
-	'Random': r'Random',
-	'StratifiedFilterCorr': r'Filter correlation',
-	'StratifiedKMeans20000': r'K-means++',
-	'StratifiedRandom': r'Random (s)',
 	'ZeroImportance': r'Importance (zero)',
+	'StratifiedKMeans20000': r'K-means++',
+	'StratifiedFilterCorr': r'Filter correlation',
 }

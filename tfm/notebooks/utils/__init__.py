@@ -11,6 +11,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 
 from utils import taskdir
+from . import names
 
 T = TypeVar('T')
 
@@ -60,7 +61,14 @@ def get_files(task: int, sampler: Union[str, None] = None, pattern='*.pd.npy', a
                 if (files := [*dir.glob(pattern)]))
     else:
         include = [dir for dir in dirs(taskdir) if '_' not in dir.name or all]
-        return ((dir.name, [*dirs(dir)[0].glob(pattern)]) for dir in include)
+        samplers = sorted_along(include, by=lambda s: s.name,
+                              example=list(names.samplers.keys()))
+        return ((dir.name, [*dirs(dir)[0].glob(pattern)]) for dir in samplers)
+
+
+def sorted_along(sortee: Iterable, by, example: list):
+    head, tail = sift(sortee, lambda x: by(x) in example)
+    return sorted(head, key=lambda x: example.index(by(x))) + tail
 
 
 def dirs(path: Path):
@@ -211,3 +219,5 @@ def getsize(obj):
                 need_referents.append(obj)
         objects = get_referents(*need_referents)
     return size
+
+get_files(1)
