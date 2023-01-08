@@ -20,6 +20,7 @@ data_root = Path('../data')
 data_path = data_root / 'public_data/input_data'
 ref_path = data_root / 'public_data/reference_data'
 cache_path = Path('notebooks/out/cache')
+fig_path = Path('notebooks/out/figures')
 
 
 @functools.lru_cache
@@ -130,7 +131,7 @@ def heatmap(data, row_labels, col_labels, ax=None,
     # Turn spines off and create white grid.
     ax.spines[:].set_visible(False)
 
-    ax.set_xticks(np.arange(data.shape[1]+1)-.495, minor=True)
+    ax.set_xticks(np.arange(data.shape[1]+1)-.49, minor=True)
     ax.set_yticks(np.arange(data.shape[0]+1)-.5, minor=True)
     ax.grid(which="minor", color="w", linestyle='-', linewidth=3)
     ax.tick_params(which="minor", bottom=False, left=False)

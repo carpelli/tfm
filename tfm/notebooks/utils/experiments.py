@@ -20,8 +20,8 @@ def features_for_dim(pd, dim):
 			mean_bd**2,
 			np.nan_to_num(1/mean_bd + np.log(mean_bd)), # fix divide by zero
 			np.c_[b, d].std(axis=0),
-			[np.mean(b - d)],
-			[np.mean(b - d)**2],
+			[np.mean(d - b)],
+			[np.mean(d - b)**2],
 			[np.mean((b + d) / 2)],
 			[np.mean((b + d) / 2)**2],
 		]
@@ -38,25 +38,26 @@ features = {
 }
 
 flat_features = [*itertools.chain(*(
-	[f] if len == 1 else [f.replace('_birth', ''), f.replace('_death', '')]
+	[f] if len == 1 else [f.replace('_death', ''), f.replace('_birth', '')]
 	for f, len in features.items()
 ))]
-flat_features = [f + '_0' for f in flat_features] + [f + '_1' for f in flat_features]
+flat_features = [f + '.0' for f in flat_features] + [f + '.1' for f in flat_features]
 
 combinations = [*itertools.chain(*(
 	itertools.combinations(features.keys(), r)
 	for r in range(1, len(features) + 1)
 ))]
 
+
 def features_all_dims(pd):
 	arrs = [np.concatenate(features_for_dim(pd, dim)) for dim in (0, 1)]
 	return np.vstack(arrs)
 
 
-def get_labeled_data(task, files):
+def get_labeled_data(task, files, fn=features_all_dims):
 	gaps = gen_gaps(task)
 	pds = [*map(np.load, files)]
-	X = np.stack([*map(features_all_dims, pds)])
+	X = np.stack([*map(fn, pds)])
 	y = np.array([gaps[f.name.split('.')[0]] for f in files])
 	return X, y
 
