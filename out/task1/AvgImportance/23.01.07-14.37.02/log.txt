@@ -1,0 +1,14 @@
+2023-01-07 14:37:02 Starting experiment on task 1 with AvgImportance (version '') sampler timing out after 500s
+2023-01-07 14:37:02 Importing data...
+2023-01-07 14:37:11 Data sampling seed entropy: 109674359300060785239836407959338244654
+2023-01-07 14:37:11 Finished importing data
+2023-01-07 14:37:12 Creating converter from 3 to 5
+2023-01-07 14:37:12 Starting calculation on model_20
+2023-01-07 14:37:18 Average score in layer 0: 0.030118295922875404
+2023-01-07 14:37:18 Average score in layer 1: 0.07403753697872162
+2023-01-07 14:37:18 Average score in layer 2: 0.07675151526927948
+2023-01-07 14:37:18 Average score in layer 3: 0.20131701231002808
+2023-01-07 14:37:18 Average score in layer 4: 0.21887166798114777
+2023-01-07 14:37:18 Layer example counts: [240, 1318, 1341, 91, 10]
+2023-01-07 14:37:18 timed model_20/activations: 6.392976930000032s
+2023-01-07 14:37:19 timed model_20/distances: 0.2573911949999683s
