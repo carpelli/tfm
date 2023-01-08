@@ -8,3 +8,4 @@ __pycache__/
 *test.*
 *.dm.npy
 tfm/notebooks/out/
+/data
