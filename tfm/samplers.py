@@ -6,9 +6,19 @@ from typing import Union  # fix when back to 3.10
 import numpy as np
 import tensorflow as tf
 import tensorflow_probability as tfp
+from tensorflow.keras.layers import ReLU
 from sklearn.cluster import kmeans_plusplus
 
 import utils
+
+
+def after_activation_function(layers):
+    layers = layers.copy()
+    remove_ix = [max(i - 1, 0) for i, l in enumerate(layers) if isinstance(l, ReLU)]
+    for ix in remove_ix[::-1]:
+        del layers[ix]
+    return layers
+
 
 class Sampler(ABC):
     _flat = True
@@ -32,6 +42,7 @@ class Sampler(ABC):
         return np.hstack(self.activations)
 
     def apply(self, model: tf.keras.Sequential, included_layers, x: tf.Tensor) -> np.ndarray:
+        included_layers = after_activation_function(included_layers)
         self.build(included_layers)
         i = 0
         for layer in model.layers:
@@ -110,7 +121,7 @@ class ZeroImportance(AvgImportance):
     
     @staticmethod
     def score(x: tf.Tensor):
-        return tf.math.count_nonzero(x, axis=0)
+        return -tf.math.count_nonzero(x, axis=0)
 
 
 class StratifiedSampler(Sampler):
