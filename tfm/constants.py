@@ -8,7 +8,7 @@ NEURON_SAMPLE_SIZE = 3000
 UPPER_DIM = 1
 OUTDIR = Path(__file__).parent / '../out'
 INPUT_DIR = Path('public_data/input_data')
-SAMPLER = samplers.ZeroImportance(NEURON_SAMPLE_SIZE)
+SAMPLER = samplers.StratifiedKMeans(NEURON_SAMPLE_SIZE, 20000)
 VERSION = ''
 INCLUDED_LAYERS = {
 	'': slice(1, None),
