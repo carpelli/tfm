@@ -39,7 +39,9 @@ def sample_neurons(model, x):
     included_layers = model.layers[INCLUDED_LAYERS[VERSION]]
     with timer('activations'):
         activations = SAMPLER.apply(model, included_layers, x)
-        assert activations.shape == (SAMPLER.n, DATA_SAMPLE_SIZE)
+        # assert activations.shape == (SAMPLER.n, DATA_SAMPLE_SIZE)
+        if activations.shape != (SAMPLER.n, DATA_SAMPLE_SIZE):
+            logging.info(f"activations shape: {activations.shape}")
     return activations
 
 

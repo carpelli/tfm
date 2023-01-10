@@ -91,7 +91,7 @@ class MaxImportance(Random):
 class AvgImportance(Sampler):
     @staticmethod
     def score(x: tf.Tensor):
-        return x.shape[0] - tf.math.reduce_mean(x, axis=0)
+        return tf.math.reduce_mean(x, axis=0)
 
     def build(self, layers):
         from constants import DATA_SAMPLE_SIZE # fix?
@@ -120,7 +120,7 @@ class ZeroImportance(AvgImportance):
     # Importance according to number of nonzero elements
     @staticmethod
     def score(x: tf.Tensor):
-        return -tf.math.count_nonzero(x, axis=0)
+        return tf.math.count_nonzero(x, axis=0)
 
 
 class StratifiedSampler(Sampler):
